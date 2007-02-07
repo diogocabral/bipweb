@@ -12,7 +12,7 @@ import java.util.List;
 
 public class YahooSearch implements SearchAgent {
 	
-	private static final String SEARCH_URL = "http://search.yahoo.com/search?p=";
+	private static final String SEARCH_URL = "http://search.yahoo.com/search?n=100&p=";
 	
 	public List<Document> search(String criteria) {
 		

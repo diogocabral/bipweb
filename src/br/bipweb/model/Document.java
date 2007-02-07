@@ -34,4 +34,9 @@ public class Document {
 		this.url = url;
 	}
 	
+	@Override
+	public String toString() {
+		return "id={" + id + "}" + " title={" + title + "} url={" + url + "}";
+	}
+	
 }

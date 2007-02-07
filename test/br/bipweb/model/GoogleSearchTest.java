@@ -13,7 +13,7 @@ public class GoogleSearchTest extends TestCase {
 		
 		GoogleSearch search = new GoogleSearch();
 		
-		List<Document> documents = search.search("teste");
+		List<Document> documents = search.search("coisado");
 		
 		for (Document document : documents) {
 			System.out.println(document);
