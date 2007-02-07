@@ -9,6 +9,8 @@ public class GlobalSearch {
 	
 	public GlobalSearch() {
 		super();
+		agents = new ArrayList<SearchAgent>();
+		agents.add(new GoogleSearch());
 	}
 	
 	public List<Document> search(String criteria) {

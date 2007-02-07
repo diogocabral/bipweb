@@ -1,0 +1,21 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	
+	<include file="webwork-default.xml" />
+	
+	<package name="ROOT" extends="webwork-default" namespace="/">
+	</package>
+	
+	<package name="user" extends="webwork-default" namespace="/user">
+		
+		<action name="doLogin" class="br.bipweb.action.UserAction" method="doLogin">
+			<result type="dispatcher" name="success">
+				<param name="location">/index.jsp</param>
+			</result>
+		</action>
+		
+	</package>
+	
+	<!-- <include file="xwork-categoria.xml" /> -->
+	
+</xwork>
