@@ -6,8 +6,18 @@
 	</display-name>
 	
 	<description>
-		Busca de Informações Personalizadas na Web
+		Uma ferramenta de busca de informações personalizadas na Web baseada no Fidus.
 	</description>
+	
+	<filter>
+		<filter-name>webwork</filter-name>
+		<filter-class>com.opensymphony.webwork.dispatcher.FilterDispatcher</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>webwork</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
