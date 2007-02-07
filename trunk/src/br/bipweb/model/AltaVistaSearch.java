@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AltaVistaSearch implements SearchAgent {
 	
-	private static final String SEARCH_URL = "http://www.altavista.com/web/results?q=";
+	private static final String SEARCH_URL = "http://www.altavista.com/web/results?nbq=100&q=";
 	
 	public List<Document> search(String criteria) {
 		
