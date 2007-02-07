@@ -34,8 +34,11 @@ public class GoogleSearch implements SearchAgent {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			
 			String line;
+			
 			while ((line = reader.readLine()) != null) {
+				
 				int position = line.indexOf("Results");
+				
 				if (position != -1) {
 					
 					line = line.substring(position);
@@ -89,6 +92,7 @@ public class GoogleSearch implements SearchAgent {
 					break;
 					
 				}
+				
 			}
 			
 		} catch (FileNotFoundException e) {

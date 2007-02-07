@@ -16,6 +16,14 @@
 		
 	</package>
 	
+	<package name="category" extends="webwork-default" namespace="/category">
+		
+		<action name="newCategory">
+			
+		</action>
+		
+	</package>
+	
 	<!-- <include file="xwork-categoria.xml" /> -->
 	
 </xwork>
