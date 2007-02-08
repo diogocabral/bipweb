@@ -16,16 +16,29 @@ public class GlobalSearch {
 		super();
 	}
 	
-	public Collection<Document> search(String criteria) {
+	public Collection<Document> search(String criteria)
+			throws SearchException {
 		
-		/*
-		 * Um HashSet verifica elementos duplicados :)
-		 */
-		
+		// HashSet verifica elementos duplicados
 		Collection<Document> documents = new HashSet<Document>();
 		
 		for (SearchAgent agent : agents) {
 			documents.addAll(agent.search(criteria));
+		}
+		
+		return documents;
+		
+	}
+	
+	
+	public Collection<Document> searchNext()
+			throws SearchException {
+		
+		// HashSet verifica elementos duplicados
+		Collection<Document> documents = new HashSet<Document>(); 
+		
+		for (SearchAgent agent : agents) {
+			documents.addAll(agent.searchNext());
 		}
 		
 		return documents;
