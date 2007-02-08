@@ -1,7 +1,9 @@
 #summary Notícias recentes sobre o projeto.
 
 = Diagrama de classes (07-02-2007) =
+_por Leonardo Costa Beltrão Lessa_
 
-_Versão parcial do diagrama de classes._
+
+Versão parcial do diagrama de classes.
 
 [http://bipweb.googlecode.com/files/DiagramadeClasses.png Diagrama de classes]
