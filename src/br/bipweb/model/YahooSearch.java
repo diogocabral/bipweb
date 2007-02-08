@@ -15,11 +15,13 @@ import java.util.Locale;
 
 public class YahooSearch implements SearchAgent {
 	
-	private static final String SEARCH_URL = "http://search.yahoo.com/search?n=10&p=";
+	private static final String SEARCH_URL = "http://search.yahoo.com/search?n=100&p=";
 	
 	private int first, last, total;
 	
 	public List<Document> search(String criteria) {
+		
+		// TODO Tá bugado (Não pega a quantidade de documentos certa)
 		
 		List<Document> documents = new ArrayList<Document>();
 		
@@ -72,6 +74,8 @@ public class YahooSearch implements SearchAgent {
 				
 			}
 			
+			System.out.println(first + " - " + last + " de " + total);
+			
 			for (int count = first; count <= last; count++) {
 				
 				while ((line = reader.readLine()) != null) {
@@ -83,6 +87,8 @@ public class YahooSearch implements SearchAgent {
 						Document document = new Document();
 						
 						position += 24;
+						
+						System.out.println(count);
 						
 						line = line.substring(position);
 						

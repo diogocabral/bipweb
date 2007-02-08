@@ -11,7 +11,7 @@ public class YahooSearchTest {
 		
 		YahooSearch search = new YahooSearch();
 		
-		List<Document> documents = search.search("vitruviano");
+		List<Document> documents = search.search("Teste");
 		
 		for (Document document : documents) {
 			System.out.println(document);

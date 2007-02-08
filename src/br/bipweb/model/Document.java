@@ -1,5 +1,6 @@
 package br.bipweb.model;
 
+
 public class Document {
 	
 	private int id;
@@ -32,6 +33,22 @@ public class Document {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	// TODO Melhorar as implementações do equals e do hashCode, lembrando que documentos iguais tem apenas a mesma url.
+	
+	@Override
+	public boolean equals(Object o) {
+		return o.hashCode() == hashCode();
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		if (url != null)
+			return url.hashCode();
+		
+		return super.hashCode();
 	}
 	
 	@Override
