@@ -9,7 +9,8 @@ import org.junit.Test;
 public class GoogleSearchTest extends TestCase {
 	
 	@Test
-	public void testSearch() {
+	public void testSearch()
+			throws SearchException {
 		
 		GoogleSearch search = new GoogleSearch();
 		

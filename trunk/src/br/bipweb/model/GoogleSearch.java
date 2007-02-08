@@ -1,7 +1,6 @@
 package br.bipweb.model;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
@@ -24,17 +23,58 @@ import java.util.Locale;
  */
 public class GoogleSearch implements SearchAgent {
 	
-	private static final String SEARCH_URL = "http://www.google.com/search?num=50&q=";
+	private static final int N = 50;
+	private static final String SEARCH_URL = "http://www.google.com/search?num=" + N + "&q=";
 	
 	private int first, last, total;
+	private String criteria;
 	
-	public Collection<Document> search(String criteria) {
+	public Collection<Document> search(String criteria)
+			throws SearchException {
 		
-		Collection<Document> documents = new ArrayList<Document>();
+		this.criteria = criteria;
 		
 		try {
 			
 			URL url = new URL(SEARCH_URL + criteria);
+		
+			return search(url);
+			
+		} catch (MalformedURLException e) {
+			throw new SearchException(e);
+		}
+		
+	}
+
+	public Collection<Document> searchNext()
+			throws SearchException {
+		
+		if (criteria == null) {
+			throw new SearchException("Deve-se primeiro fazer a busca.");
+		}
+		
+		if (last == total) {
+			throw new SearchException("Fim da busca.");
+		}
+		
+		try {
+			
+			URL url = new URL(SEARCH_URL + criteria + "&start=" + last);
+			
+			return search(url);
+			
+		} catch (MalformedURLException e) {
+			throw new SearchException(e);
+		}
+		
+	}
+	
+	private Collection<Document> search(URL url)
+			throws SearchException {
+		
+		try {
+			
+			Collection<Document> documents = new ArrayList<Document>();
 			
 			URLConnection connection = url.openConnection();
 			
@@ -104,27 +144,16 @@ public class GoogleSearch implements SearchAgent {
 				
 			}
 			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return documents;
+			
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SearchException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SearchException(e);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SearchException(e);
 		}
 		
-		return documents;
-		
-	}
-
-	public Collection<Document> searchNext() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }

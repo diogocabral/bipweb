@@ -48,6 +48,10 @@ public class AltaVistaSearch implements SearchAgent {
 	public Collection<Document> searchNext()
 			throws SearchException {
 		
+		if (criteria == null) {
+			throw new SearchException("Deve-se primeiro fazer a busca.");
+		}
+		
 		if (last == total) {
 			throw new SearchException("Fim da busca.");
 		}
