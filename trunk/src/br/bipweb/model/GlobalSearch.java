@@ -1,23 +1,28 @@
 package br.bipweb.model;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
+/**
+ * 
+ * @author Leonardo Costa Beltrão Lessa
+ */
 public class GlobalSearch {
 	
 	private List<SearchAgent> agents;
 	
 	public GlobalSearch() {
 		super();
-		agents = new ArrayList<SearchAgent>();
-		agents.add(new GoogleSearch());
 	}
 	
-	public List<Document> search(String criteria) {
+	public Collection<Document> search(String criteria) {
 		
-		// TODO Verificar documentos duplicados
+		/*
+		 * Um HashSet verifica elementos duplicados :)
+		 */
 		
-		List<Document> documents = new ArrayList<Document>();
+		Collection<Document> documents = new HashSet<Document>();
 		
 		for (SearchAgent agent : agents) {
 			documents.addAll(agent.search(criteria));
@@ -25,6 +30,14 @@ public class GlobalSearch {
 		
 		return documents;
 		
+	}
+	
+	public List<SearchAgent> getAgents() {
+		return agents;
+	}
+	
+	public void setAgents(List<SearchAgent> agents) {
+		this.agents = agents;
 	}
 	
 }

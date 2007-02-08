@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * 
+ * @author Leonardo Costa Beltrão Lessa
+ */
 public class GoogleSearch implements SearchAgent {
 	
 	private static final String SEARCH_URL = "http://www.google.com/search?num=100&q=";

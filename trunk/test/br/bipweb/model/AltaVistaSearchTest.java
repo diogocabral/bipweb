@@ -11,11 +11,9 @@ public class AltaVistaSearchTest {
 		
 		AltaVistaSearch search = new AltaVistaSearch();
 		
-		List<Document> documents = search.search("teste");
+		List<Document> documents = search.search("Leonardo");
 		
-		for (Document document : documents) {
-			System.out.println(document);
-		}
+		System.out.println(documents.size());
 		
 	}
 
