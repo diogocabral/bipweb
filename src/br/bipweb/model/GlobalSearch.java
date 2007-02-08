@@ -2,7 +2,6 @@ package br.bipweb.model;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 
 /**
  * 
@@ -10,7 +9,7 @@ import java.util.List;
  */
 public class GlobalSearch {
 	
-	private List<SearchAgent> agents;
+	private Collection<SearchAgent> agents;
 	
 	public GlobalSearch() {
 		super();
@@ -45,11 +44,11 @@ public class GlobalSearch {
 		
 	}
 	
-	public List<SearchAgent> getAgents() {
+	public Collection<SearchAgent> getAgents() {
 		return agents;
 	}
 	
-	public void setAgents(List<SearchAgent> agents) {
+	public void setAgents(Collection<SearchAgent> agents) {
 		this.agents = agents;
 	}
 	

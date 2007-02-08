@@ -20,4 +20,12 @@ public class CategoryAction extends ActionSupport {
 		this.category = category;
 	}
 	
+	public String doSave() {
+		return SUCCESS;
+	}
+	
+	public String doDelete() {
+		return SUCCESS;
+	}
+	
 }

@@ -1,19 +1,37 @@
 package br.bipweb.model;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.junit.Test;
 
 public class AltaVistaSearchTest {
 
 	@Test
-	public void testSearch() {
+	public void testSearch() throws SearchException {
 		
 		AltaVistaSearch search = new AltaVistaSearch();
 		
-		List<Document> documents = search.search("Leonardo");
+		Collection<Document> documents;
 		
-		System.out.println(documents.size());
+		// Buscando
+		documents = search.search("hashne");		
+		//System.out.println(documents.size());
+		
+		// Continuando a busca
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		documents = search.searchNext();
+		//System.out.println(documents.size());
 		
 	}
 

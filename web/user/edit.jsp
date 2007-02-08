@@ -6,17 +6,16 @@
 	</head>
 	<body>
 		
-		<h1>Entrar</h1>
+		<h1>Cadastro de usuários</h1>
 		
 		Aguarde...
 		
-		<ww:form method="post" action="doLogin.action">
+		<ww:form method="post" action="doSave.action">
 			<ww:textfield label="Usuário" name="user.username" />
 			<ww:password label="Senha" name="user.password" />
-			<ww:submit value="Entrar" />
+			<ww:password label="Confirmação da Senha" name="passwordConfirm" />
+			<ww:submit value="Salvar" />
 		</ww:form>
-		
-		<p>Não é cadastrado? <a href="edit.jsp">Cadastre-se</a></p>
 		
 	</body>
 </html>
