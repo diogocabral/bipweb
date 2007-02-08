@@ -5,4 +5,4 @@ Os membros do projeto que estiverem desenvolvendo o BIPWeb podem colocar os link
 Servidores:
   * [http://bipweb1.dev4all.cjb.net/bipweb Casa do Leonardo] _(08/02/2007 18:35)_
 
-OBS: _Como os servidores são os da casa dos desenvolvedores, estes servidores podem estar desligados_.
+OBS: _Como os servidores estão na casa dos desenvolvedores, logo podem estar desligados_.
