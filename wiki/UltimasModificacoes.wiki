@@ -1,7 +1,7 @@
 #summary Notícias recentes sobre o projeto.
 
-== Diagrama de classes (07-02-2007) ==
+= Diagrama de classes (07-02-2007) =
 
-Versão parcial do diagrama de classes.
+_Versão parcial do diagrama de classes._
 
 [http://bipweb.googlecode.com/files/DiagramadeClasses.png Diagrama de classes]
