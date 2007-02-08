@@ -34,21 +34,30 @@ public class Document {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
-	// TODO Melhorar as implementações do equals e do hashCode, lembrando que documentos iguais tem apenas a mesma url.
-	
-	@Override
-	public boolean equals(Object o) {
-		return o.hashCode() == hashCode();
-	}
-	
+
 	@Override
 	public int hashCode() {
-		
-		if (url != null)
-			return url.hashCode();
-		
-		return super.hashCode();
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((url == null) ? 0 : url.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Document other = (Document) obj;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
+			return false;
+		return true;
 	}
 	
 	@Override

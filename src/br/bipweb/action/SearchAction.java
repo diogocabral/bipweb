@@ -7,6 +7,7 @@ import br.bipweb.model.AltaVistaSearch;
 import br.bipweb.model.Category;
 import br.bipweb.model.Document;
 import br.bipweb.model.GlobalSearch;
+import br.bipweb.model.GoogleSearch;
 import br.bipweb.model.SearchAgent;
 import br.bipweb.model.SearchException;
 
@@ -24,6 +25,7 @@ public class SearchAction extends ActionSupport {
 		super();
 		
 		Collection<SearchAgent> agents = new ArrayList<SearchAgent>();
+		agents.add(new GoogleSearch());
 		agents.add(new AltaVistaSearch());
 		
 		search = new GlobalSearch();
@@ -34,7 +36,13 @@ public class SearchAction extends ActionSupport {
 	public String doSearch() {
 		
 		try {
-			documents = search.search("teste");
+			
+			System.out.println(category);
+			
+			documents = search.search("webwork+tree+example");
+			
+			System.out.println(documents.size());
+			
 		} catch (SearchException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

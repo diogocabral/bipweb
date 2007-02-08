@@ -14,7 +14,12 @@
 	<body>
 		
 		<div id="cabecalho">
-			<h1><b>BIPWeb</b> Uma ferramenta de busca de informações personalizadas na Web baseada no Fidus.</h1>
+		
+			<h1>
+				<b><a href="${root}">BIPWeb</a></b>
+				Uma ferramenta de busca de informações personalizadas na Web baseada no Fidus.
+			</h1>
+			
 			<ul>
 			<ww:if test="${user}">
 				<li>Pesquisar</li>
@@ -27,6 +32,7 @@
 			</ww:else>
 				<li><a href="${root}/help/help.jsp">Ajuda</a></li>
 			</ul>
+			
 		</div>
 		
 		<div id="corpo">
