@@ -6,6 +6,4 @@ Versão parcial do diagrama de classes.
 
 [http://bipweb.googlecode.com/files/DiagramadeClasses.png Diagrama de classes]
 
-http://bipweb.googlecode.com/files/DiagramadeClasses.png
-
-
+<hr />
