@@ -1,3 +1,8 @@
 #summary Documentação do projeto.
 
-  * [UltimasModificacoes Notícias recentes sobre o projeto.]
+Documentação
+  * API javadoc _(em breve)_.
+
+Outras informações:
+  * [UltimasModificacoes Notícias recentes sobre o projeto];
+  * [ServidorTeste Servidores onde os membros podem testar o BIPWeb].
