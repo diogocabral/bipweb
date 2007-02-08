@@ -1,0 +1,9 @@
+#summary Notícias recentes sobre o projeto.
+
+=== Diagrama de classes (07-02-2007) ===
+
+Versão parcial do diagrama de classes.
+
+[http:// Diagrama de classes]
+
+
