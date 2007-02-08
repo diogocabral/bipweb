@@ -1,9 +1,13 @@
 package br.bipweb.model;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface SearchAgent {
 	
-	public List<Document> search(String criteria);
+	public Collection<Document> search(String criteria)
+			throws SearchException;
+	
+	public Collection<Document> searchNext()
+			throws SearchException;
 	
 }

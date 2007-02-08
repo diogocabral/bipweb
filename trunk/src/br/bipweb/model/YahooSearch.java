@@ -10,6 +10,7 @@ import java.net.URLConnection;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
@@ -128,6 +129,11 @@ public class YahooSearch implements SearchAgent {
 		
 		return documents;
 		
+	}
+
+	public Collection<Document> searchNext() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -10,22 +10,27 @@ import java.net.URLConnection;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Locale;
 
 /**
+ * Agente de busca que acessa o mecanismo de busca da Google.
+ * Url do mecanismo de busca: www.google.com.
+ * 
+ * TODO Implementar as exceções.
+ * TODO Implementar o método "public Collection<Document> searchNext();".
  * 
  * @author Leonardo Costa Beltrão Lessa
  */
 public class GoogleSearch implements SearchAgent {
 	
-	private static final String SEARCH_URL = "http://www.google.com/search?num=100&q=";
+	private static final String SEARCH_URL = "http://www.google.com/search?num=50&q=";
 	
 	private int first, last, total;
 	
-	public List<Document> search(String criteria) {
+	public Collection<Document> search(String criteria) {
 		
-		List<Document> documents = new ArrayList<Document>();
+		Collection<Document> documents = new ArrayList<Document>();
 		
 		try {
 			
@@ -115,6 +120,11 @@ public class GoogleSearch implements SearchAgent {
 		
 		return documents;
 		
+	}
+
+	public Collection<Document> searchNext() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
