@@ -154,8 +154,6 @@ public class AltaVistaSearch implements SearchAgent {
 					
 					if (position != -1) {
 						
-						System.out.println(line);
-						
 						position = line.indexOf("\" target=\"_self\">N");
 						
 						if (position != -1) { // Tem Next

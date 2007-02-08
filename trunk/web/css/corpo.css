@@ -1,0 +1,12 @@
+#corpo {
+	margin-top: 5px;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	text-align: left;
+}
+
+#corpo h1 {
+	margin-top: 0px;
+	background-color: #e5ecf9;
+	font-size: 14pt;
+}

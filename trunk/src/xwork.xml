@@ -14,12 +14,26 @@
 			</result>
 		</action>
 		
+		<action name="doSave" class="br.bipweb.action.UserAction" method="doSave">
+			<result type="dispatcher" name="success">
+				<param name="location">login.jsp</param>
+			</result>
+		</action>
+		
 	</package>
 	
 	<package name="category" extends="webwork-default" namespace="/category">
 		
 		<action name="newCategory">
 			
+		</action>
+		
+	</package>
+	
+	<package name="search" extends="webwork-default" namespace="/search">
+		
+		<action name="doSearch" class="br.bipweb.action.SearchAction" method="doSearch">
+			<result>search.jsp</result>
 		</action>
 		
 	</package>

@@ -9,28 +9,27 @@ import org.junit.Test;
 public class GlobalSearchTest {
 
 	@Test
-	public void testSearch() {
+	public void testSearch() throws SearchException {
 		
 		List<SearchAgent> agents = new ArrayList<SearchAgent>();
 		
 		agents.add(new GoogleSearch());
-		//agents.add(new YahooSearch());
+		//agents.add(new YahooSearch()); // TODO <- Tá bugado
 		agents.add(new AltaVistaSearch());
 		
 		GlobalSearch search = new GlobalSearch();
 		
 		search.setAgents(agents);
 		
-		Collection<Document> documents = search.search("Leonardo");
+		Collection<Document> documents = search.search("Fibonacci");
 		
-		System.out.println(documents.size());
+		System.out.println(documents.size() + "\n");
 		
 		for (Document document : documents) {
 			System.out.println(document);
 		}
 		
-		System.out.println(documents.size());
-		
+		System.out.println("\n" + documents.size());
 		
 	}
 

@@ -1,6 +1,6 @@
 package br.bipweb.model;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ public class YahooSearchTest {
 		
 		YahooSearch search = new YahooSearch();
 		
-		List<Document> documents = search.search("Teste");
+		Collection<Document> documents = search.search("Teste");
 		
 		for (Document document : documents) {
 			System.out.println(document);

@@ -1,24 +1,37 @@
+<%@ taglib prefix="ww" uri="/webwork" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<%
+	request.setAttribute("root", request.getContextPath());
+%>
 <html>
 	<head>
 		<title>BIPWeb - <decorator:title /></title>
 		<style type="text/css">
-			@import url("css/default.css");
+			@import url("${root}/css/default.css");
 		</style>
 		<decorator:head />
 	</head>
 	<body>
-		<h2>BIPWeb Tchamramram :)</h2>
-		<table>
-			<tr>
-				<td>
-					Contatos
-					<ul>
-						<li><a href="/crud/contact/edit.action">Novo</a></li>
-					</ul>
-				</td>
-				<td><decorator:body /></td>
-			</tr>
-		</table>
+		
+		<div id="cabecalho">
+			<h1><b>BIPWeb</b> Uma ferramenta de busca de informações personalizadas na Web baseada no Fidus.</h1>
+			<ul>
+			<ww:if test="${user}">
+				<li>Pesquisar</li>
+				<li>Histórico de pesquisa</li>
+				<li>Gerenciar categorias</li>
+			</ww:if>
+			<ww:else>
+				<li><a href="${root}/user/login.jsp">Entrar</a></li>
+				<li><a href="${root}/user/edit.jsp">Cadastre-se</a></li>
+			</ww:else>
+				<li><a href="${root}/help/help.jsp">Ajuda</a></li>
+			</ul>
+		</div>
+		
+		<div id="corpo">
+			<decorator:body />
+		</div>
+		
 	</body>
 </html>

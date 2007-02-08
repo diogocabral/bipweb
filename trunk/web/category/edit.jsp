@@ -2,11 +2,15 @@
 
 <html>
 	<head>
+		<title>Cadastro de categorias</title>
+		<style type="text/css">
+			@import url("../css/default.css");
+		</style>
 		<ww:head />
 	</head>
 	<body>
 		
-		<h3>Cadastro de categorias</h3>
+		<h1>Cadastro de categorias</h1>
 		
 		<ww:form method="post" action="doSave.action">
 			<ww:textfield label="Nome" name="category.name" size="40" required="true" />

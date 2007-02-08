@@ -1,10 +1,10 @@
 package br.bipweb.model;
 
-import java.util.List;
-
-import org.junit.Test;
+import java.util.Collection;
 
 import junit.framework.TestCase;
+
+import org.junit.Test;
 
 public class GoogleSearchTest extends TestCase {
 	
@@ -13,7 +13,7 @@ public class GoogleSearchTest extends TestCase {
 		
 		GoogleSearch search = new GoogleSearch();
 		
-		List<Document> documents = search.search("Leonardo");
+		Collection<Document> documents = search.search("Leonardo");
 		
 		System.out.println(documents.size());
 		
