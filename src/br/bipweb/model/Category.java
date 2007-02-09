@@ -1,5 +1,6 @@
 package br.bipweb.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -11,8 +12,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "category")
-public class Category {
-	
+public class Category implements Serializable {
+
+	private static final long serialVersionUID = 4113635329583817936L;
+
 	@Id
 	@GeneratedValue
 	private int id;

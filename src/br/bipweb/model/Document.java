@@ -1,5 +1,7 @@
 package br.bipweb.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,8 +9,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "document")
-public class Document {
-	
+public class Document implements Serializable {
+
+	private static final long serialVersionUID = 4650548819192132342L;
+
 	@Id
 	@GeneratedValue
 	private Long id;

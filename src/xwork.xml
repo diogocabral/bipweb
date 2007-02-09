@@ -9,7 +9,7 @@
     	
     		<interceptor name="transaction" class="br.bipweb.interceptor.TransactionInterceptor"/>
     		
-    		<interceptor-stack name="appStack">
+    		<interceptor-stack name="defaultStack">
     			<interceptor-ref name="defaultStack" />
     			<interceptor-ref name="transaction" />    			
     		</interceptor-stack>
@@ -21,7 +21,6 @@
 	<package name="user" extends="ROOT" namespace="/user">
 		
 		<action name="doLogin" class="br.bipweb.action.UserAction" method="doLogin">
-			<interceptor-ref name="appStack" />
 			<result type="dispatcher" name="success">
 				<param name="location">/index.jsp</param>
 			</result>
@@ -32,9 +31,18 @@
 		
 		<action name="doSave" class="br.bipweb.action.UserAction" method="doSave">
 			<result type="dispatcher" name="success">
-				<param name="location">login.jsp</param>
+				<param name="location">/index.jsp</param>
 			</result>
+			<result type="dispatcher" name="input">
+				<param name="location">edit.jsp</param>
+			</result>			
 		</action>
+		
+		<action name="doLogout" class="br.bipweb.action.UserAction" method="doLogout">
+			<result type="dispatcher" name="success">
+				<param name="location">/index.jsp</param>
+			</result>		
+		</action>		
 		
 	</package>
 	
