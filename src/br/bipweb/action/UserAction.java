@@ -39,11 +39,6 @@ public class UserAction extends ActionSupport {
 		try {
 			user = userDao.get(user.getUsername());
 			
-			System.out.println(password);
-			System.out.println(user.getPassword());
-			
-			System.out.println(!user.getPassword().equals(password));
-			
 			if (!user.getPassword().equals(password)) {
 				addActionError("Senha inválida");				
 				return INPUT;
