@@ -1,5 +1,5 @@
 #summary Caso de Uso - Cadastrar usuário.
-#labels Featured,Phase-Requirements
+#labels Phase-Requirements
 
 == Pré-condições ==
 
