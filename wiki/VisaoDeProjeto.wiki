@@ -1,0 +1,5 @@
+#summary Visão de projeto.
+
+== Diagrama de classes ==
+
+http://bipweb.googlecode.com/svn/trunk/doc/DiagramadeClasses.png
