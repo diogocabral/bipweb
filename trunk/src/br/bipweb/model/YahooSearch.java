@@ -1,7 +1,6 @@
 package br.bipweb.model;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
@@ -11,28 +10,66 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Locale;
 
-public class YahooSearch implements SearchAgent {
+public class YahooSearch extends AbstractSearchAgent {
 	
-	private static final String SEARCH_URL = "http://search.yahoo.com/search?n=100&p=";
+	private static final String SEARCH_URL = "http://search.yahoo.com/search?n=" + N + "&p=";
 	
 	private int first, last, total;
+	private String criteria;
 	
-	public List<Document> search(String criteria) {
-		
-		// TODO Tá bugado (Não pega a quantidade de documentos certa)
-		
-		List<Document> documents = new ArrayList<Document>();
+	public Collection<Document> search(String criteria)
+			throws SearchException {
+		super.search(criteria);
 		
 		try {
 			
 			URL url = new URL(SEARCH_URL + criteria);
+		
+			return search(url);
+			
+		} catch (MalformedURLException e) {
+			throw new SearchException(e);
+		}
+		
+	}
+
+	public Collection<Document> searchNext()
+			throws SearchException {
+		super.searchNext();
+		
+		try {
+			
+			URL url = new URL(SEARCH_URL + criteria + "&b=" + (last + 1));
+		
+			return search(url);
+			
+		} catch (MalformedURLException e) {
+			throw new SearchException(e);
+		}
+		
+	}
+	
+	public boolean hasMoreDocuments()
+			throws SearchException {
+		super.hasMoreDocuments();
+		
+		if (!(last == total || last == 1000)) // Yahoo retorna no máximo 1000 resultados
+			return true;
+		
+		return false;
+		
+	}
+	
+	public Collection<Document> search(URL url)
+			throws SearchException {
+		
+		try {
 			
 			URLConnection connection = url.openConnection();
 			
-			connection.setRequestProperty("User-Agent", "BIPWeb");
+			connection.setRequestProperty("User-Agent", USERAGENT);
 			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			
@@ -67,7 +104,7 @@ public class YahooSearch implements SearchAgent {
 					
 					position = line.indexOf(" for ");
 					
-					total = NumberFormat.getNumberInstance(new Locale("en")).parse(line.substring(0, position)).intValue();
+					total = FORMAT.parse(line.substring(0, position)).intValue();
 					
 					break;
 					
@@ -75,30 +112,28 @@ public class YahooSearch implements SearchAgent {
 				
 			}
 			
-			System.out.println(first + " - " + last + " de " + total);
+			Collection<Document> documents = new ArrayList<Document>();
 			
 			for (int count = first; count <= last; count++) {
 				
 				while ((line = reader.readLine()) != null) {
 					
-					int position = line.indexOf("<a class=yschttl  href=\"");
+					int position = line.indexOf("<a class=yschttl ");
 					
 					if (position != -1) {
 						
 						Document document = new Document();
 						
-						position += 24;
-						
-						System.out.println(count);
-						
+						position += 17;
 						line = line.substring(position);
-						
+						position = line.indexOf(" href=\"");
+						position += 7;
+						line = line.substring(position);
 						position = line.indexOf("\">");
 						
 						document.setUrl(line.substring(0, position));
 						
 						line = line.substring(position + 2);
-						
 						position = line.indexOf("</a>");
 						
 						document.setTitle(line.substring(0, position).replaceAll("<b>", "").replaceAll("</b>", ""));
@@ -113,27 +148,14 @@ public class YahooSearch implements SearchAgent {
 				
 			}
 			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return documents;
+			
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SearchException(e);
+		} catch (IOException e) {
+			throw new SearchException(e);
 		}
 		
-		return documents;
-		
-	}
-
-	public Collection<Document> searchNext() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }

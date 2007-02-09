@@ -16,11 +16,8 @@
 				
 			<script type="text/javascript">
 				<!--
-		
-				d = new dTree('d');
+				// Colocar aqui :)
 				
-				document.write(d);
-		
 				//-->
 			</script>
 		

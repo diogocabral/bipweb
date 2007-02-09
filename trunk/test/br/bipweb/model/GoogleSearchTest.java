@@ -14,9 +14,25 @@ public class GoogleSearchTest extends TestCase {
 		
 		GoogleSearch search = new GoogleSearch();
 		
-		Collection<Document> documents = search.search("Leonardo");
+		Collection<Document> documents = search.search("leao");
 		
-		System.out.println(documents.size());
+		int count = 1;
+		
+		for (Document document : documents) {
+			System.out.println(count + ". " + document);
+			count++;
+		}
+		
+		if (search.hasMoreDocuments()) {
+			
+			documents = search.searchNext();
+			
+			for (Document document : documents) {
+				System.out.println(count + ". " + document);
+				count++;
+			}
+		
+		}
 		
 	}
 
