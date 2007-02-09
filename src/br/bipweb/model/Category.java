@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -29,17 +30,25 @@ public class Category implements Serializable {
 	private String terms; // TODO ???
 	
 	@OneToOne
+	private User owner;
+	
+	@OneToOne
 	private Category parent;
 	
 	@OneToMany(mappedBy = "parent")
 	private Set<Category> children;
 	
-	@OneToMany(mappedBy = "rootCategory")
+	@ManyToMany(mappedBy = "categories")
 	private Set<User> users;	
 	
 	public Category() {
 		super();
 	}
+	
+	public Category(String name) {
+		super();
+		this.name = name;
+	}	
 	
 	public int getId() {
 		return id;
@@ -97,10 +106,30 @@ public class Category implements Serializable {
 		this.terms = terms;
 	}
 
+	/**
+	 * @return the owner
+	 */
+	public User getOwner() {
+		return owner;
+	}
+
+	/**
+	 * @param owner the owner to set
+	 */
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	/**
+	 * @return the users
+	 */
 	public Set<User> getUsers() {
 		return users;
 	}
 
+	/**
+	 * @param users the users to set
+	 */
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}

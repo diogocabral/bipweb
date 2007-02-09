@@ -14,6 +14,7 @@ public class UserAction extends ActionSupport {
 	private static final long serialVersionUID = -6596367958176468326L;
 	
 	private User user;
+	
 	private String password;
 	
 	private UserDao userDao;

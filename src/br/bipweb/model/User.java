@@ -1,10 +1,12 @@
 package br.bipweb.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,8 +20,11 @@ public class User implements Serializable {
 	
 	private String password;
 	
-	@ManyToOne
-	private Category rootCategory;
+	@OneToMany(mappedBy = "owner")
+	private Set<Category> categoriesOwner;
+	
+	@ManyToMany
+	private Set<Category> categories;	
 	
 	public User() {
 		super();
@@ -80,12 +85,32 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public Category getRootCategory() {
-		return rootCategory;
+	/**
+	 * @return the categoriesOwner
+	 */
+	public Set<Category> getCategoriesOwner() {
+		return categoriesOwner;
 	}
 
-	public void setRootCategory(Category rootCategory) {
-		this.rootCategory = rootCategory;
+	/**
+	 * @param categoriesOwner the categoriesOwner to set
+	 */
+	public void setCategoriesOwner(Set<Category> categoriesOwner) {
+		this.categoriesOwner = categoriesOwner;
+	}
+
+	/**
+	 * @return the categories
+	 */
+	public Set<Category> getCategories() {
+		return categories;
+	}
+
+	/**
+	 * @param categories the categories to set
+	 */
+	public void setCategories(Set<Category> categories) {
+		this.categories = categories;
 	}
 	
 }

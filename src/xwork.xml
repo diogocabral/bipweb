@@ -11,10 +11,15 @@
     		
     		<interceptor name="permission" class="br.bipweb.interceptor.PermissionInterceptor"/>    		
     		
+    		<interceptor-stack name="publicStack">
+    			<interceptor-ref name="defaultStack" />
+    			<interceptor-ref name="transaction" />    			
+    		</interceptor-stack>
+    		
     		<interceptor-stack name="defaultStack">
     			<interceptor-ref name="defaultStack" />
     			<interceptor-ref name="permission" />    			
-    			<interceptor-ref name="transaction" />    			
+    			<interceptor-ref name="transaction" />   			
     		</interceptor-stack>
     	
 	   	</interceptors>	
@@ -30,7 +35,7 @@
 	<package name="user" extends="ROOT" namespace="/user">
 		
 		<action name="doLogin" class="br.bipweb.action.UserAction" method="doLogin">
-			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="publicStack" />
 			<result type="dispatcher" name="success">
 				<param name="location">/index.jsp</param>
 			</result>
@@ -40,6 +45,7 @@
 		</action>
 		
 		<action name="doSave" class="br.bipweb.action.UserAction" method="doSave">
+			<interceptor-ref name="publicStack" />	
 			<result type="dispatcher" name="success">
 				<param name="location">/index.jsp</param>
 			</result>

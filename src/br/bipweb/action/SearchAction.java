@@ -14,7 +14,9 @@ import br.bipweb.model.SearchException;
 import com.opensymphony.xwork.ActionSupport;
 
 public class SearchAction extends ActionSupport {
-	
+
+	private static final long serialVersionUID = -5237261947821051526L;
+
 	private GlobalSearch search;
 	
 	private Category category;
