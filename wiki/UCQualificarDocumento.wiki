@@ -1,4 +1,5 @@
 #summary aso de Uso - Qualificar documentos
+#labels Phase-Requirements
 
 == Pré-condições ==
 
