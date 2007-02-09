@@ -12,9 +12,11 @@
 		
 		<ww:form method="post" action="doLogin.action">
 			<ww:textfield label="Usuário" name="user.username" />
-			<ww:password label="Senha" name="user.password" />
+			<ww:password label="Senha" name="password" />
 			<ww:submit value="Entrar" />
 		</ww:form>
+		
+		<ww:actionerror />
 		
 		<p>Não é cadastrado? <a href="edit.jsp">Cadastre-se</a></p>
 		
