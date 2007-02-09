@@ -1,4 +1,5 @@
 #summary Caso de Uso - Sair do sistema
+#labels Phase-Requirements
 
 == Pré-condições ==
 
