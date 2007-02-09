@@ -1,6 +1,7 @@
 #cabecalho {
 	font-family: verdana;
-	-moz-border-radius: 10px 10px 10px 10px;
+	background-color: #FFF7D7;
+	-moz-border-radius: 8px 8px 0 0;
 }
 
 #cabecalho h1 {
@@ -26,8 +27,8 @@
 	padding: 0px;
 	list-style-type: none;
 	text-align: right;
-	background-color: #C3D9FF;
-	-moz-border-radius: 0 0 9px 9px;
+	background-color: #FAD163;
+	-moz-border-radius: 8px 8px 0 0;
 }
 
 #cabecalho ul li {
@@ -37,7 +38,7 @@
 }
 
 #cabecalho ul li a {
-	color: #000000;
+	color: #0000CC;
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 10pt;
@@ -46,5 +47,5 @@
 #cabecalho ul li b {
 	margin-left: 5px;
 	float: left;
-	color: #2E8151;
+	color: #000000;
 }
