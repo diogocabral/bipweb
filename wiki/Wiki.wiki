@@ -1,7 +1,8 @@
 #summary Documentação do projeto.
 
 === Documentação ===
-  * API javadoc _(em breve)_.
+  * API javadoc _(em breve)_;
+  * [AnaliseProjeto Analise e projeto].
 
 === Outras informações ===
   * [UltimasModificacoes Notícias recentes sobre o projeto];
