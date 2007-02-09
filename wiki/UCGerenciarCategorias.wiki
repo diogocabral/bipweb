@@ -1,4 +1,5 @@
 #summary Caso de Uso - Gerenciar categorias
+#labels Phase-Requirements
 
 == Pré-condições ==
 
