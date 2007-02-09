@@ -1,4 +1,5 @@
 #summary Caso de Uso - Entrar no sistema
+#labels Phase-Requirements
 
 == Pré-condições ==
 
