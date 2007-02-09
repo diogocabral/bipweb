@@ -1,1 +1,3 @@
 #summary Visão Caso De Uso
+
+http://bipweb.googlecode.com/files/DiagramadeCasosdeUso.png
