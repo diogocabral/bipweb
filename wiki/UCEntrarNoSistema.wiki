@@ -11,7 +11,7 @@
 
 == Atores ==
 
-  * Usuário Cadastrado.
+  * Usuário cadastrado.
 
 == Descrição ==
 
