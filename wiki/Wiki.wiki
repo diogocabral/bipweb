@@ -6,4 +6,4 @@
 
 === Outras informações ===
   * [UltimasModificacoes Notícias recentes sobre o projeto];
-  * [ServidorTeste Servidores onde os membros podem testar o BIPWeb].
+  * [ServidoresTeste Servidores onde os membros podem testar o BIPWeb].
