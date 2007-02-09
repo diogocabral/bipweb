@@ -53,17 +53,23 @@ public class UserAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	public String doSave() {
+	public String doSave() throws DaoException {
+		user.setPassword(Md5.crypt(user.getPassword()));
 		
-		if (!password.equals(user.getPassword()))
-			return ERROR;
+		if (!password.equals(user.getPassword())) {
+			return INPUT;
+		}
 		
-		System.out.println(user.getUsername());
-		System.out.println(user.getPassword());
-		System.out.println(password);
+		ActionContext.getContext().getSession().put("user", userDao.save(user));		
 		
 		return SUCCESS;
 	}
+	
+	public String doLogout() throws DaoException {
+		ActionContext.getContext().getSession().remove("user");		
+		
+		return SUCCESS;
+	}	
 
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;

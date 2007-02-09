@@ -10,6 +10,7 @@ import org.hibernate.criterion.Example;
 
 import br.bipweb.dao.DaoException;
 import br.bipweb.dao.GenericDao;
+import br.bipweb.dao.ObjectNotFoundException;
 
 /**
  * 
@@ -29,9 +30,15 @@ public abstract class HibernateGenericDao<PersistentObject, PK extends Serializa
 	}
 
 	@SuppressWarnings("unchecked")
-	public PersistentObject get(PK id) throws DaoException {
+	public PersistentObject get(PK id) throws DaoException, ObjectNotFoundException {
 		try {
-			return (PersistentObject) session.get(objectClass, id);
+			PersistentObject object = (PersistentObject) session.get(objectClass, id);
+			
+			if (object == null) {
+				throw new ObjectNotFoundException("Object not found - " + object);
+			}
+			
+			return object;
 		} catch (HibernateException e) {
 			throw new DaoException(e);
 		}
