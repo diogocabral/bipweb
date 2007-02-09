@@ -1,0 +1,31 @@
+#summary Caso de Uso Entrar no sistema
+
+== Pré-condições ==
+
+  * Estar Cadastrado; 
+  * Não estar logado.
+
+== Pós-condições==
+
+  * Não existem.
+
+== Atores ==
+
+  * Usuário Cadastrado.
+
+== Descrição ==
+
+=== Fluxo Principal ===
+
+  # Ator entra na página de login através do link "Entrar";
+  # Ator preenche os campos de Usuário e senha;
+  # Ator submete o formulário;
+  # Sistema verifica se os dados conferem *FS01*;
+  # Sistema grava os dados do usuário na sessão.
+
+=== Fluxos secundários ===
+
+*FS01 Usuário não preencheu os dados necessários*
+
+  # Sistema retorna para o formulário de login e informa ao usuário que os campos necessários devem ser preenchidos;
+  # Voltar para o item 2 do fluxo principal
