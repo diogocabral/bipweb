@@ -1,0 +1,20 @@
+#summary Caso de Uso - Sair do sistema
+
+== Pré-condições ==
+
+  * Estar cadastrado; 
+  * Estar logado.
+
+== Pós-condições==
+
+  * Não existem.
+
+== Atores ==
+
+  * Usuário cadastrado.
+
+== Descrição ==
+
+=== Fluxo Principal ===
+
+  # Usuário logado clica no link "Sair".
