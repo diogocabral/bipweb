@@ -7,9 +7,9 @@
 
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://servidor:3306/bipweb</property>
-		<property name="hibernate.connection.username">bipweb</property>
-		<property name="hibernate.connection.password">bipweb123</property>		
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bipweb</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>		
 				
 		<!-- Condiguração do c3p0 -->
 

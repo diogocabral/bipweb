@@ -65,6 +65,34 @@ public class UserAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	public String doLoad() throws DaoException {		
+		user = (User) ActionContext.getContext().getSession().get("user");		
+		
+		return SUCCESS;
+	}	
+	
+	public String doEdit() throws DaoException {		
+		user.setPassword(Md5.crypt(user.getPassword()));
+		
+		if (!password.equals(user.getPassword())) {
+			addActionError("Senhas não conferem");
+			return INPUT;
+		}
+		
+		try {
+			userDao.update(user);
+		} catch (ObjectNotFoundException e) {
+			//TODO
+			return ERROR;
+		}
+		
+		ActionContext.getContext().getSession().put("user", user);
+		
+		addActionMessage("Senha alterada com sucesso");
+		
+		return SUCCESS;
+	}	
+	
 	public String doLogout() throws DaoException {
 		ActionContext.getContext().getSession().remove("user");		
 		

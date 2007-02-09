@@ -6,16 +6,28 @@
 	</head>
 	<body>
 		
-		<h1>Cadastro de usuários</h1>
+		<h1>Minha Conta</h1>
 		
-		Aguarde...
-		
-		<ww:form method="post" action="doSave.action">
-			<ww:textfield label="Usuário" name="user.username" required="true" />
-			<ww:password label="Senha" name="user.password" required="true" />
-			<ww:password label="Confirmação da Senha" name="password" required="true" />
-			<ww:submit value="Salvar" />
-		</ww:form>
-		
+		<form method="post" action="doEdit.action">
+			<table>
+				<tr>
+					<td>Senha :</td>
+					<td>
+						<input type="hidden" name="user.username" value="<ww:property value="user.username" />" />
+						<input type="password" name="user.password" />
+					</td>
+				</tr>
+				<tr>
+					<td>Confirmação :</td>
+					<td><input type="password" name="password" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Alterar" /></td>
+				</tr>
+			</table>
+		</form>
+
+		<ww:actionmessage />
+		<ww:actionerror />		
 	</body>
 </html>

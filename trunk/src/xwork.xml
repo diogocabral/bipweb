@@ -9,18 +9,28 @@
     	
     		<interceptor name="transaction" class="br.bipweb.interceptor.TransactionInterceptor"/>
     		
+    		<interceptor name="permission" class="br.bipweb.interceptor.PermissionInterceptor"/>    		
+    		
     		<interceptor-stack name="defaultStack">
     			<interceptor-ref name="defaultStack" />
+    			<interceptor-ref name="permission" />    			
     			<interceptor-ref name="transaction" />    			
     		</interceptor-stack>
     	
 	   	</interceptors>	
+	   	
+	   	<global-results>
+	   		<result type="dispatcher" name="login">
+	   			<param name="location">/user/login.jsp</param>
+	   		</result>
+	   	</global-results>
 	   		
 	</package>
 	
 	<package name="user" extends="ROOT" namespace="/user">
 		
 		<action name="doLogin" class="br.bipweb.action.UserAction" method="doLogin">
+			<interceptor-ref name="basicStack" />
 			<result type="dispatcher" name="success">
 				<param name="location">/index.jsp</param>
 			</result>
@@ -34,9 +44,27 @@
 				<param name="location">/index.jsp</param>
 			</result>
 			<result type="dispatcher" name="input">
-				<param name="location">edit.jsp</param>
+				<param name="location">save.jsp</param>
 			</result>			
 		</action>
+		
+		<action name="doLoad" class="br.bipweb.action.UserAction" method="doLoad">
+			<result type="dispatcher" name="success">
+				<param name="location">edit.jsp</param>
+			</result>
+		</action>
+		
+		<action name="doEdit" class="br.bipweb.action.UserAction" method="doEdit">
+			<result type="dispatcher" name="success">
+				<param name="location">edit.jsp</param>
+			</result>
+			<result type="dispatcher" name="input">
+				<param name="location">edit.jsp</param>
+			</result>
+			<result type="dispatcher" name="error">
+				<param name="location">edit.jsp</param>
+			</result>						
+		</action>		
 		
 		<action name="doLogout" class="br.bipweb.action.UserAction" method="doLogout">
 			<result type="dispatcher" name="success">

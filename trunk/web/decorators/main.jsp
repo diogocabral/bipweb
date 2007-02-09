@@ -22,6 +22,7 @@
 			
 			<ul>
 			<ww:if test="#session.user != null">
+				<li><a href="${root}/user/doLoad.action">Minha Conta</a></li>			
 				<li><a href="${root}/search/search.jsp">Pesquisar</a></li>
 				<li><a href="${root}/search/history.jsp">Histórico de pesquisa</a></li>
 				<li><a href="${root}/category/edit.jsp">Gerenciar categorias</a></li>
@@ -29,7 +30,7 @@
 			</ww:if>
 			<ww:else>
 				<li><a href="${root}/user/login.jsp">Entrar</a></li>
-				<li><a href="${root}/user/edit.jsp">Cadastre-se</a></li>
+				<li><a href="${root}/user/save.jsp">Cadastre-se</a></li>
 			</ww:else>
 				<li><a href="${root}/help/help.jsp">Ajuda</a></li>
 			</ul>
