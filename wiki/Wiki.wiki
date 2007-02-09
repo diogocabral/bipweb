@@ -1,4 +1,5 @@
 #summary Documentação do projeto.
+#labels Featured
 
 === Documentação ===
   * API javadoc _(em breve)_;
