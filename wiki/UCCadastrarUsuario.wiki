@@ -1,0 +1,30 @@
+#summary Caso de Uso "Cadastrar usuário".
+
+== Pré-condição ==
+
+Não estar logado.
+
+== Pós-condição ==
+
+Não existe.
+
+== Atores ==
+
+Visitantes.
+
+== Descrição ==
+
+=== Fluxo principal ===
+
+  # Ator entra na página de cadastro através do link "Cadastre-se";
+  # Ator preenche dados de cadastro;
+  # Ator submete formulário;
+  # Sistema grava dados do usuário no banco [FS01];
+  # Sistema autentica automaticamente usuário e informa que o cadastro foi realizado com sucesso.
+
+=== Fluxos secundário ===
+
+*FS01 Usuário não preencheu os dados necessários*
+
+  # Sistema retorna para o formulário de cadastro e informa ao usuário que os campos necessários devem ser preenchidos;
+  # Voltar para o item 2 do fluxo principal.
