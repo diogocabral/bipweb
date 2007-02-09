@@ -1,16 +1,16 @@
 #summary Caso de Uso Cadastrar usuário.
 
-== Pré-condição ==
+== Pré-condições ==
 
-Não estar logado.
+  * Não estar logado.
 
-== Pós-condição ==
+== Pós-condições ==
 
-Não existe.
+  * Não existe.
 
 == Atores ==
 
-Visitantes.
+  * Visitantes.
 
 == Descrição ==
 
