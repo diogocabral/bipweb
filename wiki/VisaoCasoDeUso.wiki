@@ -5,3 +5,6 @@ http://bipweb.googlecode.com/files/DiagramadeCasosdeUso.png
   * Caso de Uso - [UCCadastrarUsuario Cadastrar usuário];
   * Caso de Uso - [UCEntrarNoSistema Entrar no sistema];
   * Caso de Uso - [UCSairDoSistema Sair do sistema];
+  * Caso de Uso - [UCGerenciarCategorias Gerenciar categorias];
+  * Caso de Uso - [UCPesquisar Pesquisar];
+  * Caso de Uso - [UCQualificarDocumento Qualificar documento].
