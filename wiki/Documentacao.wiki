@@ -3,7 +3,7 @@
 
 === Documentação ===
   * API javadoc _(em breve)_;
-  * [AnaliseProjeto Analise e projeto].
+  * [VisoesDoProjeto Visões do projeto].
 
 === Outras informações ===
   * [UltimasModificacoes Notícias recentes sobre o projeto];
