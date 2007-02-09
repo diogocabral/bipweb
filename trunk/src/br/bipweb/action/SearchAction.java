@@ -3,12 +3,15 @@ package br.bipweb.action;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import br.bipweb.model.AltaVistaSearch;
 import br.bipweb.model.Category;
+import br.bipweb.model.CriteriaCalculator;
 import br.bipweb.model.Document;
 import br.bipweb.model.GlobalSearch;
 import br.bipweb.model.GoogleSearch;
 import br.bipweb.model.SearchAgent;
 import br.bipweb.model.SearchException;
+import br.bipweb.model.YahooSearch;
 
 import com.opensymphony.xwork.ActionSupport;
 
@@ -26,9 +29,9 @@ public class SearchAction extends ActionSupport {
 		super();
 		
 		Collection<SearchAgent> agents = new ArrayList<SearchAgent>();
-		//agents.add(new AltaVistaSearch());
+		agents.add(new AltaVistaSearch());
 		agents.add(new GoogleSearch());
-		//agents.add(new YahooSearch());
+		agents.add(new YahooSearch());
 		
 		search = new GlobalSearch();
 		search.setAgents(agents);
@@ -39,15 +42,16 @@ public class SearchAction extends ActionSupport {
 		
 		try {
 			
-			System.out.println(category);
-			
 			documents = search.search("webwork+tree+example");
 			
-			System.out.println(documents.size());
+			CriteriaCalculator calculator = new CriteriaCalculator();
+			
+			String criteria = calculator.calculate(category);
+			
+			documents = search.search(criteria);
 			
 		} catch (SearchException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(); // TODO
 		}
 		
 		return SUCCESS;
