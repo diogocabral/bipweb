@@ -14,7 +14,7 @@
 		<p>
 			<a href="${url}">${title}</a>
 			<br />
-			Endereço: <a href="${url}">${url}</a>
+			Endereço: <a href="${url}" target="_blank">${url}</a>
 		</p>
 		</ww:iterator>
 		
