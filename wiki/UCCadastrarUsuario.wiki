@@ -1,4 +1,4 @@
-#summary Caso de Uso Cadastrar usuário.
+#summary Caso de Uso - Cadastrar usuário.
 
 == Pré-condições ==
 
