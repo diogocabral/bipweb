@@ -5,4 +5,4 @@
   * [VisaoDeProjeto Visão de projeto];
   * [VisaoDeImplementacao Visão de implementação];
   * [VisaoDeImplantacao Visão de implantação];
-  * [VisaoDeProcesso Visão de processo];
+  * [VisaoDeProcesso Visão de processo].
