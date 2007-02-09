@@ -1,4 +1,4 @@
-#summary Caso de Uso "Cadastrar usuário".
+#summary Caso de Uso Cadastrar usuário.
 
 == Pré-condição ==
 
@@ -19,7 +19,7 @@ Visitantes.
   # Ator entra na página de cadastro através do link "Cadastre-se";
   # Ator preenche dados de cadastro;
   # Ator submete formulário;
-  # Sistema grava dados do usuário no banco [FS01];
+  # Sistema grava dados do usuário no banco *FS01*;
   # Sistema autentica automaticamente usuário e informa que o cadastro foi realizado com sucesso.
 
 === Fluxos secundário ===
