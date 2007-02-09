@@ -6,7 +6,7 @@ drop table if exists category
 drop table if exists document
 drop table if exists user
 drop table if exists user_category
-create table category (id integer not null auto_increment, name varchar(255), description varchar(255), criteria varchar(255), terms varchar(255), parent_id integer, owner_username varchar(255), primary key (id))
+create table category (id integer not null auto_increment, name varchar(255), description varchar(255), criteria varchar(255), terms varchar(255), owner_username varchar(255), parent_id integer, primary key (id))
 create table document (id bigint not null auto_increment, title varchar(255), url varchar(255), primary key (id))
 create table user (username varchar(255) not null, password varchar(255), primary key (username))
 create table user_category (users_username varchar(255) not null, categories_id integer not null, primary key (users_username, categories_id))
