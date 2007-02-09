@@ -2,6 +2,8 @@ package br.bipweb.model;
 
 public class SearchException extends Exception {
 	
+	private static final long serialVersionUID = -894464084877195933L;
+
 	public SearchException(String message) {
 		super(message);
 	}

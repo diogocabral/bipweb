@@ -6,11 +6,9 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Locale;
 
 /**
  * 
@@ -20,6 +18,7 @@ public class AltaVistaSearch extends AbstractSearchAgent {
 	
 	private static final String SEARCH_URL = "http://www.altavista.com/web/results?nbq=" + N + "&q=";
 	
+	@SuppressWarnings("unused")
 	private int first, last, total;
 	private String criteria;
 	

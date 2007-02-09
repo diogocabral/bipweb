@@ -3,14 +3,12 @@ package br.bipweb.action;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import br.bipweb.model.AltaVistaSearch;
 import br.bipweb.model.Category;
 import br.bipweb.model.Document;
 import br.bipweb.model.GlobalSearch;
 import br.bipweb.model.GoogleSearch;
 import br.bipweb.model.SearchAgent;
 import br.bipweb.model.SearchException;
-import br.bipweb.model.YahooSearch;
 
 import com.opensymphony.xwork.ActionSupport;
 
