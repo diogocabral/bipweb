@@ -20,6 +20,7 @@ public class TreeView {
 		
 		StringBuffer buffer = new StringBuffer();
 		
+		buffer.append("d = new dTree('d');");
 		buffer.append("d.add(0, -1, 'Categorias');");
 		
 		for (Category category : categories) {
@@ -27,8 +28,7 @@ public class TreeView {
 		}
 		
 		buffer.append("d.add(0.5,0,'Nova categoria','doNew.action','','','../images/icons/filenew.png');");
-		
-		System.out.println(buffer.toString());
+		buffer.append("document.write(d);");
 		
 		return buffer.toString();
 		

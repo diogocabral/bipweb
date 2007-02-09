@@ -10,6 +10,7 @@ import br.bipweb.model.GlobalSearch;
 import br.bipweb.model.GoogleSearch;
 import br.bipweb.model.SearchAgent;
 import br.bipweb.model.SearchException;
+import br.bipweb.model.YahooSearch;
 
 import com.opensymphony.xwork.ActionSupport;
 
@@ -27,8 +28,9 @@ public class SearchAction extends ActionSupport {
 		super();
 		
 		Collection<SearchAgent> agents = new ArrayList<SearchAgent>();
+		//agents.add(new AltaVistaSearch());
 		agents.add(new GoogleSearch());
-		agents.add(new AltaVistaSearch());
+		//agents.add(new YahooSearch());
 		
 		search = new GlobalSearch();
 		search.setAgents(agents);

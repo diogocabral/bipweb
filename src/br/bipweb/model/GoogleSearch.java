@@ -16,14 +16,10 @@ import java.util.Locale;
  * Agente de busca que acessa o mecanismo de busca da Google.
  * Url do mecanismo de busca: www.google.com.
  * 
- * TODO Implementar as exceções.
- * TODO Implementar o método "public Collection<Document> searchNext();".
- * 
  * @author Leonardo Costa Beltrão Lessa
  */
-public class GoogleSearch implements SearchAgent {
+public class GoogleSearch extends AbstractSearchAgent {
 	
-	private static final int N = 50;
 	private static final String SEARCH_URL = "http://www.google.com/search?num=" + N + "&q=";
 	
 	private int first, last, total;
@@ -31,8 +27,7 @@ public class GoogleSearch implements SearchAgent {
 	
 	public Collection<Document> search(String criteria)
 			throws SearchException {
-		
-		this.criteria = criteria;
+		super.search(criteria);
 		
 		try {
 			
@@ -48,14 +43,7 @@ public class GoogleSearch implements SearchAgent {
 
 	public Collection<Document> searchNext()
 			throws SearchException {
-		
-		if (criteria == null) {
-			throw new SearchException("Deve-se primeiro fazer a busca.");
-		}
-		
-		if (last == total) {
-			throw new SearchException("Fim da busca.");
-		}
+		super.searchNext();
 		
 		try {
 			
@@ -69,8 +57,21 @@ public class GoogleSearch implements SearchAgent {
 		
 	}
 	
+	public boolean hasMoreDocuments()
+			throws SearchException {
+		super.hasMoreDocuments();
+		
+		if (last < total && (last % N == 0))
+			return true;
+		
+		return false;
+		
+	}
+	
 	private Collection<Document> search(URL url)
 			throws SearchException {
+		
+		BufferedReader reader = null;
 		
 		try {
 			
@@ -78,9 +79,10 @@ public class GoogleSearch implements SearchAgent {
 			
 			URLConnection connection = url.openConnection();
 			
-			connection.setRequestProperty("User-Agent", "BIPWeb");
+			connection.setRequestProperty("User-Agent", USERAGENT);
+			connection.setRequestProperty("Accept-Charset", "iso-8859-1"); // TODO
 			
-			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			
 			String line;
 			
@@ -110,7 +112,7 @@ public class GoogleSearch implements SearchAgent {
 					
 					position = line.indexOf("</b>");
 					
-					total = NumberFormat.getNumberInstance(new Locale("en")).parse(line.substring(0, position)).intValue();
+					total = FORMAT.parse(line.substring(0, position)).intValue();
 					
 					for (int count = first; count <= last; count++) {
 						
@@ -152,6 +154,11 @@ public class GoogleSearch implements SearchAgent {
 			throw new SearchException(e);
 		} catch (ParseException e) {
 			throw new SearchException(e);
+		} finally {
+			try {
+				if (reader != null)
+					reader.close();
+			} catch (Exception e) {}
 		}
 		
 	}

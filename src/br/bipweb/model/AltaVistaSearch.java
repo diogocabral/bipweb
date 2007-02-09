@@ -16,9 +16,8 @@ import java.util.Locale;
  * 
  * @author Leonardo Costa Beltrão Lessa
  */
-public class AltaVistaSearch implements SearchAgent {
+public class AltaVistaSearch extends AbstractSearchAgent {
 	
-	private static final int N = 50;
 	private static final String SEARCH_URL = "http://www.altavista.com/web/results?nbq=" + N + "&q=";
 	
 	private int first, last, total;
@@ -30,8 +29,7 @@ public class AltaVistaSearch implements SearchAgent {
 	
 	public Collection<Document> search(String criteria)
 			throws SearchException {
-		
-		this.criteria = criteria;
+		super.search(criteria);
 		
 		try {
 			
@@ -47,14 +45,7 @@ public class AltaVistaSearch implements SearchAgent {
 
 	public Collection<Document> searchNext()
 			throws SearchException {
-		
-		if (criteria == null) {
-			throw new SearchException("Deve-se primeiro fazer a busca.");
-		}
-		
-		if (last == total) {
-			throw new SearchException("Fim da busca.");
-		}
+		super.searchNext();
 		
 		try {
 			
@@ -68,6 +59,17 @@ public class AltaVistaSearch implements SearchAgent {
 		
 	}
 	
+	public boolean hasMoreDocuments()
+			throws SearchException {
+		super.hasMoreDocuments();
+		
+		if (last < total)
+			return true;
+		
+		return false;
+		
+	}
+	
 	private Collection<Document> search(URL url)
 			throws SearchException {
 		
@@ -75,7 +77,7 @@ public class AltaVistaSearch implements SearchAgent {
 			
 			URLConnection connection = url.openConnection();
 			
-			connection.setRequestProperty("User-Agent", "BIPWeb");
+			connection.setRequestProperty("User-Agent", USERAGENT);
 			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			
@@ -96,7 +98,7 @@ public class AltaVistaSearch implements SearchAgent {
 					
 					position = line.indexOf(" results");
 					
-					total = NumberFormat.getNumberInstance(new Locale("en")).parse(line.substring(0, position)).intValue();
+					total = FORMAT.parse(line.substring(0, position)).intValue();
 					
 					break;
 					
