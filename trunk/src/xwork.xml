@@ -76,14 +76,16 @@
 			<result type="dispatcher" name="success">
 				<param name="location">/index.jsp</param>
 			</result>		
-		</action>		
+		</action>
 		
 	</package>
 	
 	<package name="category" extends="ROOT" namespace="/category">
 		
-		<action name="newCategory">
-			
+		<action name="doManage" class="br.bipweb.action.CategoryAction" method="doManage">
+			<result type="dispatcher" name="success">
+				<param name="location">edit.jsp</param>
+			</result>		
 		</action>
 		
 	</package>

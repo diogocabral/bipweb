@@ -25,7 +25,7 @@
 				<li><a href="${root}/user/doLoad.action">Minha Conta</a></li>			
 				<li><a href="${root}/search/search.jsp">Pesquisar</a></li>
 				<li><a href="${root}/search/history.jsp">Histórico de pesquisa</a></li>
-				<li><a href="${root}/category/edit.jsp">Gerenciar categorias</a></li>
+				<li><a href="${root}/category/doManage.action">Gerenciar categorias</a></li>
 				<li><a href="${root}/user/doLogout.action">Sair</a></li>
 			</ww:if>
 			<ww:else>
