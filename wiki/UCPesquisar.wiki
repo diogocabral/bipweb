@@ -1,4 +1,5 @@
-#summary aso de Uso - Pesquisar
+#summary Caso de Uso - Pesquisar
+#labels Phase-Requirements
 
 == Pré-condições ==
 
