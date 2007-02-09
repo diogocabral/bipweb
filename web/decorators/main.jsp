@@ -17,7 +17,7 @@
 		
 			<h1>
 				<b><a href="${root}">BIPWeb</a></b>
-				Uma ferramenta de busca de informações personalizadas na Web baseada no Fidus.
+				Uma ferramenta de busca de informações personalizadas na Web.
 			</h1>
 			
 			<ul>
