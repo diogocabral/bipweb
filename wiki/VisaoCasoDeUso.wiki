@@ -1,3 +1,6 @@
 #summary Visão Caso De Uso
 
 http://bipweb.googlecode.com/files/DiagramadeCasosdeUso.png
+
+* Caso de Uso [UCCadastrarUsuario Cadastrar usuário];
+* Caso de Uso [UCEntrarNoSistema Entrar no sistema];
