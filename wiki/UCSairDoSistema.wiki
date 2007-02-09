@@ -17,4 +17,4 @@
 
 === Fluxo Principal ===
 
-  # Usuário logado clica no link "Sair".
+  # Ator clica no link "Sair".
