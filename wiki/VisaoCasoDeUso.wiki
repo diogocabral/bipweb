@@ -1,4 +1,5 @@
 #summary Visão Caso De Uso
+#labels Phase-Requirements
 
 http://bipweb.googlecode.com/files/DiagramadeCasosdeUso.png
 
