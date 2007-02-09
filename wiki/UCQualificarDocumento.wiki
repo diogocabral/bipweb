@@ -1,0 +1,20 @@
+#summary aso de Uso - Qualificar documentos
+
+== Pré-condições ==
+
+  * Estar cadastrado; 
+  * Estar logado.
+
+== Pós-condições==
+
+  * Não existem.
+
+== Atores ==
+
+  * Usuário cadastrado.
+
+== Descrição ==
+
+=== Fluxo Principal ===
+
+=== Fluxos Secundários ===
