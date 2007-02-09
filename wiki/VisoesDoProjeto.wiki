@@ -1,8 +1,8 @@
 #summary Visões do projeto.
 #labels Phase-Requirements,Phase-Design,Phase-Implementation,Phase-Deploy
 
-  * [VisaoCasoDeUso Visão caso de uso]
-  * [VisaoDeProjeto Visão de projeto]
-  * [VisaoDeImplementacao Visão de implementação]
-  * [VisaoDeImplantacao Visão de implantação]
-  * [VisaoDeProcesso Visão de processo]
+  * [VisaoCasoDeUso Visão caso de uso];
+  * [VisaoDeProjeto Visão de projeto];
+  * [VisaoDeImplementacao Visão de implementação];
+  * [VisaoDeImplantacao Visão de implantação];
+  * [VisaoDeProcesso Visão de processo];
