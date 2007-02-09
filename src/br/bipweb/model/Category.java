@@ -1,16 +1,38 @@
 package br.bipweb.model;
 
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "category")
 public class Category {
 	
+	@Id
+	@GeneratedValue
 	private int id;
-	private Category parent;
-	private List<Category> children;
+	
 	private String name;
+	
 	private String description;
+	
 	private String criteria; // TODO ???
+	
 	private String terms; // TODO ???
+	
+	@OneToOne
+	private Category parent;
+	
+	@OneToMany(mappedBy = "parent")
+	private Set<Category> children;
+	
+	@OneToMany(mappedBy = "rootCategory")
+	private Set<User> users;	
 	
 	public Category() {
 		super();
@@ -32,11 +54,11 @@ public class Category {
 		this.parent = parent;
 	}
 	
-	public List<Category> getChildren() {
+	public Set<Category> getChildren() {
 		return children;
 	}
 
-	public void setChildren(List<Category> children) {
+	public void setChildren(Set<Category> children) {
 		this.children = children;
 	}
 	
@@ -70,6 +92,14 @@ public class Category {
 
 	public void setTerms(String terms) {
 		this.terms = terms;
+	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 	
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="autodetect">
+
+    <!-- hibernate session -->
+    <bean id="sessionFactory" class="br.bipweb.hibernate.HibernateSessionFactory" singleton="true" />
+    
+    <bean id="session" class="org.hibernate.Session" factory-bean="sessionFactory" factory-method="getSession" singleton="false" />
+    
+    <!-- dao -->
+    <bean id="categoryDao" class="br.bipweb.dao.hibernate.HibernateCategoryDao" singleton="false">
+    	<constructor-arg ref="session" />
+    </bean> 
+        
+    <bean id="documentDao" class="br.bipweb.dao.hibernate.HibernateDocumentDao" singleton="false">
+    	<constructor-arg ref="session" />
+    </bean>
+    
+    <bean id="userDao" class="br.bipweb.dao.hibernate.HibernateUserDao" singleton="false">
+    	<constructor-arg ref="session" />
+    </bean>                 
+        
+</beans>

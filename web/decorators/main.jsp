@@ -21,7 +21,7 @@
 			</h1>
 			
 			<ul>
-			<ww:if test="${user}">
+			<ww:if test="#session.user != null">
 				<li>Pesquisar</li>
 				<li>Histórico de pesquisa</li>
 				<li>Gerenciar categorias</li>
@@ -32,7 +32,6 @@
 			</ww:else>
 				<li><a href="${root}/help/help.jsp">Ajuda</a></li>
 			</ul>
-			
 		</div>
 		
 		<div id="corpo">
