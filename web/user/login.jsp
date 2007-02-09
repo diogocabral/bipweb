@@ -8,8 +8,6 @@
 		
 		<h1>Entrar</h1>
 		
-		Aguarde...
-		
 		<ww:form method="post" action="doLogin.action">
 			<ww:textfield label="Usuário" name="user.username" />
 			<ww:password label="Senha" name="password" />
@@ -18,7 +16,7 @@
 		
 		<ww:actionerror />
 		
-		<p>Não é cadastrado? <a href="edit.jsp">Cadastre-se</a></p>
+		<p>Não é cadastrado? <a href="save.jsp">Cadastre-se</a></p>
 		
 	</body>
 </html>

@@ -38,7 +38,10 @@ public class UserAction extends ActionSupport {
 	public String doLogin() throws DaoException {		
 		try {
 			user = userDao.get(user.getUsername());
-
+			
+			System.out.println(password);
+			System.out.println(user.getPassword());
+			
 			if (!user.getPassword().equals(password)) {
 				addActionError("Senha inválida");				
 				return INPUT;

@@ -28,6 +28,6 @@
 		</form>
 
 		<ww:actionmessage />
-		<ww:actionerror />		
+		<ww:actionerror />
 	</body>
 </html>
