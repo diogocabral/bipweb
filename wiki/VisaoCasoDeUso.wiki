@@ -1,11 +1,11 @@
 #summary Visão caso de uso
 #labels Phase-Requirements
 
-=== Diagrama de casos de uso ===
+== Diagrama de casos de uso ==
 
-http://bipweb.googlecode.com/files/DiagramadeCasosdeUso.png
+http://bipweb.googlecode.com/svn/trunk/doc/DiagramadeCasosdeUso.png
 
-=== Detalhes de cada caso de uso ===
+== Detalhes de cada caso de uso ==
 
   * [UCCadastrarUsuario Cadastrar usuário];
   * [UCEntrarNoSistema Entrar no sistema];
