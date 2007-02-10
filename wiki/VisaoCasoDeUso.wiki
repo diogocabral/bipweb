@@ -3,7 +3,7 @@
 
 == Diagrama de casos de uso ==
 
-http://bipweb.googlecode.com/svn/trunk/doc/DiagramadeCasosdeUso.png
+http://bipweb.googlecode.com/svn/wiki/images/DiagramadeCasosdeUso.png
 
 == Detalhes de cada caso de uso ==
 
