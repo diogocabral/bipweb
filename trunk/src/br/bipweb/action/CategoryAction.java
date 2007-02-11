@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import br.bipweb.model.Category;
 import br.bipweb.model.User;
+import br.bipweb.view.TreeView;
 
 import com.opensymphony.xwork.ActionContext;
 import com.opensymphony.xwork.ActionSupport;
@@ -24,11 +25,7 @@ public class CategoryAction extends ActionSupport {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		
-		System.out.println(user.getCategories());
-		
-		//tree = new TreeView(user.getCategories()).toString();
-		
-		System.out.println(tree);
+		tree = new TreeView(user.getCategories()).toString();
 		
 		return SUCCESS;
 		

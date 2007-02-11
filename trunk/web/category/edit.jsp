@@ -15,10 +15,7 @@
 		<div class="dtree" style="float: left; width: 200px;">
 				
 			<script type="text/javascript">
-				<!--
-				// Colocar aqui :)
-				
-				//-->
+				<ww:property value="tree" />
 			</script>
 		
 		</div>
