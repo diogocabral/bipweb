@@ -4,30 +4,43 @@
 		<title>Pesquisar</title>
 		<style type="text/css">
 			@import url("../css/dtree.css");
+			@import url("../css/grid.css");
 		</style>
 		<script type="text/javascript" src="../javascript/dtree.js"></script>
-		<ww:head />
+		<script type="text/javascript" src="../javascript/grid.js"></script>		
 	</head>
 	<body>
 		
 		<h1>Pesquisar</h1>
 		
 		<ww:if test="${step == 'search' || step == 'continue' }">
-			<div class="dtree" style="float: left; width: 200px;">
+			<div class="dtree" style="width: 200px;">
 				<script type="text/javascript">${treeView}</script>
 				<br />
 				<a href="continue.do">Mais resultados</a>
 			</div>
-			<!-- Datagrid -->
-			<div style="-moz-border-radius: 10px; background-color: #FFF7D7; left: 200px;">
-				<ww:iterator value="documents">
-					<p>
-						<a href="${url}">${title}</a>
-						<br />
-						Endereço: <a href="${url}" target="_blank">${url}</a>
-					</p>
-				</ww:iterator>
+
+			<div>
+				<b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>
+				<table id="grid" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Relevância</th>
+							<th>Título</th>
+						</tr>					
+					</thead>
+					<tbody>
+					<ww:iterator value="documents">
+						<tr onclick="window.location = '<ww:property value="url" />'">
+							<td>0</td>
+							<td><ww:property value="title" /></td>
+						</tr>
+					</ww:iterator>
+					</tbody>
+				</table>
+				<b class="rbottom"><b class="r4"></b><b class="r3"></b><b class="r2"></b><b class="r1"></b></b>	
 			</div>
+				
 		</ww:if>
 		<ww:else>
 			<div class="dtree">

@@ -11,7 +11,7 @@
 		</style>
 		<decorator:head />
 	</head>
-	<body>
+	<body onload="stripe('grid', '#fff', '#edf3fe');">
 		
 		<div id="cabecalho">
 		
