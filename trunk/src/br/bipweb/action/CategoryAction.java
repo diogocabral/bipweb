@@ -89,8 +89,8 @@ public class CategoryAction extends ActionSupport {
 		return categories;
 	}
 	
-	public TreeView getTreeView() {
-		return treeView;
+	public String getTreeView() {
+		return treeView.toString();
 	}
 	
 	public String getAction() {
