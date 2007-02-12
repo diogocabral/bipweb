@@ -28,26 +28,24 @@ public class CategoryAction extends ActionSupport {
 		super();
 	}
 	
-	public String doManage() {
+	public String doManage() throws DaoException {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
-		
-		treeView = new TreeView(user.getCategoriesOwner());
-		
-		System.out.println(treeView); // TODO
+	
+		treeView = new TreeView(categoryDao.listByUser(user));
 		
 		return SUCCESS;
 		
 	}
 	
-	public String doNew() {
+	public String doNew() throws DaoException {
 		
 		this.action = "new";
 		
 		return doManage();
 	}
 	
-	public String doEdit() {
+	public String doEdit() throws DaoException {
 		
 		this.action = "edit";
 		

@@ -12,5 +12,5 @@ public class HibernateUserDao extends HibernateGenericDao<User, String> implemen
 	public HibernateUserDao(Session session) {
 		super(User.class, session);
 	}
-
+	
 }
