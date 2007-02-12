@@ -38,6 +38,11 @@ public class SearchAction extends ActionSupport {
 		
 	}
 	
+	public String doLoad() {
+		
+		return SUCCESS;
+	}
+	
 	public String doSearch() {
 		
 		try {

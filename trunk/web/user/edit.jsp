@@ -8,7 +8,7 @@
 		
 		<h1>Minha Conta</h1>
 		
-		<form method="post" action="doEdit.action">
+		<form method="post" action="edit.do">
 			<table>
 				<tr>
 					<td>Senha :</td>

@@ -8,7 +8,7 @@
 		
 		<h1>Entrar</h1>
 		
-		<ww:form method="post" action="doLogin.action">
+		<ww:form method="post" action="login.do">
 			<ww:textfield label="Usuário" name="user.username" />
 			<ww:password label="Senha" name="password" />
 			<ww:submit value="Entrar" />
