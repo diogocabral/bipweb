@@ -1,7 +1,5 @@
 #cabecalho {
-	font-family: verdana;
-	background-color: #FFF7D7;
-	-moz-border-radius: 8px 8px 0 0;
+	font-family: arial;
 }
 
 #cabecalho h1 {
@@ -28,7 +26,7 @@
 	list-style-type: none;
 	text-align: right;
 	background-color: #FAD163;
-	-moz-border-radius: 8px 8px 0 0;
+	padding-bottom: 5px;
 }
 
 #cabecalho ul li {
@@ -38,10 +36,14 @@
 }
 
 #cabecalho ul li a {
-	color: #0000CC;
+	color: #505050;
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 10pt;
+}
+
+#cabecalho a:hover {
+	color: #f7f7f8;
 }
 
 #cabecalho ul li b {
@@ -49,3 +51,11 @@
 	float: left;
 	color: #000000;
 }
+
+b.menurtop, b.menurbottom{display:block;background: none;}
+b.menurtop b, b.menurbottom b{display:block;height: 1px;
+    overflow: hidden; background: #FAD163}
+b.menur1{margin: 0 5px}
+b.menur2{margin: 0 3px}
+b.menur3{margin: 0 2px}
+b.menurtop b.menur4, b.menurbottom b.menur4{margin: 0 1px;height: 2px}
