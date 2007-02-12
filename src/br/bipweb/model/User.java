@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -24,7 +23,7 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "owner")
 	private Set<Category> categoriesOwner;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	private Set<Category> categories;	
 	
 	public User() {
