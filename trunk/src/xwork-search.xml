@@ -15,7 +15,19 @@
 			</result>
 		</action>
 		
-		<action name="continue" class="br.bipweb.action.SearchAction" method="doContinue">
+		<action name="searchNext" class="br.bipweb.action.SearchAction" method="doSearchNext">
+			<result type="dispatcher" name="success">
+				<param name="location">search.jsp</param>
+			</result>
+		</action>
+		
+		<action name="qualifications" class="br.bipweb.action.SearchAction" method="doLoadHistory">
+			<result type="dispatcher" name="success">
+				<param name="location">search.jsp</param>
+			</result>
+		</action>
+		
+		<action name="qualify" class="br.bipweb.action.SearchAction" method="doQualify">
 			<result type="dispatcher" name="success">
 				<param name="location">search.jsp</param>
 			</result>

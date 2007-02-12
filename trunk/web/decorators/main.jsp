@@ -11,7 +11,7 @@
 		</style>
 		<decorator:head />
 	</head>
-	<body onload="stripe('grid', '#fff', '#edf3fe');">
+	<body>
 		
 		<div id="cabecalho">
 		
@@ -24,7 +24,7 @@
 			<ww:if test="#session.user != null">
 				<li><b><ww:property value="#session.user.username" /></b></li>
 				<li><a href="${root}/search/load.do">Pesquisar</a></li>
-				<li><a href="${root}/search/history.jsp">Qualificações</a></li>
+				<li><a href="${root}/history/load.do">Qualificações</a></li>
 				<li><a href="${root}/category/manage.do">Categorias</a></li>
 				<li><a href="${root}/user/load.do">Alterar sennha</a></li>
 				<li><a href="${root}/help/help.jsp">Ajuda</a></li>

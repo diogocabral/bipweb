@@ -1,0 +1,20 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	
+	<package name="history" extends="ROOT" namespace="/history">
+		
+		<action name="load" class="br.bipweb.action.HistoryAction" method="doLoad">
+			<result type="dispatcher" name="success">
+				<param name="location">history.jsp</param>
+			</result>
+		</action>
+		
+		<action name="qualify" class="br.bipweb.action.HistoryAction" method="doQualify">
+			<result type="dispatcher" name="success">
+				<param name="location">history.jsp</param>
+			</result>
+		</action>
+		
+	</package>
+	
+</xwork>

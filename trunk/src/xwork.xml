@@ -38,4 +38,6 @@
 	
 	<include file="xwork-search.xml" />
 	
+	<include file="xwork-history.xml" />
+	
 </xwork>

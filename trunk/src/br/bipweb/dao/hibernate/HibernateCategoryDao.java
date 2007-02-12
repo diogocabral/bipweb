@@ -5,7 +5,6 @@ import java.util.Collection;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.transform.AliasToBeanResultTransformer;
 
 import br.bipweb.dao.CategoryDao;
 import br.bipweb.dao.DaoException;
@@ -30,6 +29,7 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 			/*
 			 * A classe Category não tem uma listagem comum. Ela deve retornar somente
 			 * as tuplas que não tiverem parent.
+			 * parent == null
 			 */
 
 			return criteria.list();

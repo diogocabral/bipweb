@@ -84,10 +84,10 @@ public class SearchAction extends ActionSupport {
 		return doLoad();
 	}
 	
-	public String doContinue()
+	public String doSearchNext()
 			throws DaoException {
 		
-		this.step = "continue";
+		this.step = "searchNext";
 		
 		try {
 			
