@@ -1,16 +1,17 @@
 #corpo {
-	margin-top: 5px;
+	padding-top: 10px;
 	padding-bottom: 10px;
-	border-top: 1px solid #0000CC;
-	border-bottom: 1px solid #0000CC;
+	padding-left: 10px;
+	padding-right: 10px;	
 	text-align: left;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	background-color: #f7f7f8;
 }
 
 #corpo h1 {
 	margin-top: 0px;
 	padding-left: 5px;
-	background-color: #e5ecf9;
-	font-size: 14pt;
 }
 
 #corpo h2 {

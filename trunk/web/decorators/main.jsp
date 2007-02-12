@@ -15,18 +15,16 @@
 		
 		<div id="cabecalho">
 		
-			<h1>
-				<b><a href="${root}">BIPWeb</a></b>
-				Uma ferramenta de busca de informações personalizadas na Web
-			</h1>
+			<img src="${root}/images/logo.jpg" alt="BipWeb" />			
 			
+			<b class="menurtop"><b class="menur1"></b><b class="menur2"></b><b class="menur3"></b><b class="menur4"></b></b>
 			<ul>
 			<ww:if test="#session.user != null">
-				<li><b><ww:property value="#session.user.username" /></b></li>
+				<div style="position: absolute; right: 100px; top: 150px;"><b>Usuário: <ww:property value="#session.user.username" /></b></div>
 				<li><a href="${root}/search/load.do">Pesquisar</a></li>
 				<li><a href="${root}/history/load.do">Qualificações</a></li>
 				<li><a href="${root}/category/manage.do">Categorias</a></li>
-				<li><a href="${root}/user/load.do">Alterar sennha</a></li>
+				<li><a href="${root}/user/load.do">Alterar senha</a></li>
 				<li><a href="${root}/help/help.jsp">Ajuda</a></li>
 				<li><a href="${root}/user/logout.do">Sair</a></li>
 			</ww:if>
@@ -42,10 +40,11 @@
 		<div id="corpo">
 			<decorator:body />
 		</div>
-		
+
 		<div id="rodape" align="center">
 			&copy; 2007 BIPWeb
 		</div>
+		<b class="menurbottom"><b class="menur4"></b><b class="menur3"></b><b class="menur2"></b><b class="menur1"></b></b>			
 		
 	</body>
 </html>
