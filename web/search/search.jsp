@@ -7,19 +7,28 @@
 			@import url("../css/grid.css");
 		</style>
 		<script type="text/javascript" src="../javascript/dtree.js"></script>
-		<script type="text/javascript" src="../javascript/grid.js"></script>		
+		<script type="text/javascript" src="../javascript/grid.js"></script>
+		<script type="text/javascript">
+			var old = window.onload;
+			window.onload = function(event) {
+				stripe('grid', '#fff', '#edf3fe');
+				return old();
+			}
+		</script>
 	</head>
 	<body>
 		
 		<h1>Pesquisar</h1>
 		
-		<ww:if test="${step == 'search' || step == 'continue' }">
-			<div class="dtree" style="width: 200px;">
+		<ww:if test="${step == 'search' || step == 'searchNext' }">
+			<div class="dtree">
 				<script type="text/javascript">${treeView}</script>
 				<br />
-				<a href="continue.do">Mais resultados</a>
+				<a href="searchNext.do">Mais resultados</a>
 			</div>
-
+			
+			<br />
+			
 			<div>
 				<b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>
 				<table id="grid" cellspacing="0">
