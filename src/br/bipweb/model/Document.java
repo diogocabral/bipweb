@@ -16,7 +16,7 @@ public class Document implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	private String title;
 	
 	private String url;
@@ -49,9 +49,12 @@ public class Document implements Serializable {
 		this.url = url;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "id={" + id + "}" + " title={" + title + "} url={" + url + "}";
+		return String.format("{Document id=[%s] title=[%s] url=[%s]}", id, title, url);
 	}
 	
 }

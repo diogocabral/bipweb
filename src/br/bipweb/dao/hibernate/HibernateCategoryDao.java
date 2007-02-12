@@ -2,8 +2,8 @@ package br.bipweb.dao.hibernate;
 
 import java.util.Collection;
 
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.bipweb.dao.CategoryDao;
@@ -21,18 +21,9 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 
 	public Collection<Category> listByUser(User user) throws DaoException {		
 		try {
-			Criteria criteria = session.createCriteria(Category.class);
-			
-			// TODO criteria.setResultTransformer(new AliasToBeanResultTransformer(Category.class));
-			
-			// TODO Não está funcionando corretamente
-			/*
-			 * A classe Category não tem uma listagem comum. Ela deve retornar somente
-			 * as tuplas que não tiverem parent.
-			 * parent == null
-			 */
+			Query query = session.createQuery("select category from Category category where category.parent = null");
 
-			return criteria.list();
+			return query.list();
 		} catch (HibernateException e) {
 			throw new DaoException(e);
 		}		

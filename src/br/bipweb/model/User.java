@@ -85,30 +85,18 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	/**
-	 * @return the categoriesOwner
-	 */
 	public Set<Category> getCategoriesOwner() {
 		return categoriesOwner;
 	}
 
-	/**
-	 * @param categoriesOwner the categoriesOwner to set
-	 */
 	public void setCategoriesOwner(Set<Category> categoriesOwner) {
 		this.categoriesOwner = categoriesOwner;
 	}
 
-	/**
-	 * @return the categories
-	 */
 	public Set<Category> getCategories() {
 		return categories;
 	}
 
-	/**
-	 * @param categories the categories to set
-	 */
 	public void setCategories(Set<Category> categories) {
 		this.categories = categories;
 	}
