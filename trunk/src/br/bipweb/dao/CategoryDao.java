@@ -7,7 +7,6 @@ import br.bipweb.model.User;
 
 public interface CategoryDao extends GenericDao<Category, Long> {
 	
-	Collection<Category> listByUser(User user)
-			throws DaoException;
+	Collection<Category> listByUser(User user) throws DaoException;
 	
 }

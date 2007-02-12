@@ -1,11 +1,14 @@
 package br.bipweb.view;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import br.bipweb.model.Category;
 
-public class TreeView {
-	
+public class TreeView implements Serializable {
+
+	private static final long serialVersionUID = -2206462622987399616L;
+
 	private Collection<Category> categories;
 	
 	private Type type;

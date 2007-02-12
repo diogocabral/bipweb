@@ -49,31 +49,6 @@ public class Category implements Serializable {
 		super();
 		this.name = name;
 	}
-	
-	@Override
-	public int hashCode() {
-		final int PRIME = 31;
-		int result = 1;
-		result = PRIME * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		final Category other = (Category) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
 
 	public Long getId() {
 		return id;
@@ -131,32 +106,53 @@ public class Category implements Serializable {
 		this.terms = terms;
 	}
 
-	/**
-	 * @return the owner
-	 */
 	public User getOwner() {
 		return owner;
 	}
 
-	/**
-	 * @param owner the owner to set
-	 */
 	public void setOwner(User owner) {
 		this.owner = owner;
 	}
 
-	/**
-	 * @return the users
-	 */
 	public Set<User> getUsers() {
 		return users;
 	}
 
-	/**
-	 * @param users the users to set
-	 */
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Category other = (Category) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return String.format("{Category id=[%s] name=[%s] description=[%s] owner=[%s]}", id, name, description, owner);
+	}	
 	
 }

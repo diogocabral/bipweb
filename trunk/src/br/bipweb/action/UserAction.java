@@ -23,18 +23,6 @@ public class UserAction extends ActionSupport {
 		super();
 	}
 	
-	public User getUser() {
-		return user;
-	}
-	
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
-	public void setPassword(String password) {
-		this.password = Md5.crypt(password);
-	}
-	
 	public String doLogin() throws DaoException {		
 		try {
 			user = userDao.get(user.getUsername());
@@ -99,7 +87,19 @@ public class UserAction extends ActionSupport {
 		
 		return SUCCESS;
 	}	
-
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public void setPassword(String password) {
+		this.password = Md5.crypt(password);
+	}
+	
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
