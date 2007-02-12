@@ -2,6 +2,9 @@ package br.bipweb.action;
 
 import java.util.Collection;
 
+import br.bipweb.dao.CategoryDao;
+import br.bipweb.dao.DaoException;
+import br.bipweb.dao.ObjectNotFoundException;
 import br.bipweb.model.Category;
 import br.bipweb.model.User;
 import br.bipweb.view.TreeView;
@@ -15,7 +18,11 @@ public class CategoryAction extends ActionSupport {
 	
 	private Category category;
 	private Collection<Category> categories;
-	private String tree;
+	private TreeView treeView;
+	
+	private String action;
+	
+	private CategoryDao categoryDao;
 	
 	public CategoryAction() {
 		super();
@@ -25,19 +32,52 @@ public class CategoryAction extends ActionSupport {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		
-		tree = new TreeView(user.getCategories()).toString();
+		treeView = new TreeView(user.getCategoriesOwner());
+		
+		System.out.println(treeView); // TODO
 		
 		return SUCCESS;
 		
 	}
 	
-	public String doSave() {
+	public String doNew() {
+		
+		this.action = "new";
+		
+		return doManage();
+	}
+	
+	public String doEdit() {
+		
+		this.action = "edit";
+		
+		return doManage();
+	}
+	
+	public String doSave()
+			throws DaoException, ObjectNotFoundException {
+		
+		if (category.getId() == 0) {
+			category.setOwner((User) ActionContext.getContext().getSession().get("user"));
+			categoryDao.save(category);
+		} else {
+			categoryDao.update(category);
+		}
+		
+		addActionMessage("Dados registrados com sucesso!");
+		
 		return SUCCESS;
 	}
 	
-	public String doDelete() {
+	public String doDelete()
+			throws DaoException {
+		
+		addActionMessage("Dados excluídos com sucesso!");
+		
 		return SUCCESS;
 	}
+	
+	// Get e Set
 	
 	public Category getCategory() {
 		return category;
@@ -51,8 +91,16 @@ public class CategoryAction extends ActionSupport {
 		return categories;
 	}
 	
-	public String getTree() {
-		return tree;
+	public TreeView getTreeView() {
+		return treeView;
+	}
+	
+	public String getAction() {
+		return action;
+	}
+	
+	public void setCategoryDao(CategoryDao categoryDao) {
+		this.categoryDao = categoryDao;
 	}
 	
 }

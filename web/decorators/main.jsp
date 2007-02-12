@@ -25,10 +25,10 @@
 				<li><b><ww:property value="#session.user.username" /></b></li>
 				<li><a href="${root}/search/search.jsp">Pesquisar</a></li>
 				<li><a href="${root}/search/history.jsp">Histórico de pesquisa</a></li>
-				<li><a href="${root}/category/doManage.action">Gerenciar categorias</a></li>
-				<li><a href="${root}/user/doLoad.action">Minha Conta</a></li>			
+				<li><a href="${root}/category/manage.do">Gerenciar categorias</a></li>
+				<li><a href="${root}/user/load.do">Minha Conta</a></li>			
 				<li><a href="${root}/help/help.jsp">Ajuda</a></li>
-				<li><a href="${root}/user/doLogout.action">Sair</a></li>
+				<li><a href="${root}/user/logout.do">Sair</a></li>
 			</ww:if>
 			<ww:else>
 				<li><a href="${root}/user/login.jsp">Entrar</a></li>

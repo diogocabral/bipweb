@@ -32,72 +32,10 @@
 	   		
 	</package>
 	
-	<package name="user" extends="ROOT" namespace="/user">
-		
-		<action name="doLogin" class="br.bipweb.action.UserAction" method="doLogin">
-			<interceptor-ref name="publicStack" />
-			<result type="dispatcher" name="success">
-				<param name="location">/index.jsp</param>
-			</result>
-			<result type="dispatcher" name="input">
-				<param name="location">login.jsp</param>
-			</result>			
-		</action>
-		
-		<action name="doSave" class="br.bipweb.action.UserAction" method="doSave">
-			<interceptor-ref name="publicStack" />	
-			<result type="dispatcher" name="success">
-				<param name="location">/index.jsp</param>
-			</result>
-			<result type="dispatcher" name="input">
-				<param name="location">save.jsp</param>
-			</result>			
-		</action>
-		
-		<action name="doLoad" class="br.bipweb.action.UserAction" method="doLoad">
-			<result type="dispatcher" name="success">
-				<param name="location">edit.jsp</param>
-			</result>
-		</action>
-		
-		<action name="doEdit" class="br.bipweb.action.UserAction" method="doEdit">
-			<result type="dispatcher" name="success">
-				<param name="location">edit.jsp</param>
-			</result>
-			<result type="dispatcher" name="input">
-				<param name="location">edit.jsp</param>
-			</result>
-			<result type="dispatcher" name="error">
-				<param name="location">edit.jsp</param>
-			</result>						
-		</action>		
-		
-		<action name="doLogout" class="br.bipweb.action.UserAction" method="doLogout">
-			<result type="dispatcher" name="success">
-				<param name="location">/index.jsp</param>
-			</result>		
-		</action>
-		
-	</package>
+	<include file="xwork-user.xml" />
 	
-	<package name="category" extends="ROOT" namespace="/category">
-		
-		<action name="doManage" class="br.bipweb.action.CategoryAction" method="doManage">
-			<result type="dispatcher" name="success">
-				<param name="location">edit.jsp</param>
-			</result>		
-		</action>
-		
-	</package>
+	<include file="xwork-category.xml" />
 	
-	<package name="search" extends="ROOT" namespace="/search">
-		
-		<action name="doSearch" class="br.bipweb.action.SearchAction" method="doSearch">
-			<result>search.jsp</result>
-		</action>
-		
-	</package>
-	
-	<!-- <include file="xwork-categoria.xml" /> -->
+	<include file="xwork-search.xml" />
 	
 </xwork>

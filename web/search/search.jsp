@@ -8,7 +8,7 @@
 		
 		<h1>Pesquisar</h1>
 		
-		<a href="doSearch.action">Pesquisar</a>
+		<a href="search.do">Pesquisar</a>
 		
 		<ww:iterator value="documents">
 		<p>

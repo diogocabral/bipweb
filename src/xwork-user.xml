@@ -1,0 +1,52 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	
+	<package name="user" extends="ROOT" namespace="/user">
+		
+		<action name="login" class="br.bipweb.action.UserAction" method="doLogin">
+			<interceptor-ref name="publicStack" />
+			<result type="dispatcher" name="success">
+				<param name="location">/index.jsp</param>
+			</result>
+			<result type="dispatcher" name="input">
+				<param name="location">login.jsp</param>
+			</result>			
+		</action>
+		
+		<action name="save" class="br.bipweb.action.UserAction" method="doSave">
+			<interceptor-ref name="publicStack" />	
+			<result type="dispatcher" name="success">
+				<param name="location">/index.jsp</param>
+			</result>
+			<result type="dispatcher" name="input">
+				<param name="location">save.jsp</param>
+			</result>			
+		</action>
+		
+		<action name="load" class="br.bipweb.action.UserAction" method="doLoad">
+			<result type="dispatcher" name="success">
+				<param name="location">edit.jsp</param>
+			</result>
+		</action>
+		
+		<action name="edit" class="br.bipweb.action.UserAction" method="doEdit">
+			<result type="dispatcher" name="success">
+				<param name="location">edit.jsp</param>
+			</result>
+			<result type="dispatcher" name="input">
+				<param name="location">edit.jsp</param>
+			</result>
+			<result type="dispatcher" name="error">
+				<param name="location">edit.jsp</param>
+			</result>						
+		</action>		
+		
+		<action name="logout" class="br.bipweb.action.UserAction" method="doLogout">
+			<result type="dispatcher" name="success">
+				<param name="location">/index.jsp</param>
+			</result>		
+		</action>
+		
+	</package>
+	
+</xwork>

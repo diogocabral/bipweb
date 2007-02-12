@@ -8,7 +8,7 @@
 		
 		<h1>Cadastro de usuários</h1>
 		
-		<ww:form method="post" action="doSave.action">
+		<ww:form method="post" action="save.do">
 			<ww:textfield label="Usuário" name="user.username" required="true" />
 			<ww:password label="Senha" name="user.password" required="true" />
 			<ww:password label="Confirmação da Senha" name="password" required="true" />
