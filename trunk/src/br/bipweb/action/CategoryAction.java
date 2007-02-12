@@ -8,6 +8,7 @@ import br.bipweb.dao.ObjectNotFoundException;
 import br.bipweb.model.Category;
 import br.bipweb.model.User;
 import br.bipweb.view.TreeView;
+import br.bipweb.view.TreeView.Type;
 
 import com.opensymphony.xwork.ActionContext;
 import com.opensymphony.xwork.ActionSupport;
@@ -20,7 +21,7 @@ public class CategoryAction extends ActionSupport {
 	private Collection<Category> categories;
 	private TreeView treeView;
 	
-	private String action;
+	private String step;
 	
 	private CategoryDao categoryDao;
 	
@@ -28,26 +29,31 @@ public class CategoryAction extends ActionSupport {
 		super();
 	}
 	
-	public String doManage() throws DaoException {
+	public String doManage()
+			throws DaoException {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
 	
-		treeView = new TreeView(categoryDao.listByUser(user));
+		treeView = new TreeView(Type.MANAGE, categoryDao.listByUser(user));
 		
 		return SUCCESS;
 		
 	}
 	
-	public String doNew() throws DaoException {
+	public String doNew()
+			throws DaoException {
 		
-		this.action = "new";
+		this.step = "new";
 		
 		return doManage();
 	}
 	
-	public String doEdit() throws DaoException {
+	public String doEdit()
+			throws DaoException, ObjectNotFoundException {
 		
-		this.action = "edit";
+		this.step = "edit";
+		
+		category = categoryDao.get(category.getId());
 		
 		return doManage();
 	}
@@ -55,7 +61,7 @@ public class CategoryAction extends ActionSupport {
 	public String doSave()
 			throws DaoException, ObjectNotFoundException {
 		
-		if (category.getId() == 0) {
+		if (category.getId() == null) {
 			category.setOwner((User) ActionContext.getContext().getSession().get("user"));
 			categoryDao.save(category);
 		} else {
@@ -89,12 +95,12 @@ public class CategoryAction extends ActionSupport {
 		return categories;
 	}
 	
-	public String getTreeView() {
-		return treeView.toString();
+	public TreeView getTreeView() {
+		return treeView;
 	}
 	
-	public String getAction() {
-		return action;
+	public String getStep() {
+		return step;
 	}
 	
 	public void setCategoryDao(CategoryDao categoryDao) {

@@ -17,16 +17,16 @@
 		
 			<h1>
 				<b><a href="${root}">BIPWeb</a></b>
-				Uma ferramenta de busca de informações personalizadas na Web.
+				Uma ferramenta de busca de informações personalizadas na Web
 			</h1>
 			
 			<ul>
 			<ww:if test="#session.user != null">
 				<li><b><ww:property value="#session.user.username" /></b></li>
-				<li><a href="${root}/search/search.jsp">Pesquisar</a></li>
-				<li><a href="${root}/search/history.jsp">Histórico de pesquisa</a></li>
-				<li><a href="${root}/category/manage.do">Gerenciar categorias</a></li>
-				<li><a href="${root}/user/load.do">Minha Conta</a></li>			
+				<li><a href="${root}/search/load.do">Pesquisar</a></li>
+				<li><a href="${root}/search/history.jsp">Qualificações</a></li>
+				<li><a href="${root}/category/manage.do">Categorias</a></li>
+				<li><a href="${root}/user/load.do">Alterar sennha</a></li>
 				<li><a href="${root}/help/help.jsp">Ajuda</a></li>
 				<li><a href="${root}/user/logout.do">Sair</a></li>
 			</ww:if>

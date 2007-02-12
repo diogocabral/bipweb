@@ -3,8 +3,22 @@
 	
 	<package name="search" extends="ROOT" namespace="/search">
 		
+		<action name="load" class="br.bipweb.action.SearchAction" method="doLoad">
+			<result type="dispatcher" name="success">
+				<param name="location">search.jsp</param>
+			</result>
+		</action>
+		
 		<action name="search" class="br.bipweb.action.SearchAction" method="doSearch">
-			<result>search.jsp</result>
+			<result type="dispatcher" name="success">
+				<param name="location">search.jsp</param>
+			</result>
+		</action>
+		
+		<action name="continue" class="br.bipweb.action.SearchAction" method="doContinue">
+			<result type="dispatcher" name="success">
+				<param name="location">search.jsp</param>
+			</result>
 		</action>
 		
 	</package>

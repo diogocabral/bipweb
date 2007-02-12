@@ -24,7 +24,13 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 		try {
 			Criteria criteria = session.createCriteria(Category.class);
 			
-			criteria.setResultTransformer(new AliasToBeanResultTransformer(Category.class));
+			// TODO criteria.setResultTransformer(new AliasToBeanResultTransformer(Category.class));
+			
+			// TODO Não está funcionando corretamente
+			/*
+			 * A classe Category não tem uma listagem comum. Ela deve retornar somente
+			 * as tuplas que não tiverem parent.
+			 */
 
 			return criteria.list();
 		} catch (HibernateException e) {
