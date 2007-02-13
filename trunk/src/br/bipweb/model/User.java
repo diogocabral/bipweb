@@ -24,7 +24,10 @@ public class User implements Serializable {
 	private Set<Category> categoriesOwner;
 	
 	@ManyToMany
-	private Set<Category> categories;	
+	private Set<Category> categories;
+	
+	@OneToMany(mappedBy = "user")
+	private Set<History> history;	
 	
 	public User() {
 		super();
@@ -99,6 +102,14 @@ public class User implements Serializable {
 
 	public void setCategories(Set<Category> categories) {
 		this.categories = categories;
+	}
+
+	public Set<History> getHistory() {
+		return history;
+	}
+
+	public void setHistory(Set<History> history) {
+		this.history = history;
 	}
 	
 }
