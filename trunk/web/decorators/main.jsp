@@ -20,7 +20,7 @@
 			<b class="menurtop"><b class="menur1"></b><b class="menur2"></b><b class="menur3"></b><b class="menur4"></b></b>
 			<ul>
 			<ww:if test="#session.user != null">
-				<div style="position: absolute; right: 100px; top: 150px;"><b>Usuário: <ww:property value="#session.user.username" /></b></div>
+				<div style="position: absolute; right: 100px; top: 120px;"><b>Usuário: <ww:property value="#session.user.username" /></b></div>
 				<li><a href="${root}/search/load.do">Pesquisar</a></li>
 				<li><a href="${root}/history/load.do">Qualificações</a></li>
 				<li><a href="${root}/category/manage.do">Categorias</a></li>
