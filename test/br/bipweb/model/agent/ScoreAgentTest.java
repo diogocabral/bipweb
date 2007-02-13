@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.junit.Test;
 
 import br.bipweb.model.Document;
+import br.bipweb.model.search.ScoreAgent;
 
 public class ScoreAgentTest {
 

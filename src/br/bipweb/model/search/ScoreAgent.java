@@ -1,4 +1,4 @@
-package br.bipweb.model.agent;
+package br.bipweb.model.search;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -64,7 +64,7 @@ public class ScoreAgent {
 
 		for (Document document : documents) {
 
-			if (count > 5)
+			if (count == 10)
 				break;
 
 			try {

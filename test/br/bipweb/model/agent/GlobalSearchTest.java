@@ -2,7 +2,7 @@ package br.bipweb.model.agent;
 
 import org.junit.Test;
 
-import br.bipweb.model.agent.SearchException;
+import br.bipweb.model.search.SearchException;
 
 public class GlobalSearchTest {
 

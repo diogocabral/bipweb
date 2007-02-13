@@ -5,8 +5,8 @@ import java.util.Collection;
 import org.junit.Test;
 
 import br.bipweb.model.Document;
-import br.bipweb.model.agent.AltaVistaSearcher;
-import br.bipweb.model.agent.SearchException;
+import br.bipweb.model.search.AltaVistaSearcher;
+import br.bipweb.model.search.SearchException;
 
 public class AltaVistaSearchTest {
 

@@ -7,8 +7,8 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 import br.bipweb.model.Document;
-import br.bipweb.model.agent.GoogleSearcher;
-import br.bipweb.model.agent.SearchException;
+import br.bipweb.model.search.GoogleSearcher;
+import br.bipweb.model.search.SearchException;
 
 public class GoogleSearchTest extends TestCase {
 	

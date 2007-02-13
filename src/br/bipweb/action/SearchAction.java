@@ -9,8 +9,8 @@ import br.bipweb.model.Category;
 import br.bipweb.model.Criteria;
 import br.bipweb.model.Document;
 import br.bipweb.model.User;
-import br.bipweb.model.agent.SearchController;
-import br.bipweb.model.agent.SearchException;
+import br.bipweb.model.search.SearchController;
+import br.bipweb.model.search.SearchException;
 import br.bipweb.view.TreeView;
 import br.bipweb.view.TreeView.Type;
 
