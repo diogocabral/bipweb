@@ -16,8 +16,8 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.Searcher;
 
-import br.bipweb.lucene.HTMLDocument;
 import br.bipweb.model.Document;
+import br.bipweb.model.lucene.HTMLDocument;
 
 public class ScoreAgent {
 
