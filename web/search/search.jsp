@@ -20,18 +20,17 @@
 		
 		<h1>Pesquisar</h1>
 		
+		<p>Clique na categoria desejada para iniciar a busca.</p>
+		
 		<ww:if test="${step == 'search' || step == 'searchNext' }">
-			<div class="dtree">
+			<div class="dtree" style="float: left; width: 200px;">
 				<script type="text/javascript">${treeView}</script>
 				<br />
 				<a href="searchNext.do">Mais resultados</a>
 			</div>
-			
-			<br />
-			
-			<div>
-				<b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>
-				<table id="grid" cellspacing="0">
+
+			<div style="">
+				<table id="grid" cellspacing="0" width="650">
 					<thead>
 						<tr>
 							<th>Relevância</th>
@@ -47,7 +46,6 @@
 					</ww:iterator>
 					</tbody>
 				</table>
-				<b class="rbottom"><b class="r4"></b><b class="r3"></b><b class="r2"></b><b class="r1"></b></b>	
 			</div>
 				
 		</ww:if>
