@@ -13,7 +13,7 @@
     	<constructor-arg ref="session" />
     </bean> 
         
-    <bean id="documentDao" class="br.bipweb.dao.hibernate.HibernateDocumentDao" singleton="false">
+    <bean id="historyDao" class="br.bipweb.dao.hibernate.HibernateHistoryDao" singleton="false">
     	<constructor-arg ref="session" />
     </bean>
     
