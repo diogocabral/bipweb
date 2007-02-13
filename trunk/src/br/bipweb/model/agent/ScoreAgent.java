@@ -32,14 +32,13 @@ public class ScoreAgent {
 
 	}
 
-	public Collection<Document> execute(String criteria,
-			Collection<Document> documents) {
+	public Collection<Document> execute(String criteria, Collection<Document> documents) {
 
 		try {
 
-			// index(documents);
+			this.index(documents);
 
-			return search(criteria);
+			return this.search(criteria);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -53,7 +52,8 @@ public class ScoreAgent {
 
 	}
 
-	private void index(Collection<Document> documents) throws IOException {
+	private void index(Collection<Document> documents)
+			throws IOException {
 
 		Analyzer analyzer = new BrazilianAnalyzer();
 
@@ -71,8 +71,7 @@ public class ScoreAgent {
 
 				URL url = new URL(document.getUrl());
 
-				org.apache.lucene.document.Document html = HTMLDocument
-						.getDocument(url);
+				org.apache.lucene.document.Document html = HTMLDocument.getDocument(url);
 
 				writer.addDocument(html);
 
@@ -92,8 +91,8 @@ public class ScoreAgent {
 
 	}
 
-	private Collection<Document> search(String criteria) throws IOException,
-			ParseException {
+	private Collection<Document> search(String criteria)
+			throws IOException, ParseException {
 
 		Analyzer analyzer = new BrazilianAnalyzer();
 
