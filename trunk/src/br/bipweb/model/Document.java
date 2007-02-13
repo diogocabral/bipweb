@@ -21,10 +21,20 @@ public class Document implements Serializable {
 	
 	private String url;
 	
+	private Float score;
+	
 	public Document() {
 		super();
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return String.format("{Document id=[%s] title=[%s] url=[%s]}", id, title, url);
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -49,12 +59,12 @@ public class Document implements Serializable {
 		this.url = url;
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return String.format("{Document id=[%s] title=[%s] url=[%s]}", id, title, url);
+	public Float getScore() {
+		return score;
+	}
+	
+	public void setScore(Float score) {
+		this.score = score;
 	}
 	
 }

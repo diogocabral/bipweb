@@ -1,4 +1,4 @@
-package br.bipweb.model;
+package br.bipweb.model.agent;
 
 public class SearchException extends Exception {
 	

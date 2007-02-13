@@ -1,21 +1,15 @@
 package br.bipweb.action;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import br.bipweb.dao.CategoryDao;
 import br.bipweb.dao.DaoException;
 import br.bipweb.dao.ObjectNotFoundException;
-import br.bipweb.model.AltaVistaSearch;
 import br.bipweb.model.Category;
-import br.bipweb.model.CriteriaCalculator;
 import br.bipweb.model.Document;
-import br.bipweb.model.GlobalSearch;
-import br.bipweb.model.GoogleSearch;
-import br.bipweb.model.SearchAgent;
-import br.bipweb.model.SearchException;
 import br.bipweb.model.User;
-import br.bipweb.model.YahooSearch;
+import br.bipweb.model.agent.SearchController;
+import br.bipweb.model.agent.SearchException;
 import br.bipweb.view.TreeView;
 import br.bipweb.view.TreeView.Type;
 
@@ -26,10 +20,10 @@ public class SearchAction extends ActionSupport {
 
 	private static final long serialVersionUID = -5237261947821051526L;
 
-	private static GlobalSearch search;
+	private SearchController search;
 	
 	private Category category;
-	
+	private Document document;	
 	private Collection<Document> documents;
 	
 	private TreeView treeView;
@@ -40,6 +34,7 @@ public class SearchAction extends ActionSupport {
 	
 	public SearchAction() {
 		super();
+		search = SearchController.getInstance();
 	}
 	
 	public String doLoad()
@@ -61,21 +56,7 @@ public class SearchAction extends ActionSupport {
 			
 			category = categoryDao.get(category.getId());
 			
-			CriteriaCalculator calculator = new CriteriaCalculator();
-			
-			String criteria = calculator.calculate(category);
-			
-			Collection<SearchAgent> agents = new ArrayList<SearchAgent>();
-			agents.add(new AltaVistaSearch());
-			agents.add(new GoogleSearch());
-			agents.add(new YahooSearch());
-			
-			search = new GlobalSearch();
-			search.setAgents(agents);
-			
-			documents = search.search(criteria);
-			
-			ActionContext.getContext().getSession().put("search", search);
+			documents = search.search(category);
 			
 		} catch (SearchException e) {
 			e.printStackTrace(); // TODO
@@ -91,8 +72,6 @@ public class SearchAction extends ActionSupport {
 		
 		try {
 			
-			search = (GlobalSearch) ActionContext.getContext().getSession().get("search");
-			
 			documents = search.searchNext();
 			
 		} catch (SearchException e) {
@@ -101,6 +80,15 @@ public class SearchAction extends ActionSupport {
 		
 		return doLoad();
 	}
+	
+	public String doOpen() {
+		
+		// TODO Gravar document.getUrl() como History
+		
+		return SUCCESS;
+	}
+	
+	//
 	
 	public void setCategory(Category category) {
 		this.category = category;
@@ -120,6 +108,14 @@ public class SearchAction extends ActionSupport {
 	
 	public String getStep() {
 		return step;
+	}
+	
+	public void setDocument(Document document) {
+		this.document = document;
+	}
+	
+	public Document getDocument() {
+		return document;
 	}
 	
 }

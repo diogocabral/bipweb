@@ -1,17 +1,15 @@
 package br.bipweb.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import org.junit.Test;
+
+import br.bipweb.model.agent.SearchException;
 
 public class GlobalSearchTest {
 
 	@Test
 	public void testSearch() throws SearchException {
 		
-		List<SearchAgent> agents = new ArrayList<SearchAgent>();
+		/*List<SearchAgent> agents = new ArrayList<SearchAgent>();
 		
 		agents.add(new GoogleSearch());
 		//agents.add(new YahooSearch()); // TODO <- Tá bugado
@@ -29,7 +27,7 @@ public class GlobalSearchTest {
 			System.out.println(document);
 		}
 		
-		System.out.println("\n" + documents.size());
+		System.out.println("\n" + documents.size());*/
 		
 	}
 
