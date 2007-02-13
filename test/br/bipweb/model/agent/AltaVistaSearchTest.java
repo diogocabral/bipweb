@@ -1,9 +1,10 @@
-package br.bipweb.model;
+package br.bipweb.model.agent;
 
 import java.util.Collection;
 
 import org.junit.Test;
 
+import br.bipweb.model.Document;
 import br.bipweb.model.agent.AltaVistaSearcher;
 import br.bipweb.model.agent.SearchException;
 
@@ -18,7 +19,7 @@ public class AltaVistaSearchTest {
 		
 		// Buscando
 		documents = search.search("hashne");		
-		//System.out.println(documents.size());
+		System.out.println(documents.size());
 		
 		// Continuando a busca
 		documents = search.searchNext();

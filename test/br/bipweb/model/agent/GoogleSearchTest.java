@@ -1,4 +1,4 @@
-package br.bipweb.model;
+package br.bipweb.model.agent;
 
 import java.util.Collection;
 
@@ -6,6 +6,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
+import br.bipweb.model.Document;
 import br.bipweb.model.agent.GoogleSearcher;
 import br.bipweb.model.agent.SearchException;
 
