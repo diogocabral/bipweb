@@ -28,7 +28,9 @@
 				<br />
 				<a href="searchNext.do">Mais resultados</a>
 			</div>
-
+			
+			<br />
+			
 			<div style="">
 				<table id="grid" cellspacing="0" width="100%">
 					<thead>
