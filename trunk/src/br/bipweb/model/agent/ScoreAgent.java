@@ -32,14 +32,15 @@ public class ScoreAgent {
 
 	}
 
-	public Collection<Document> execute(String criteria, Collection<Document> documents) {
-		
+	public Collection<Document> execute(String criteria,
+			Collection<Document> documents) {
+
 		try {
-			
-			index(documents);
-			
+
+			// index(documents);
+
 			return search(criteria);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,23 +48,22 @@ public class ScoreAgent {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
-		
+
 	}
 
-	private void index(Collection<Document> documents)
-			throws IOException {
+	private void index(Collection<Document> documents) throws IOException {
 
 		Analyzer analyzer = new BrazilianAnalyzer();
 
 		IndexWriter writer = new IndexWriter(dir, analyzer, true);
 		writer.setMaxFieldLength(500); // 10000 Default
-		
+
 		int count = 0;
-		
+
 		for (Document document : documents) {
-			
+
 			if (count > 5)
 				break;
 
@@ -83,7 +83,7 @@ public class ScoreAgent {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			count++;
 
 		}
@@ -94,9 +94,7 @@ public class ScoreAgent {
 
 	private Collection<Document> search(String criteria) throws IOException,
 			ParseException {
-		
-		System.out.println(criteria);
-		
+
 		Analyzer analyzer = new BrazilianAnalyzer();
 
 		IndexReader reader = IndexReader.open(dir);
@@ -106,8 +104,6 @@ public class ScoreAgent {
 		QueryParser parser = new QueryParser("contents", analyzer);
 
 		Query query = parser.parse(criteria);
-		
-		System.out.println(query);
 
 		Hits hits = searcher.search(query);
 

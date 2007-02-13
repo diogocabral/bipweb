@@ -1,9 +1,10 @@
-package br.bipweb.model;
+package br.bipweb.model.agent;
 
 import java.util.Collection;
 
 import org.junit.Test;
 
+import br.bipweb.model.Document;
 import br.bipweb.model.agent.SearchException;
 import br.bipweb.model.agent.YahooSearcher;
 
