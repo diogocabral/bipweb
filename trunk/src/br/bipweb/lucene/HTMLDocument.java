@@ -1,9 +1,12 @@
 package br.bipweb.lucene;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.net.URL;
 import java.net.URLConnection;
@@ -40,11 +43,18 @@ public class HTMLDocument {
 		URLConnection connection = url.openConnection();
 		connection.setReadTimeout(1000);
 		
+		InputStreamReader reader = new InputStreamReader(connection.getInputStream());
+		char[] buffer = new char[16*1024];
+		reader.read(buffer);
+		InputStream inputStream = new ByteArrayInputStream(buffer.toString().getBytes());
+		
+		//InputStream inputStream = connection.getInputStream();
+		
 		Tidy tidy = new Tidy();
 		tidy.setQuiet(true);
 		tidy.setShowWarnings(false);
 		
-		org.w3c.dom.Document root = tidy.parseDOM(connection.getInputStream(), null);
+		org.w3c.dom.Document root = tidy.parseDOM(inputStream, null);
 		rawDoc = root.getDocumentElement();
 	}
 

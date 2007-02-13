@@ -1,4 +1,4 @@
-package br.bipweb.model.agent;
+package br.bipweb.model.search;
 
 import java.text.NumberFormat;
 import java.util.Collection;

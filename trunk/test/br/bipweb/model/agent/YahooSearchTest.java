@@ -5,8 +5,8 @@ import java.util.Collection;
 import org.junit.Test;
 
 import br.bipweb.model.Document;
-import br.bipweb.model.agent.SearchException;
-import br.bipweb.model.agent.YahooSearcher;
+import br.bipweb.model.search.SearchException;
+import br.bipweb.model.search.YahooSearcher;
 
 public class YahooSearchTest {
 
