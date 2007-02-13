@@ -6,6 +6,7 @@ import br.bipweb.dao.CategoryDao;
 import br.bipweb.dao.DaoException;
 import br.bipweb.dao.ObjectNotFoundException;
 import br.bipweb.model.Category;
+import br.bipweb.model.Criteria;
 import br.bipweb.model.Document;
 import br.bipweb.model.User;
 import br.bipweb.model.agent.SearchController;
@@ -56,7 +57,9 @@ public class SearchAction extends ActionSupport {
 			
 			category = categoryDao.get(category.getId());
 			
-			documents = search.search(category);
+			Criteria criteria = new Criteria(category);
+			
+			documents = search.search(criteria);
 			
 		} catch (SearchException e) {
 			e.printStackTrace(); // TODO

@@ -2,7 +2,6 @@ package br.bipweb.model.agent;
 
 import java.util.Collection;
 
-import br.bipweb.model.Category;
 import br.bipweb.model.Criteria;
 import br.bipweb.model.Document;
 
@@ -37,10 +36,10 @@ public class SearchController {
 		return instance;
 	}
 	
-	public Collection<Document> search(Category category)
+	public Collection<Document> search(Criteria criteria)
 			throws SearchException {
 		
-		criteria = new Criteria(category);
+		this.criteria = criteria;
 		
 		return scoreAgent.execute(criteria.getCleanCriteria(), searcher.search(criteria.getEncodedCriteria()));
 		
