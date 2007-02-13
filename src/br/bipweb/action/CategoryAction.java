@@ -71,14 +71,18 @@ public class CategoryAction extends ActionSupport {
 		addActionMessage("Dados registrados com sucesso!");
 		
 		return SUCCESS;
+		
 	}
 	
 	public String doDelete()
 			throws DaoException {
 		
+		System.out.println(category.getId());
+		
 		addActionMessage("Dados excluídos com sucesso!");
 		
 		return SUCCESS;
+		
 	}
 	
 	// Get e Set

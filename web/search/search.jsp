@@ -40,7 +40,7 @@
 					<tbody>
 					<ww:iterator value="documents">
 						<tr onclick="window.location = 'open.do?document.url=<ww:property value="url" />'">
-							<td>0</td>
+							<td><ww:property value="score" /></td>
 							<td><ww:property value="title" /></td>
 						</tr>
 					</ww:iterator>

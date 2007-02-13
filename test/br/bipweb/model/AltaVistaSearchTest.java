@@ -4,12 +4,15 @@ import java.util.Collection;
 
 import org.junit.Test;
 
+import br.bipweb.model.agent.AltaVistaSearcher;
+import br.bipweb.model.agent.SearchException;
+
 public class AltaVistaSearchTest {
 
 	@Test
 	public void testSearch() throws SearchException {
 		
-		AltaVistaSearch search = new AltaVistaSearch();
+		AltaVistaSearcher search = new AltaVistaSearcher();
 		
 		Collection<Document> documents;
 		

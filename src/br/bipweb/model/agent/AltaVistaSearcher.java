@@ -1,4 +1,4 @@
-package br.bipweb.model;
+package br.bipweb.model.agent;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,19 +10,17 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import br.bipweb.model.Document;
+
 /**
  * 
  * @author Leonardo Costa Beltrão Lessa
  */
-public class AltaVistaSearch extends AbstractSearchAgent {
+public class AltaVistaSearcher extends AbstractSearcher {
 	
 	private static final String SEARCH_URL = "http://www.altavista.com/web/results?nbq=" + N + "&q=";
 	
-	@SuppressWarnings("unused")
-	private int first, last, total;
-	private String criteria;
-	
-	public AltaVistaSearch() {
+	public AltaVistaSearcher() {
 		super();
 	}
 	

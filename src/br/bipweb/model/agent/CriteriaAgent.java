@@ -1,20 +1,22 @@
-package br.bipweb.model;
+package br.bipweb.model.agent;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-public class CriteriaCalculator {
+import br.bipweb.model.Category;
+
+public class CriteriaAgent {
 	
-	public CriteriaCalculator() {
+	public CriteriaAgent() {
 		super();
 	}
 	
-	public String calculate(Category category) {
+	public String execute(Category category) {
 		
 		if (category == null)
 			return "";
 		
-		return calculate(category.getParent()) + "+" + parseForm(category.getCriteria());
+		return execute(category.getParent()) + "+" + parseForm(category.getCriteria());
 		
 	}
 	
