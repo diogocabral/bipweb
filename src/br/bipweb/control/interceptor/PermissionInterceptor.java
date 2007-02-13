@@ -1,4 +1,4 @@
-package br.bipweb.interceptor;
+package br.bipweb.control.interceptor;
 
 import br.bipweb.model.User;
 
