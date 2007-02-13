@@ -30,6 +30,15 @@ public class History extends Document implements Serializable {
 		super();
 	}
 	
+	public History(Document document) {
+		super();
+		
+		this.title = document.title;
+		this.url = document.url;
+		this.score = document.score;
+		
+	}
+	
 	public Long getId() {
 		return id;
 	}
