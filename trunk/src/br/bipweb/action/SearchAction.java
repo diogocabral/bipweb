@@ -9,6 +9,7 @@ import br.bipweb.dao.ObjectNotFoundException;
 import br.bipweb.model.Category;
 import br.bipweb.model.Criteria;
 import br.bipweb.model.Document;
+import br.bipweb.model.History;
 import br.bipweb.model.User;
 import br.bipweb.model.search.SearchController;
 import br.bipweb.model.search.SearchException;
@@ -96,6 +97,12 @@ public class SearchAction extends ActionSupport {
 	public String doOpen() {
 		
 		// TODO Gravar document.getUrl() como History
+		
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		
+		History history = new History(document);
+		history.setUser(user);
+		history.setCategory(category);
 		
 		return SUCCESS;
 	}
