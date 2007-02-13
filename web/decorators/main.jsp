@@ -21,18 +21,18 @@
 			<ul>
 			<ww:if test="#session.user != null">
 				<div style="position: absolute; right: 100px; top: 120px;"><b>Usuário: <ww:property value="#session.user.username" /></b></div>
-				<li><a href="${root}/search/load.do">Pesquisar</a></li>
-				<li><a href="${root}/history/load.do">Qualificações</a></li>
-				<li><a href="${root}/category/manage.do">Categorias</a></li>
-				<li><a href="${root}/user/load.do">Alterar senha</a></li>
-				<li><a href="${root}/help/help.jsp">Ajuda</a></li>
-				<li><a href="${root}/user/logout.do">Sair</a></li>
+				<li><a href="<ww:url action="load" namespace="/search" includeParams="none" />">Pesquisar</a></li>
+				<li><a href="<ww:url action="load" namespace="/history" includeParams="none" />">Qualificações</a></li>
+				<li><a href="<ww:url action="manage" namespace="/category" includeParams="none" />">Categorias</a></li>
+				<li><a href="<ww:url action="load" namespace="/user" includeParams="none" />">Alterar senha</a></li>
+				<li><a href="<ww:url value="/help/help.jsp" includeParams="none" />">Ajuda</a></li>
+				<li><a href="<ww:url action="logout" namespace="/user" includeParams="none" />">Sair</a></li>
 			</ww:if>
 			<ww:else>
-				<li><a href="${root}/">Principal</a></li>			
-				<li><a href="${root}/user/login.jsp">Entrar</a></li>
-				<li><a href="${root}/user/save.jsp">Cadastre-se</a></li>
-				<li><a href="${root}/help/help.jsp">Ajuda</a></li>
+				<li><a href="<ww:url value="/" includeParams="none" />">Principal</a></li>
+				<li><a href="<ww:url value="/user/login.jsp" includeParams="none" />">Entrar</a></li>				
+				<li><a href="<ww:url value="/user/save.jsp" includeParams="none" />">Cadastre-se</a></li>				
+				<li><a href="<ww:url value="/help/help.jsp" includeParams="none" />">Ajuda</a></li>
 			</ww:else>
 			</ul>
 			

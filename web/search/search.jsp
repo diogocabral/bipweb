@@ -23,17 +23,17 @@
 		<p>Clique na categoria desejada para iniciar a busca.</p>
 		
 		<ww:if test="${step == 'search' || step == 'searchNext' }">
-			<div class="dtree" style="float: left; width: 200px;">
+			<div class="dtree" style="width: 200px;">
 				<script type="text/javascript">${treeView}</script>
 				<br />
 				<a href="searchNext.do">Mais resultados</a>
 			</div>
 
 			<div style="">
-				<table id="grid" cellspacing="0" width="650">
+				<table id="grid" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th>Relevância</th>
+							<th width="60">Relevância</th>
 							<th>Título</th>
 						</tr>					
 					</thead>
