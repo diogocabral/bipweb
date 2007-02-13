@@ -2,6 +2,9 @@ package br.bipweb.model;
 
 import java.io.Serializable;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class Document implements Serializable {
 
 	private static final long serialVersionUID = 4650548819192132342L;
