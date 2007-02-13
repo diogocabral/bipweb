@@ -38,12 +38,7 @@ public class HTMLDocument {
 		this.path = url.toString();
 		
 		URLConnection connection = url.openConnection();
-		connection.setReadTimeout(1500);
-		
-		System.out.println(connection.getContentType());
-		
-		//if (connection.getContentType().indexOf("text/html") == -1)
-			//throw new IOException("O documento não está no formato html.");
+		connection.setReadTimeout(1000);
 		
 		Tidy tidy = new Tidy();
 		tidy.setQuiet(true);
