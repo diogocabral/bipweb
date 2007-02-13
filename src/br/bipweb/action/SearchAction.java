@@ -1,5 +1,6 @@
 package br.bipweb.action;
 
+import java.io.IOException;
 import java.util.Collection;
 
 import br.bipweb.dao.CategoryDao;
@@ -63,6 +64,10 @@ public class SearchAction extends ActionSupport {
 			
 		} catch (SearchException e) {
 			e.printStackTrace(); // TODO
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			addActionError("Sistema indisponível!");
 		}
 		
 		return doLoad();
@@ -79,6 +84,10 @@ public class SearchAction extends ActionSupport {
 			
 		} catch (SearchException e) {
 			e.printStackTrace(); // TODO
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			addActionError("Sistema indisponível!");
 		}
 		
 		return doLoad();

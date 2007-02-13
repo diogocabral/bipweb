@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -77,9 +78,8 @@ public class GoogleSearcher extends AbstractSearcher {
 			URLConnection connection = url.openConnection();
 			
 			connection.setRequestProperty("User-Agent", USERAGENT);
-			connection.setRequestProperty("Accept-Charset", "iso-8859-1"); // TODO
 			
-			reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "ISO-8859-1"));
 			
 			String line;
 			
@@ -131,7 +131,7 @@ public class GoogleSearcher extends AbstractSearcher {
 						
 						position = line.indexOf("</a>");
 						
-						document.setTitle(line.substring(0, position).replaceAll("<b>", "").replaceAll("</b>", ""));
+						document.setTitle(URLDecoder.decode(line.substring(0, position).replaceAll("<b>", "").replaceAll("</b>", ""), "ISO-8859-1"));
 						
 						documents.add(document);
 						

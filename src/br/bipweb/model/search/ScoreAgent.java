@@ -1,7 +1,6 @@
 package br.bipweb.model.search;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,12 +26,12 @@ public class ScoreAgent {
 	public ScoreAgent() {
 		super();
 
-		this.dir = System.getProperty("java.io.tmpdir", "tmp")
-				+ System.getProperty("file.separator") + "index-1";
+		this.dir = System.getProperty("java.io.tmpdir", "tmp") + System.getProperty("file.separator") + "index-1";
 
 	}
 
-	public Collection<Document> execute(String criteria, Collection<Document> documents) {
+	public Collection<Document> execute(String criteria, Collection<Document> documents)
+			throws IOException {
 
 		try {
 
@@ -40,13 +39,7 @@ public class ScoreAgent {
 
 			return this.search(criteria);
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (ParseException e) {} // Faz nada
 
 		return null;
 
@@ -59,13 +52,8 @@ public class ScoreAgent {
 
 		IndexWriter writer = new IndexWriter(dir, analyzer, true);
 		writer.setMaxFieldLength(500); // 10000 Default
-
-		int count = 0;
-
+		
 		for (Document document : documents) {
-
-			if (count == 10)
-				break;
 
 			try {
 
@@ -75,15 +63,7 @@ public class ScoreAgent {
 
 				writer.addDocument(html);
 
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			count++;
+			} catch (Exception e) {} // Faz nada
 
 		}
 

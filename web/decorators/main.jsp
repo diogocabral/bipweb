@@ -15,7 +15,7 @@
 		
 		<div id="cabecalho">
 		
-			<a href="${root}/"><img border="0" src="${root}/images/logo.jpg" alt="BipWeb" /></a>
+			<a href="${root}/"><img border="0" src="${root}/images/logo.jpg" alt="BIPWeb" /></a>
 			
 			<b class="menurtop"><b class="menur1"></b><b class="menur2"></b><b class="menur3"></b><b class="menur4"></b></b>
 			<ul>
@@ -29,7 +29,6 @@
 				<li><a href="<ww:url action="logout" namespace="/user" includeParams="none" />">Sair</a></li>
 			</ww:if>
 			<ww:else>
-				<li><a href="<ww:url value="/" includeParams="none" />">Principal</a></li>
 				<li><a href="<ww:url value="/user/login.jsp" includeParams="none" />">Entrar</a></li>				
 				<li><a href="<ww:url value="/user/save.jsp" includeParams="none" />">Cadastre-se</a></li>				
 				<li><a href="<ww:url value="/help/help.jsp" includeParams="none" />">Ajuda</a></li>

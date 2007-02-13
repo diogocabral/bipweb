@@ -2,45 +2,46 @@ package br.bipweb.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "document")
 public class Document implements Serializable {
 
 	private static final long serialVersionUID = 4650548819192132342L;
 
-	@Id
-	@GeneratedValue
-	private Long id;
-
-	private String title;
-	
-	private String url;
-	
-	private Float score;
+	protected String title;
+	protected String url;
+	protected Float score;
 	
 	public Document() {
 		super();
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
-	public String toString() {
-		return String.format("{Document id=[%s] title=[%s] url=[%s]}", id, title, url);
-	}
-	
-	public Long getId() {
-		return id;
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((url == null) ? 0 : url.hashCode());
+		return result;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Document other = (Document) obj;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
+			return false;
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("{ %s %s - '%s' <%s> }", getClass(), getScore(), getTitle(), getUrl());
 	}
 
 	public String getTitle() {
