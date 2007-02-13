@@ -35,7 +35,10 @@ public class Category implements Serializable {
 	private Set<Category> children;
 	
 	@ManyToMany(mappedBy = "categories")
-	private Set<User> users;	
+	private Set<User> users;
+	
+	@OneToMany(mappedBy = "category")
+	private Set<History> histories;	
 	
 	public Category() {
 		super();
@@ -138,6 +141,14 @@ public class Category implements Serializable {
 
 	public void setUsers(Set<User> users) {
 		this.users = users;
+	}
+
+	public Set<History> getHistories() {
+		return histories;
+	}
+
+	public void setHistories(Set<History> histories) {
+		this.histories = histories;
 	}
 	
 }
