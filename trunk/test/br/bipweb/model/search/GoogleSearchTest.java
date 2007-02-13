@@ -1,4 +1,4 @@
-package br.bipweb.model.agent;
+package br.bipweb.model.search;
 
 import java.util.Collection;
 
@@ -18,24 +18,13 @@ public class GoogleSearchTest extends TestCase {
 		
 		GoogleSearcher search = new GoogleSearcher();
 		
-		Collection<Document> documents = search.search("leao");
+		Collection<Document> documents = search.search("brasil");
 		
 		int count = 1;
 		
 		for (Document document : documents) {
 			System.out.println(count + ". " + document);
 			count++;
-		}
-		
-		if (search.hasMoreDocuments()) {
-			
-			documents = search.searchNext();
-			
-			for (Document document : documents) {
-				System.out.println(count + ". " + document);
-				count++;
-			}
-		
 		}
 		
 	}

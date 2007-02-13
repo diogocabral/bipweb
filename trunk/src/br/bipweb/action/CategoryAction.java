@@ -33,7 +33,7 @@ public class CategoryAction extends ActionSupport {
 			throws DaoException {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
-	
+		
 		treeView = new TreeView(Type.MANAGE, categoryDao.listByUser(user));
 		
 		return SUCCESS;

@@ -43,11 +43,36 @@ public class HTMLDocument {
 		URLConnection connection = url.openConnection();
 		connection.setReadTimeout(1000);
 		
-		InputStreamReader reader = new InputStreamReader(connection.getInputStream());
-		char[] buffer = new char[16*1024];
-		reader.read(buffer);
+		String contentType = connection.getContentType();
+		if (contentType == null || (contentType.indexOf("text/html") == -1)) {
+			throw new IOException("O formato do arquivo deve ser html.");
+		}
+		
+		/*
+		 * Tentando otimizar, não funciona
+		 */
+		//BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()), 64*1024);
+		//char[] buffer = new char[64*1024];
+		//reader.read(buffer);
+		//reader.close();
+		//InputStream inputStream = new ByteArrayInputStream(buffer.toString().getBytes());
+		
+		/*
+		 * Otimizando largura de banda (obtendo primeiros MAX caracteres do arquivo)
+		 */
+		int MAX = 24*1024;
+		BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "ISO-8859-1"));
+		StringBuffer buffer = new StringBuffer();
+		String line;
+		while ((line = reader.readLine()) != null && buffer.length() < MAX) {
+			buffer.append(line);
+		}
+		reader.close();
 		InputStream inputStream = new ByteArrayInputStream(buffer.toString().getBytes());
 		
+		/*
+		 * Obtendo o documento inteiro (sem otimização)
+		 */
 		//InputStream inputStream = connection.getInputStream();
 		
 		Tidy tidy = new Tidy();
@@ -56,6 +81,7 @@ public class HTMLDocument {
 		
 		org.w3c.dom.Document root = tidy.parseDOM(inputStream, null);
 		rawDoc = root.getDocumentElement();
+		
 	}
 
 	public static org.apache.lucene.document.Document getDocument(URL url)
@@ -72,10 +98,12 @@ public class HTMLDocument {
 				Field.Index.TOKENIZED));
 
 		return luceneDoc;
+		
 	}
 
 	public static org.apache.lucene.document.Document Document(File file)
 			throws IOException {
+		
 		HTMLDocument htmlDoc = new HTMLDocument(file);
 		org.apache.lucene.document.Document luceneDoc = new org.apache.lucene.document.Document();
 		
@@ -102,6 +130,7 @@ public class HTMLDocument {
 				Field.Index.NO));
 
 		return luceneDoc;
+		
 	}
 	
 	public String getPath() {
@@ -123,7 +152,9 @@ public class HTMLDocument {
 				title = text.getData();
 			}
 		}
+		
 		return title;
+		
 	}
 
 	public String getBody() {

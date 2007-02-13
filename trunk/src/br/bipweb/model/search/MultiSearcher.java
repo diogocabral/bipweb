@@ -18,9 +18,9 @@ public class MultiSearcher implements Searcher {
 		super();
 		
 		searchers = new ArrayList<Searcher>();
-		searchers.add(new AltaVistaSearcher());
+		//searchers.add(new AltaVistaSearcher());
 		searchers.add(new GoogleSearcher());
-		searchers.add(new YahooSearcher());
+		//searchers.add(new YahooSearcher());
 		
 	}
 	

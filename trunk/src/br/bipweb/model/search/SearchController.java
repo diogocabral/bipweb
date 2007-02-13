@@ -1,5 +1,6 @@
 package br.bipweb.model.search;
 
+import java.io.IOException;
 import java.util.Collection;
 
 import br.bipweb.model.Criteria;
@@ -37,7 +38,7 @@ public class SearchController {
 	}
 	
 	public Collection<Document> search(Criteria criteria)
-			throws SearchException {
+			throws SearchException, IOException {
 		
 		this.criteria = criteria;
 		
@@ -46,7 +47,7 @@ public class SearchController {
 	}
 	
 	public Collection<Document> searchNext()
-			throws SearchException {
+			throws SearchException, IOException {
 		
 		return scoreAgent.execute(criteria.getCleanCriteria(), searcher.searchNext());
 		

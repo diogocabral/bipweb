@@ -23,7 +23,7 @@
 		
 		<action name="save" class="br.bipweb.action.CategoryAction" method="doSave">
 			<!-- Recarrega a árvore -->
-			<result type="chain" name="success">
+			<result type="redirect-action" name="success">
 				<param name="actionName">manage</param>
 			</result>
 		</action>
