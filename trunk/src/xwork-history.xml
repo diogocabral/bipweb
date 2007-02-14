@@ -10,8 +10,8 @@
 		</action>
 		
 		<action name="qualify" class="br.bipweb.control.action.HistoryAction" method="doQualify">
-			<result type="dispatcher" name="success">
-				<param name="location">history.jsp</param>
+			<result type="redirect-action" name="success">
+				<param name="actionName">load</param>
 			</result>
 		</action>
 		

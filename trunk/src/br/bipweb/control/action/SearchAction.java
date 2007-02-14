@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import br.bipweb.dao.CategoryDao;
 import br.bipweb.dao.DaoException;
+import br.bipweb.dao.HistoryDao;
 import br.bipweb.dao.ObjectNotFoundException;
 import br.bipweb.model.Category;
 import br.bipweb.model.Criteria;
@@ -32,6 +33,7 @@ public class SearchAction extends ActionSupport {
 	private TreeView treeView;
 	
 	private CategoryDao categoryDao;
+	private HistoryDao historyDao;
 	
 	private String step;
 	
@@ -64,10 +66,9 @@ public class SearchAction extends ActionSupport {
 			documents = search.search(criteria);
 			
 		} catch (SearchException e) {
-			e.printStackTrace(); // TODO
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+		} catch (IOException e) { // Erro no ScoreAgent
+			System.out.println(e.getMessage());
 			addActionError("Sistema indisponível!");
 		}
 		
@@ -84,19 +85,18 @@ public class SearchAction extends ActionSupport {
 			documents = search.searchNext();
 			
 		} catch (SearchException e) {
-			e.printStackTrace(); // TODO
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			this.step = "";
+			System.out.println(e.getMessage());
+		} catch (IOException e) { // Erro no ScoreAgent
+			System.out.println(e.getMessage());
 			addActionError("Sistema indisponível!");
 		}
 		
 		return doLoad();
 	}
 	
-	public String doOpen() {
-		
-		// TODO Gravar document.getUrl() como History
+	public String doOpen()
+			throws DaoException {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		
@@ -104,10 +104,14 @@ public class SearchAction extends ActionSupport {
 		history.setUser(user);
 		history.setCategory(category);
 		
+		historyDao.save(history);
+		
 		return SUCCESS;
 	}
 	
-	//
+	public Category getCategory() {
+		return category;
+	}
 	
 	public void setCategory(Category category) {
 		this.category = category;
@@ -121,10 +125,6 @@ public class SearchAction extends ActionSupport {
 		return treeView;
 	}
 	
-	public void setCategoryDao(CategoryDao categoryDao) {
-		this.categoryDao = categoryDao;
-	}
-	
 	public String getStep() {
 		return step;
 	}
@@ -135,6 +135,14 @@ public class SearchAction extends ActionSupport {
 	
 	public Document getDocument() {
 		return document;
+	}
+	
+	public void setCategoryDao(CategoryDao categoryDao) {
+		this.categoryDao = categoryDao;
+	}
+	
+	public void setHistoryDao(HistoryDao historyDao) {
+		this.historyDao = historyDao;
 	}
 	
 }
