@@ -2,30 +2,50 @@
 <html>
 	<head>
 		<title>Histórico de pesquisa</title>
+		<style type="text/css">
+			@import url("../css/estrelas.css");
+			@import url("../css/grid.css");
+		</style>
 		<ww:head />
+		<script type="text/javascript" src="../javascript/grid.js"></script>
 		<script type="text/javascript">
-			function qualify(id, feedbackScore) {
-				window.location = "qualify.do?history.id=" + id + "&feedbackScore=" + feedbackScore;
+			var old = window.onload;
+			window.onload = function(event) {
+				stripe('grid', '#fff', '#edf3fe');
+				return old();
 			}
 		</script>
 	</head>
 	<body>
 		
 		<h1>Histórico de pesquisa</h1>
-		
-		<div>
-			<ww:iterator value="histories">
-				<a href="<ww:property value="url" />"><ww:property value="title" /></a>
-				
-				<a href="#" onclick="javascript:qualify(${id}, 0.2);">1</a>
-				<a href="#" onclick="javascript:qualify(${id}, 0.4);">2</a>
-				<a href="#" onclick="javascript:qualify(${id}, 0.6);">3</a>
-				<a href="#" onclick="javascript:qualify(${id}, 0.8);">4</a>
-				<a href="#" onclick="javascript:qualify(${id}, 1.0);">5</a>
-				
-				<br />
-			</ww:iterator>
-		</div>
+
+		<b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>			
+		<table id="grid" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Site</th>
+					<th>Estrelas</th>
+				</tr>
+			</thead>
+			<tbody>
+				<ww:iterator value="histories">				
+					<tr>
+						<td><a href="<ww:property value="url" />"><ww:property value="title" /></a></td>						
+						<td>
+							<ul class="star-rating">
+								<li><a href="qualify.do?history.id=${id}&feedbackScore=0.2" class="one-star">1</a></li>
+								<li><a href="qualify.do?history.id=${id}&feedbackScore=0.4" class="two-stars">2</a></li>
+								<li><a href="qualify.do?history.id=${id}&feedbackScore=0.6" class="three-stars">3</a></li>
+								<li><a href="qualify.do?history.id=${id}&feedbackScore=0.7" class="four-stars">4</a></li>
+								<li><a href="qualify.do?history.id=${id}&feedbackScore=1.0" class="five-stars">5</a></li>																																
+							</ul>								
+						</td>
+					</tr>
+				</ww:iterator>							
+			</tbody>	
+		</table>
+		<b class="rbottom"><b class="r4"></b><b class="r3"></b><b class="r2"></b><b class="r1"></b></b>
 		
 	</body>
 </html>
