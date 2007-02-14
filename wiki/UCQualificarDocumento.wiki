@@ -3,8 +3,7 @@
 
 == Pré-condições ==
 
-  * Estar cadastrado; 
-  * Estar logado.
+  * Ter acessado algum documento através do resultado da Pesquisa.
 
 == Pós-condições==
 
@@ -18,4 +17,7 @@
 
 === Fluxo Principal ===
 
-=== Fluxos Secundários ===
+  # Após ter acessado algum documento da pesquisa o ator clica no link "Qualificações";
+  # Sistema mostra a lista de documentos acessados pelo ator;
+  # Ator clica nas estrelinhas, que corresponde a qualificação do documento;
+  # Sistema salva a qualificação do documento.
