@@ -61,7 +61,7 @@ public class CategoryAction extends ActionSupport {
 	
 	public String doSave()
 			throws DaoException, ObjectNotFoundException {
-		
+
 		if (category.getId() == null) {
 			category.setOwner((User) ActionContext.getContext().getSession().get("user"));
 			categoryDao.save(category);
@@ -85,6 +85,7 @@ public class CategoryAction extends ActionSupport {
 		return SUCCESS;
 		
 	}
+
 	
 	// Shared
 	
