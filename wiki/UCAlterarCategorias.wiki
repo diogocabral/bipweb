@@ -1,0 +1,32 @@
+#summary Caso de uso - Alterar categoria
+
+== Pré-Condições ==
+
+  * Estar Logado;
+  * Executar o caso de uso Alterar categorias.
+
+== Pós-Condições ==
+
+  * Não existem.
+
+== Atores ==
+
+  * Usuário cadastrado.
+
+
+== Descrição ==
+
+=== Fluxo Principal ===
+
+  # Após executar o caso de uso Criar categorias o ator clica na categoria;
+  # Sistema mostra o formulário de alteração dos dados da categoria;
+  # Ator clica em "salvar" e submete o formulário *FS01*;
+  # Sistema atualiza os dados alterados da categoria.
+
+=== Fluxos secundários ===
+
+*FS01 Usuário não preencheu os dados necessários*
+
+  # Sistema retorna para o formulário de cadastro e informa ao usuário que os campos necessários devem ser preenchidos;
+  # Voltar para o item 2 do fluxo principal.
+
