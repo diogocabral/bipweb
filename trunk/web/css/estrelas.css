@@ -24,18 +24,21 @@
 	position: absolute;
 	padding: 0px;
 }
-.star-rating li a:hover{
+.star-rating a.one-star-rated, .star-rating a.two-stars-rated, .star-rating a.three-stars-rated, .star-rating a.four-stars-rated, .star-rating a.five-stars-rated {
+	background: url(../images/selected_star.gif) left bottom;
+}
+.star-rating a.one-star:hover, .star-rating a.two-stars:hover, .star-rating a.three-stars:hover, .star-rating a.four-stars:hover, .star-rating a.five-stars:hover {
 	background: url(../images/star_rating.gif) left bottom;
 	z-index: 1;
 	left: 0px;
 }
-.star-rating a.one-star{
+.star-rating a.one-star, .star-rating a.one-star-rated {
 	left: 0px;
 }
 .star-rating a.one-star:hover{
 	width:20px;
 }
-.star-rating a.two-stars{
+.star-rating a.two-stars, .star-rating a.two-stars-rated {
 	left:20px;
 }
 .star-rating a.two-stars:hover{
@@ -44,16 +47,16 @@
 .star-rating a.three-stars:hover{
 	width: 60px;
 }
-.star-rating a.three-stars{
+.star-rating a.three-stars, .star-rating a.three-stars-rated {
 	left: 40px;
 }
-.star-rating a.four-stars{
+.star-rating a.four-stars, .star-rating a.four-stars-rated {
 	left: 60px;
 }	
 .star-rating a.four-stars:hover{
 	width: 80px;
 }
-.star-rating a.five-stars{
+.star-rating a.five-stars, .star-rating a.five-stars-rated {
 	left: 80px;
 }
 .star-rating a.five-stars:hover{
