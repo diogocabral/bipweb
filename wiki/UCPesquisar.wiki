@@ -3,8 +3,7 @@
 
 == Pré-condições ==
 
-  * Estar cadastrado; 
-  * Estar logado.
+  * Ter categorias cadastradas.
 
 == Pós-condições==
 
@@ -18,5 +17,8 @@
 
 === Fluxo Principal ===
 
+  # Após ter executado o caso de uso pelo menos uma vez o ator Clica no link "Pesquisar";
+  # Sistema mostra a lista de categorias cadastradas do ator;
+  # Ator clica na categoria que deseja fazer a busca;
+  # Sistema faz a pesquisa.
 
-=== Fluxos Segundários ===
