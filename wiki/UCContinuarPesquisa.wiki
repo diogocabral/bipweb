@@ -1,0 +1,20 @@
+#summary Caso de Uso - Continuar pesquisa
+
+== Pré-condições ==
+
+  * executar o caso de uso Pesquisar.
+
+== Pós-condições==
+
+  * Não existem.
+
+== Atores ==
+
+  * Usuário cadastrado.
+
+== Descrição ==
+
+=== Fluxo Principal ===
+
+  # Após executar o caso de uso Pesquisar o ator clica no link "Mais resultados".
+  # Sistema procura novos resultados para os critérios de busca utilizados.
