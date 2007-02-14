@@ -1,0 +1,24 @@
+#summary Caso de uso - Excluir categorias
+
+== Pré-Condições ==
+
+  * Estar Logado;
+  * Executar o caso de uso Criar categorias.
+
+== Pós-Condições ==
+
+  * Não existem.
+
+== Atores ==
+
+  * Usuário cadastrado.
+
+
+== Descrição ==
+
+=== Fluxo Principal ===
+
+  # Após executar o caso de uso Criar categorias o ator clica na categoria;
+  # Sistema mostra o formulário de alteração dos dados da categoria;
+  # Ator clica em "Excluir categoria";
+  # Sistema exclui a categoria.
