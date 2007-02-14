@@ -32,6 +32,7 @@
 			<br />
 			
 			<div style="">
+				<b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>						
 				<table id="grid" cellspacing="0" width="100%">
 					<thead>
 						<tr>
@@ -48,6 +49,7 @@
 					</ww:iterator>
 					</tbody>
 				</table>
+				<b class="rbottom"><b class="r4"></b><b class="r3"></b><b class="r2"></b><b class="r1"></b></b>				
 			</div>
 				
 		</ww:if>
