@@ -24,6 +24,7 @@ public class Category implements Serializable {
 	private String name;
 	private String description;
 	private String criteria;
+	private boolean shared;
 	
 	@OneToOne
 	private User owner;
@@ -149,6 +150,14 @@ public class Category implements Serializable {
 
 	public void setHistories(Set<History> histories) {
 		this.histories = histories;
+	}
+
+	public boolean isShared() {
+		return shared;
+	}
+
+	public void setShared(boolean shared) {
+		this.shared = shared;
 	}
 	
 }
