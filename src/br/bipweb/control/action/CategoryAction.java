@@ -75,9 +75,9 @@ public class CategoryAction extends ActionSupport {
 	}
 	
 	public String doDelete()
-			throws DaoException {
+			throws DaoException, ObjectNotFoundException {
 		
-		System.out.println(category.getId());
+		categoryDao.delete(category);
 		
 		addActionMessage("Dados excluídos com sucesso!");
 		

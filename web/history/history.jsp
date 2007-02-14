@@ -24,8 +24,8 @@
 		<table id="grid" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th>Site</th>
-					<th>Estrelas</th>
+					<th>Documento</th>
+					<th>Qualificação</th>
 				</tr>
 			</thead>
 			<tbody>

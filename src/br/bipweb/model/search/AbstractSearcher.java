@@ -1,26 +1,27 @@
 package br.bipweb.model.search;
 
-import java.text.NumberFormat;
 import java.util.Collection;
-import java.util.Locale;
 
+import br.bipweb.model.Criteria;
 import br.bipweb.model.Document;
 
 public abstract class AbstractSearcher implements Searcher {
 	
-	protected static final int N = 10;
-	protected static final String USERAGENT = "BIPWeb";
-	protected static final NumberFormat FORMAT = NumberFormat.getNumberInstance(new Locale("en")); 
+	protected Criteria criteria;
+	protected int documentsPerPage;
 	
-	protected int first, last, total;
-	protected String criteria;
+	public AbstractSearcher() {
+		super();
+		
+		documentsPerPage = 10;
+		
+	}
 	
-	public Collection<Document> search(String criteria)
+	public Collection<Document> search()
 			throws SearchException {
 		
-		first = last = total = 0;
-		
-		this.criteria = criteria;
+		if (criteria == null)
+			throw new SearchException("Deve-se definir um critério de busca.");
 		
 		return null;
 		
@@ -44,6 +45,22 @@ public abstract class AbstractSearcher implements Searcher {
 		
 		return false;
 		
+	}
+	
+	public Criteria getCriteria() {
+		return criteria;
+	}
+	
+	public void setCriteria(Criteria criteria) {
+		this.criteria = criteria;
+	}
+	
+	public int getDocumentsPerPage() {
+		return documentsPerPage;
+	}
+	
+	public void setDocumentsPerPage(int documentsPerPage) {
+		this.documentsPerPage = documentsPerPage;
 	}
 	
 }

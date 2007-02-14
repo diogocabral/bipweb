@@ -1,16 +1,18 @@
 package br.bipweb.model.search;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
 import br.bipweb.model.Document;
+import br.bipweb.util.Constants;
 
 /**
  * 
  * @author Leonardo Costa Beltrão Lessa
  */
-public class MultiSearcher implements Searcher {
+public class MultiSearcher extends AbstractSearcher {
 	
 	private Collection<Searcher> searchers;
 	
@@ -19,25 +21,29 @@ public class MultiSearcher implements Searcher {
 		
 		searchers = new ArrayList<Searcher>();
 		//searchers.add(new AltaVistaSearcher());
-		searchers.add(new GoogleSearcher());
+		//searchers.add(new GoogleSearcher());
 		//searchers.add(new YahooSearcher());
+		searchers.add(new LocalSearcher(new File(Constants.LOCALDOCS_LOCALPATH))); // TODO Gambiarra
 		
 	}
 	
-	public Collection<Document> search(String criteria)
+	@Override
+	public Collection<Document> search()
 			throws SearchException {
 		
 		// HashSet verifica elementos duplicados
 		Collection<Document> documents = new HashSet<Document>();
 		
 		for (Searcher searcher : searchers) {
-			documents.addAll(searcher.search(criteria));
+			searcher.setCriteria(criteria);
+			documents.addAll(searcher.search());
 		}
 		
 		return documents;
 		
 	}
 	
+	@Override
 	public Collection<Document> searchNext()
 			throws SearchException {
 		
@@ -46,6 +52,7 @@ public class MultiSearcher implements Searcher {
 		
 		for (Searcher searcher : searchers) {
 			if (searcher.hasMoreDocuments()) {
+				searcher.setCriteria(criteria);
 				documents.addAll(searcher.searchNext());
 			}
 		}
@@ -53,7 +60,8 @@ public class MultiSearcher implements Searcher {
 		return documents;
 		
 	}
-
+	
+	@Override
 	public boolean hasMoreDocuments()
 			throws SearchException {
 		

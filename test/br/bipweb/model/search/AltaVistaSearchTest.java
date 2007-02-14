@@ -18,7 +18,7 @@ public class AltaVistaSearchTest {
 		Collection<Document> documents;
 		
 		// Buscando
-		documents = search.search("hashne");		
+		documents = search.search();		
 		System.out.println(documents.size());
 		
 		// Continuando a busca

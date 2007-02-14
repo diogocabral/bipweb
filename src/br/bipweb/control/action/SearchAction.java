@@ -63,8 +63,8 @@ public class SearchAction extends ActionSupport {
 			category = categoryDao.get(category.getId());
 			
 			Criteria criteria = new Criteria(category);
-			
-			documents = search.search(criteria);
+			search.setCriteria(criteria);
+			documents = search.search();
 			
 		} catch (SearchException e) {
 			System.out.println(e.getMessage());
