@@ -11,5 +11,10 @@ http://bipweb.googlecode.com/svn/wiki/images/DiagramadeCasosdeUso.png
   * [UCEntrarNoSistema Entrar no sistema];
   * [UCSairDoSistema Sair do sistema];
   * [UCGerenciarCategorias Gerenciar categorias];
+    * [UCMostrarCategorias Mostrar Categorias];
+    * [UCCadastrarCategorias Cadastrar categorias];
+    * [UCAlterarCategorias Alterar categorias];
+    * [UCExcluirCategorias Excluir categorias];
   * [UCPesquisar Pesquisar];
+  * [UCContinuarPesquisa Continuar pesquisa];
   * [UCQualificarDocumento Qualificar documento].
