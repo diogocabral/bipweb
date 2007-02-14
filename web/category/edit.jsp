@@ -16,7 +16,7 @@
 	</head>
 	<body>
 		
-		<h1>Minhas categorias</h1>
+		<h1>Cadastro de categorias</h1>
 		
 		<ww:if test="${step == 'new' || step == 'edit' }">
 			<div class="dtree" style="float: left; width: 200px;">
@@ -26,6 +26,7 @@
 			<form method="post" action="save.do">
 			<ww:if test="${category.id != null}">
 				<input type="hidden" name="category.id" value="${category.id}" />
+				<input type="hidden" name="category.owner.username" value="${category.owner.username}" />
 			</ww:if>
 			<ww:if test="${category.parent.id != null}">
 				<input type="hidden" name="category.parent.id" value="${category.parent.id}" />
@@ -44,6 +45,15 @@
 					<td>
 						<textarea name="category.criteria" cols="40" rows="5">${category.criteria}</textarea>
 					</td>
+				</tr>
+				<tr>
+					<td>Compartilhar:</td>
+					<ww:if test="category.shared == true">
+						<td><input checked="checked" type="checkbox" name="category.shared" value="true" /></td>
+					</ww:if>
+					<ww:else>
+						<td><input type="checkbox" name="category.shared" value="true" /></td>					
+					</ww:else>
 				</tr>
 				<tr>
 					<td colspan="2">
