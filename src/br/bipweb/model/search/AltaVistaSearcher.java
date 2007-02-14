@@ -168,7 +168,7 @@ public class AltaVistaSearcher extends AbstractSearcher {
 						} else { // Tem que ter Prev, por causa do "if (total > N) {"
 							// Fim da busca.
 							position = line.indexOf("\" target=\"_self\">&lt;");
-							line = line.substring(0, position); // TODO talvez possa0 dar erro, mas é pouco provável
+							line = line.substring(0, position);
 							position = line.lastIndexOf("stq=");
 							position += 4;
 							first = Integer.parseInt(line.substring(position)) + N + 1;

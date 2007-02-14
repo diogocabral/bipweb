@@ -71,7 +71,6 @@ public class UserAction extends ActionSupport {
 		try {
 			userDao.update(user);
 		} catch (ObjectNotFoundException e) {
-			//TODO
 			return ERROR;
 		}
 		

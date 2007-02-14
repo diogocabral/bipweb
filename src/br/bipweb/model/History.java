@@ -39,6 +39,11 @@ public class History extends Document implements Serializable {
 		
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("{ %s(%s) %s - %s - '%s' <%s> }", getClass().getCanonicalName(), getId(), getScore(), getFeedbackScore(), getTitle(), getUrl());
+	}
+	
 	public Long getId() {
 		return id;
 	}
