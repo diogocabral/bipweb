@@ -6,7 +6,9 @@ import br.bipweb.dao.DaoException;
 import br.bipweb.dao.HistoryDao;
 import br.bipweb.dao.ObjectNotFoundException;
 import br.bipweb.model.History;
+import br.bipweb.model.User;
 
+import com.opensymphony.xwork.ActionContext;
 import com.opensymphony.xwork.ActionSupport;
 
 public class HistoryAction extends ActionSupport {
@@ -27,7 +29,9 @@ public class HistoryAction extends ActionSupport {
 	public String doLoad()
 			throws DaoException {
 		
-		histories = historyDao.listAll();
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		
+		histories = historyDao.listByUser(user);
 		
 		return SUCCESS;
 		

@@ -42,9 +42,13 @@
 					</thead>
 					<tbody>
 					<ww:iterator value="documents">
-						<tr onclick="window.location = 'open.do?score=${score}&document.title=${title}&document.url=${url}&category.id=${category.id}'">
+						<tr>
 							<td><ww:property value="score" /></td>
-							<td><ww:property value="title" /></td>
+							<td>
+								<a href="open.do?score=${score}&document.title=${title}&document.url=${url}&category.id=${category.id}">
+									<ww:property value="title" />
+								</a>
+							</td>
 						</tr>
 					</ww:iterator>
 					</tbody>

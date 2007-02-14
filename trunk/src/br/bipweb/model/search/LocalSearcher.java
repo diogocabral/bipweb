@@ -12,17 +12,15 @@ import br.bipweb.model.Document;
 public class LocalSearcher extends AbstractSearcher {
 	
 	private File directory;
+	private String prefix;
+	
 	private FileFilter filter;
 	private Comparator<File> comparator;
 	
 	private int count, countAdded, first, last, total;
 	
-	public LocalSearcher(File directory) {
+	public LocalSearcher() {
 		super();
-		
-		documentsPerPage = 100;
-		
-		this.directory = directory;
 		
 		this.filter = new FileFilter() {
 			public boolean accept(File file) {
@@ -127,8 +125,8 @@ public class LocalSearcher extends AbstractSearcher {
 		if (directory.isFile()) { // É um arquivo
 			
 			if (count >= first) {
-			
-				String url = directory.toURI().toString();
+				
+				String url = prefix + directory.getPath().substring(this.directory.getPath().length());
 				
 				Document document = new Document();
 				document.setUrl(url);
@@ -170,6 +168,14 @@ public class LocalSearcher extends AbstractSearcher {
 		
 		return total;
 		
+	}
+	
+	public void setDirectory(File directory) {
+		this.directory = directory;
+	}
+	
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
 	}
 	
 }

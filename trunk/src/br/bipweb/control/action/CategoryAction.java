@@ -34,7 +34,7 @@ public class CategoryAction extends ActionSupport {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		
-		treeView = new TreeView(Type.MANAGE, categoryDao.listByUser(user));
+		treeView = new TreeView(Type.MANAGE, categoryDao.listByOwner(user));
 		
 		return SUCCESS;
 		

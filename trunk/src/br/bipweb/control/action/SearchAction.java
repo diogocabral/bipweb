@@ -1,6 +1,7 @@
 package br.bipweb.control.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import br.bipweb.dao.CategoryDao;
@@ -48,7 +49,7 @@ public class SearchAction extends ActionSupport {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		
-		treeView = new TreeView(Type.SEARCH, categoryDao.listByUser(user));
+		treeView = new TreeView(Type.SEARCH, categoryDao.listByOwner(user));
 		
 		return SUCCESS;
 	}
@@ -60,10 +61,18 @@ public class SearchAction extends ActionSupport {
 		
 		try {
 			
+			Collection<Document> excludeDocuments = new ArrayList<Document>();
+			User user = (User) ActionContext.getContext().getSession().get("user");
+			Collection<History> histories = historyDao.listByUser(user);
+			for (History history : histories) {
+				excludeDocuments.add(history.toDocument());
+			}
+			
 			category = categoryDao.get(category.getId());
 			
 			Criteria criteria = new Criteria(category);
 			search.setCriteria(criteria);
+			search.setExcludeDocuments(excludeDocuments);
 			documents = search.search();
 			
 		} catch (SearchException e) {

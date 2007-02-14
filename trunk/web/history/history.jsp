@@ -3,10 +3,9 @@
 	<head>
 		<title>Histórico de pesquisa</title>
 		<style type="text/css">
-			@import url("../css/estrelas.css");
+			@import url("../css/stars.css");
 			@import url("../css/grid.css");
 		</style>
-		<ww:head />
 		<script type="text/javascript" src="../javascript/grid.js"></script>
 		<script type="text/javascript">
 			var old = window.onload;

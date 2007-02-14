@@ -21,6 +21,7 @@ public class SearchController {
 	private ScoreAgent scoreAgent;
 	
 	private Criteria criteria;
+	private Collection<Document> excludeDocuments;
 	
 	private SearchController() {
 		super();
@@ -42,7 +43,11 @@ public class SearchController {
 		
 		searcher.setCriteria(criteria);
 		
-		return scoreAgent.execute(criteria.getCleanCriteria(), searcher.search());
+		Collection<Document> documents = searcher.search();
+		
+		documents.removeAll(excludeDocuments);
+		
+		return scoreAgent.execute(criteria.getCleanCriteria(), documents);
 		
 	}
 	
@@ -51,12 +56,20 @@ public class SearchController {
 		
 		searcher.setCriteria(criteria);
 		
-		return scoreAgent.execute(criteria.getCleanCriteria(), searcher.searchNext());
+		Collection<Document> documents = searcher.searchNext();
+		
+		documents.removeAll(excludeDocuments);
+		
+		return scoreAgent.execute(criteria.getCleanCriteria(), documents);
 		
 	}
 	
 	public void setCriteria(Criteria criteria) {
 		this.criteria = criteria;
+	}
+	
+	public void setExcludeDocuments(Collection<Document> excludeDocuments) {
+		this.excludeDocuments = excludeDocuments;
 	}
 	
 }

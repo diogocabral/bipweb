@@ -18,8 +18,6 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.w3c.tidy.Tidy;
 
-import br.bipweb.util.Constants;
-
 public class HTMLDocument {
 	
 	private String path;
@@ -41,10 +39,6 @@ public class HTMLDocument {
 			throws IOException {
 		
 		this.path = url.toString();
-		
-		if (this.path.indexOf("file:") == 0) { // TODO Gambiarra
-			this.path = Constants.LOCALDOCS_WEBPATH + this.path.substring(5 + Constants.LOCALDOCS_LOCALPATH.length());
-		}
 		
 		URLConnection connection = url.openConnection();
 		connection.setReadTimeout(1000);
