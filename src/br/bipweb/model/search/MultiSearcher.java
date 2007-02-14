@@ -23,7 +23,14 @@ public class MultiSearcher extends AbstractSearcher {
 		//searchers.add(new AltaVistaSearcher());
 		//searchers.add(new GoogleSearcher());
 		//searchers.add(new YahooSearcher());
-		searchers.add(new LocalSearcher(new File(Constants.LOCALDOCS_LOCALPATH))); // TODO Gambiarra
+		
+		/*
+		 * TODO Gambiarra para poder funcionar na Internet da UFAL :)
+		 */
+		LocalSearcher localSearcher = new LocalSearcher();
+		localSearcher.setDirectory(new File(Constants.LOCALDOCS_LOCALPATH));
+		localSearcher.setPrefix(Constants.LOCALDOCS_WEBPATH);
+		searchers.add(localSearcher);
 		
 	}
 	

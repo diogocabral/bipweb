@@ -39,9 +39,21 @@ public class History extends Document implements Serializable {
 		
 	}
 	
+	public Document toDocument() {
+		
+		Document document = new Document();
+		
+		document.title = this.title;
+		document.url = this.url ;
+		document.score = this.score;
+		
+		return document;
+		
+	}
+	
 	@Override
 	public String toString() {
-		return String.format("{ %s(%s) %s - %s - '%s' <%s> }", getClass().getCanonicalName(), getId(), getScore(), getFeedbackScore(), getTitle(), getUrl());
+		return String.format("{ %s(%s) %s - %s - '%s' <%s> }", getClass().getSimpleName(), getId(), getScore(), getFeedbackScore(), getTitle(), getUrl());
 	}
 	
 	public Long getId() {

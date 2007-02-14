@@ -19,14 +19,21 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 		super(Category.class, session);
 	}
 
-	public Collection<Category> listByUser(User user) throws DaoException {		
+	public Collection<Category> listByOwner(User owner)
+			throws DaoException {
+		
 		try {
-			Query query = session.createQuery("select category from Category category where category.parent = null");
+			
+			String hql = String.format("select category from Category category where category.parent = null and category.owner.username = '%s'", owner.getUsername());
+			
+			Query query = session.createQuery(hql);
 
 			return query.list();
+			
 		} catch (HibernateException e) {
 			throw new DaoException(e);
-		}		
+		}
+		
 	}
 	
 }

@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<title>Entrar</title>
-		<ww:head />
 	</head>
 	<body>
 		

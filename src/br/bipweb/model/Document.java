@@ -44,7 +44,7 @@ public class Document implements Serializable {
 	
 	@Override
 	public String toString() {
-		return String.format("{ %s %s - '%s' <%s> }", getClass(), getScore(), getTitle(), getUrl());
+		return String.format("{ %s %s - '%s' <%s> }", getClass().getSimpleName(), getScore(), getTitle(), getUrl());
 	}
 
 	public String getTitle() {
