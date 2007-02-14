@@ -23,7 +23,8 @@
 				<div style="position: absolute; right: 100px; top: 120px;"><b>Usuário: <ww:property value="#session.user.username" /></b></div>
 				<li><a href="<ww:url action="load" namespace="/search" includeParams="none" />">Pesquisar</a></li>
 				<li><a href="<ww:url action="load" namespace="/history" includeParams="none" />">Qualificações</a></li>
-				<li><a href="<ww:url action="manage" namespace="/category" includeParams="none" />">Categorias</a></li>
+				<li><a href="<ww:url action="manage" namespace="/category" includeParams="none" />">Minhas categorias</a></li>
+				<li><a href="<ww:url action="manageShared" namespace="/category" includeParams="none" />">Categorias associadas</a></li>
 				<li><a href="<ww:url action="load" namespace="/user" includeParams="none" />">Alterar senha</a></li>
 				<li><a href="<ww:url value="/help/help.jsp" includeParams="none" />">Ajuda</a></li>
 				<li><a href="<ww:url action="logout" namespace="/user" includeParams="none" />">Sair</a></li>

@@ -54,6 +54,8 @@ public class TreeView implements Serializable {
 			buffer.append(String.format("d.add(%s,%s,'%s','edit.do?category.id=%s');", id, parentId, c.getName(), id));
 		} else if (type == Type.SEARCH) {
 			buffer.append(String.format("d.add(%s,%s,'%s','search.do?category.id=%s');", id, parentId, c.getName(), id));
+		} else if (type == Type.MANAGE_SHARED) {
+			buffer.append(String.format("d.add(%s,%s,'%s','editShared.do?category.id=%s');", id, parentId, c.getName(), id));
 		}
 		
 		Collection<Category> categories = c.getChildren();
@@ -72,7 +74,8 @@ public class TreeView implements Serializable {
 	
 	public enum Type {
 		MANAGE,
-		SEARCH
+		SEARCH,
+		MANAGE_SHARED
 	}
 	
 }

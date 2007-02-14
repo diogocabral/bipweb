@@ -22,6 +22,7 @@ public class CategoryAction extends ActionSupport {
 	private TreeView treeView;
 	
 	private String step;
+	private String query;
 	
 	private CategoryDao categoryDao;
 	
@@ -85,6 +86,54 @@ public class CategoryAction extends ActionSupport {
 		
 	}
 	
+	// Shared
+	
+	public String doManageShared()
+			throws DaoException {
+		
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		
+		treeView = new TreeView(Type.MANAGE_SHARED, categoryDao.listByOwner(user));
+		
+		return SUCCESS;
+	}
+	
+	public String doEditShared()
+			throws DaoException, ObjectNotFoundException {
+		
+		this.step = "editShared";
+		
+		category = categoryDao.get(category.getId());
+		
+		return doManageShared();
+		
+	}
+	
+	public String doSearchShared()
+			throws DaoException {
+		
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		
+		categories = categoryDao.listByNotUserAndName(user, query);
+		
+		return SUCCESS;
+		
+	}
+	
+	public String doJoin()
+			throws DaoException {
+		
+		return doManageShared();
+		
+	}
+	
+	public String doUnjoin()
+			throws DaoException {
+		
+		return doManageShared();
+		
+	}	
+	
 	// Get e Set
 	
 	public Category getCategory() {
@@ -105,6 +154,10 @@ public class CategoryAction extends ActionSupport {
 	
 	public String getStep() {
 		return step;
+	}
+	
+	public void setQuery(String query) {
+		this.query = query;
 	}
 	
 	public void setCategoryDao(CategoryDao categoryDao) {
