@@ -16,6 +16,8 @@ public class HistoryAction extends ActionSupport {
 	private History history;
 	private Collection<History> histories;
 	
+	private String feedbackScore;
+	
 	private HistoryDao historyDao;
 	
 	public HistoryAction() {
@@ -34,17 +36,11 @@ public class HistoryAction extends ActionSupport {
 	public String doQualify()
 			throws DaoException, ObjectNotFoundException {
 		
-		System.out.println(history);
-		
-		Float feedbackScore = history.getFeedbackScore();
-		
 		history = historyDao.get(history.getId());
 		
-		System.out.println(history);
+		history.setFeedbackScore(new Float(feedbackScore));
 		
-		history.setFeedbackScore(feedbackScore);
-		
-		//historyDao.update(history);
+		historyDao.update(history);
 		
 		return SUCCESS;
 		
@@ -60,6 +56,10 @@ public class HistoryAction extends ActionSupport {
 	
 	public Collection<History> getHistories() {
 		return histories;
+	}
+	
+	public void setFeedbackScore(String feedbackScore) {
+		this.feedbackScore = feedbackScore;
 	}
 	
 	public void setHistoryDao(HistoryDao historyDao) {
