@@ -1,0 +1,34 @@
+#summary Caso de uso - Cadastrar categoria
+
+== Pré-Condições ==
+
+  * Estar Logado;
+  * Executar o caso de uso Mostrar categorias.
+
+== Pós-Condições ==
+
+  * Não existem.
+
+== Atores ==
+
+  * Usuário cadastrado.
+
+
+== Descrição ==
+
+=== Fluxo Principal ===
+
+  # Após executar o caso de uso Mostrar categorias o ator clica no link "Nova categoria";
+  # Sistema mostra o formulário de cadastramento de novas categorias;
+  # Ator preenche os dados de cadastro da categoria;
+  # Ator submete o formulário;
+  # Sistema grava os dados da categoria no banco *FS01*;
+  # Sistema cria nova categoria.
+
+=== Fluxos secundários ===
+
+*FS01 Usuário não preencheu os dados necessários*
+
+  # Sistema retorna para o formulário de cadastro e informa ao usuário que os campos necessários devem ser preenchidos;
+  # Voltar para o item 3 do fluxo principal.
+
