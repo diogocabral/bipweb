@@ -32,10 +32,11 @@ public class SearchAction extends ActionSupport {
 	
 	private TreeView treeView;
 	
+	private String step;
+	private String score;
+	
 	private CategoryDao categoryDao;
 	private HistoryDao historyDao;
-	
-	private String step;
 	
 	public SearchAction() {
 		super();
@@ -101,6 +102,7 @@ public class SearchAction extends ActionSupport {
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		
 		History history = new History(document);
+		history.setScore(new Float(score));
 		history.setUser(user);
 		history.setCategory(category);
 		
@@ -127,6 +129,11 @@ public class SearchAction extends ActionSupport {
 	
 	public String getStep() {
 		return step;
+	}
+	
+	
+	public void setScore(String score) {
+		this.score = score;
 	}
 	
 	public void setDocument(Document document) {

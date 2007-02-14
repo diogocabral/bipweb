@@ -5,8 +5,7 @@
 		<ww:head />
 		<script type="text/javascript">
 			function qualify(id, feedbackScore) {
-				window.alert("qualify.do?history.id=" + id + "&history.feedbackScore=" + feedbackScore);
-				window.location = "qualify.do?history.id=" + id + "&history.feedbackScore=" + feedbackScore;
+				window.location = "qualify.do?history.id=" + id + "&feedbackScore=" + feedbackScore;
 			}
 		</script>
 	</head>
