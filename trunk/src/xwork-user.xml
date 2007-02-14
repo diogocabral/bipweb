@@ -3,7 +3,7 @@
 	
 	<package name="user" extends="ROOT" namespace="/user">
 		
-		<action name="login" class="br.bipweb.action.UserAction" method="doLogin">
+		<action name="login" class="br.bipweb.control.action.UserAction" method="doLogin">
 			<interceptor-ref name="publicStack" />
 			<result type="dispatcher" name="success">
 				<param name="location">/index.jsp</param>
@@ -13,7 +13,7 @@
 			</result>			
 		</action>
 		
-		<action name="save" class="br.bipweb.action.UserAction" method="doSave">
+		<action name="save" class="br.bipweb.control.action.UserAction" method="doSave">
 			<interceptor-ref name="publicStack" />	
 			<result type="dispatcher" name="success">
 				<param name="location">/index.jsp</param>
@@ -23,13 +23,13 @@
 			</result>			
 		</action>
 		
-		<action name="load" class="br.bipweb.action.UserAction" method="doLoad">
+		<action name="load" class="br.bipweb.control.action.UserAction" method="doLoad">
 			<result type="dispatcher" name="success">
 				<param name="location">edit.jsp</param>
 			</result>
 		</action>
 		
-		<action name="edit" class="br.bipweb.action.UserAction" method="doEdit">
+		<action name="edit" class="br.bipweb.control.action.UserAction" method="doEdit">
 			<result type="dispatcher" name="success">
 				<param name="location">edit.jsp</param>
 			</result>
@@ -41,7 +41,7 @@
 			</result>						
 		</action>		
 		
-		<action name="logout" class="br.bipweb.action.UserAction" method="doLogout">
+		<action name="logout" class="br.bipweb.control.action.UserAction" method="doLogout">
 			<result type="dispatcher" name="success">
 				<param name="location">/index.jsp</param>
 			</result>		

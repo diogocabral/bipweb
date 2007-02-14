@@ -4,7 +4,7 @@
 <beans default-autowire="autodetect">
 
     <!-- hibernate session -->
-    <bean id="sessionFactory" class="br.bipweb.hibernate.HibernateSessionFactory" singleton="true" />
+    <bean id="sessionFactory" class="br.bipweb.util.HibernateSessionFactory" singleton="true" />
     
     <bean id="session" class="org.hibernate.Session" factory-bean="sessionFactory" factory-method="getSession" singleton="false" />
     
