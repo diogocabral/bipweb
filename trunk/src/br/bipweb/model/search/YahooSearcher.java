@@ -12,17 +12,21 @@ import java.util.Collection;
 
 import br.bipweb.model.Document;
 
-public class YahooSearcher extends AbstractSearcher {
+public class YahooSearcher extends AbstractWebSearcher {
 	
-	private static final String SEARCH_URL = "http://search.yahoo.com/search?n=" + N + "&p=";
+	private static final String SEARCH_URL = "http://search.yahoo.com/search";
 	
-	public Collection<Document> search(String criteria)
+	public YahooSearcher() {
+		super();
+	}
+	
+	public Collection<Document> search()
 			throws SearchException {
-		super.search(criteria);
+		super.search();
 		
 		try {
 			
-			URL url = new URL(SEARCH_URL + criteria);
+			URL url = new URL(String.format("%s?n=%s&p=%s", SEARCH_URL, documentsPerPage, criteria.getEncodedCriteria()));
 		
 			return search(url);
 			
@@ -38,7 +42,7 @@ public class YahooSearcher extends AbstractSearcher {
 		
 		try {
 			
-			URL url = new URL(SEARCH_URL + criteria + "&b=" + (last + 1));
+			URL url = new URL(String.format("%s?n=%s&p=%s&b=%s", SEARCH_URL, documentsPerPage, criteria.getEncodedCriteria(), last + 1));
 		
 			return search(url);
 			

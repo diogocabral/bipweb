@@ -37,20 +37,26 @@ public class SearchController {
 		return instance;
 	}
 	
-	public Collection<Document> search(Criteria criteria)
+	public Collection<Document> search()
 			throws SearchException, IOException {
 		
-		this.criteria = criteria;
+		searcher.setCriteria(criteria);
 		
-		return scoreAgent.execute(criteria.getCleanCriteria(), searcher.search(criteria.getEncodedCriteria()));
+		return scoreAgent.execute(criteria.getCleanCriteria(), searcher.search());
 		
 	}
 	
 	public Collection<Document> searchNext()
 			throws SearchException, IOException {
 		
+		searcher.setCriteria(criteria);
+		
 		return scoreAgent.execute(criteria.getCleanCriteria(), searcher.searchNext());
 		
+	}
+	
+	public void setCriteria(Criteria criteria) {
+		this.criteria = criteria;
 	}
 	
 }

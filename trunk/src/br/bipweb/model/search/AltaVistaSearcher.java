@@ -16,21 +16,21 @@ import br.bipweb.model.Document;
  * 
  * @author Leonardo Costa Beltrão Lessa
  */
-public class AltaVistaSearcher extends AbstractSearcher {
+public class AltaVistaSearcher extends AbstractWebSearcher {
 	
-	private static final String SEARCH_URL = "http://www.altavista.com/web/results?nbq=" + N + "&q=";
+	private static final String SEARCH_URL = "http://www.altavista.com/web/results";
 	
 	public AltaVistaSearcher() {
 		super();
 	}
 	
-	public Collection<Document> search(String criteria)
+	public Collection<Document> search()
 			throws SearchException {
-		super.search(criteria);
+		super.search();
 		
 		try {
 			
-			URL url = new URL(SEARCH_URL + criteria);
+			URL url = new URL(String.format("%s?nbq=%s&q=%s", SEARCH_URL, documentsPerPage, criteria.getEncodedCriteria()));
 			
 			return search(url);
 			
@@ -46,7 +46,7 @@ public class AltaVistaSearcher extends AbstractSearcher {
 		
 		try {
 			
-			URL url = new URL(SEARCH_URL + criteria + "&stq=" + last);
+			URL url = new URL(String.format("%s?nbq=%s&q=%s&stq=%s", SEARCH_URL, documentsPerPage, criteria.getEncodedCriteria(), last));
 			
 			return search(url);
 			
@@ -149,7 +149,7 @@ public class AltaVistaSearcher extends AbstractSearcher {
 			/*
 			 * Cálculo de first e last
 			 */
-			if (total > N) {
+			if (total > documentsPerPage) {
 				
 				while ((line = reader.readLine()) != null) {
 					
@@ -164,14 +164,14 @@ public class AltaVistaSearcher extends AbstractSearcher {
 							position = line.lastIndexOf("stq=");
 							position += 4;
 							last = Integer.parseInt(line.substring(position));
-							first = last - N + 1;
+							first = last - documentsPerPage + 1;
 						} else { // Tem que ter Prev, por causa do "if (total > N) {"
 							// Fim da busca.
 							position = line.indexOf("\" target=\"_self\">&lt;");
 							line = line.substring(0, position);
 							position = line.lastIndexOf("stq=");
 							position += 4;
-							first = Integer.parseInt(line.substring(position)) + N + 1;
+							first = Integer.parseInt(line.substring(position)) + documentsPerPage + 1;
 							last = total;
 						}
 						

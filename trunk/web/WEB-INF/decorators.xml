@@ -2,7 +2,8 @@
 <decorators defaultdir="/decorators">
 	
 	<decorator name="main" page="main.jsp">
-		<pattern>/*</pattern>
+		<pattern>/*.jsp</pattern>
+		<pattern>/*.do</pattern>
 	</decorator>
 	
 </decorators>

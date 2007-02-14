@@ -37,7 +37,7 @@
 					<thead>
 						<tr>
 							<th width="60">Relevância</th>
-							<th>Título</th>
+							<th>Documento</th>
 						</tr>					
 					</thead>
 					<tbody>

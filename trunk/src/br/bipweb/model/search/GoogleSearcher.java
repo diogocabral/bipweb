@@ -19,18 +19,22 @@ import br.bipweb.model.Document;
  * 
  * @author Leonardo Costa Beltrão Lessa
  */
-public class GoogleSearcher extends AbstractSearcher {
+public class GoogleSearcher extends AbstractWebSearcher {
 	
-	private static final String SEARCH_URL = "http://www.google.com/search?num=" + N + "&q=";
+	private static final String SEARCH_URL = "http://www.google.com/search";
 	
-	public Collection<Document> search(String criteria)
+	public GoogleSearcher() {
+		super();
+	}
+	
+	public Collection<Document> search()
 			throws SearchException {
-		super.search(criteria);
+		super.search();
 		
 		try {
 			
-			URL url = new URL(SEARCH_URL + criteria);
-		
+			URL url = new URL(String.format("%s?num=%s&q=%s", SEARCH_URL, documentsPerPage, criteria.getEncodedCriteria()));
+			
 			return search(url);
 			
 		} catch (MalformedURLException e) {
@@ -45,7 +49,7 @@ public class GoogleSearcher extends AbstractSearcher {
 		
 		try {
 			
-			URL url = new URL(SEARCH_URL + criteria + "&start=" + last);
+			URL url = new URL(String.format("%s?num=%s&q=%s&start=%s", SEARCH_URL, documentsPerPage, criteria.getEncodedCriteria(), last));
 			
 			return search(url);
 			
@@ -59,7 +63,7 @@ public class GoogleSearcher extends AbstractSearcher {
 			throws SearchException {
 		super.hasMoreDocuments();
 		
-		if (last < total && (last % N == 0))
+		if (last < total && (last % documentsPerPage == 0))
 			return true;
 		
 		return false;

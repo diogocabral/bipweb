@@ -56,7 +56,7 @@ public class ScoreAgent {
 		for (Document document : documents) {
 
 			try {
-
+				
 				URL url = new URL(document.getUrl());
 
 				org.apache.lucene.document.Document html = HTMLDocument.getDocument(url);

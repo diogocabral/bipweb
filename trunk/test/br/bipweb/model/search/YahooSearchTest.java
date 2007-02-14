@@ -15,7 +15,7 @@ public class YahooSearchTest {
 		
 		YahooSearcher search = new YahooSearcher();
 		
-		Collection<Document> documents = search.search("Teste");
+		Collection<Document> documents = search.search();
 		
 		System.out.println(documents.size() + "\n");
 		

@@ -1,5 +1,6 @@
 package br.bipweb.model.search;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -7,34 +8,23 @@ import org.junit.Test;
 
 import br.bipweb.model.Criteria;
 import br.bipweb.model.Document;
-import br.bipweb.model.search.ScoreAgent;
 
-public class ScoreAgentTest {
+public class LocalSearcherTest {
 
 	@Test
-	public void testExecute()
+	public void testSearch()
 			throws SearchException, IOException {
 		
-		Criteria criteria = new Criteria("banco de dados");
+		Criteria criteria = new Criteria("apache");
 		
-		GoogleSearcher searcher = new GoogleSearcher();
+		LocalSearcher searcher = new LocalSearcher(new File("web/localdocs"));
 		searcher.setCriteria(criteria);
-		
-		Collection<Document> documents;
-		int count;
-		
-		System.out.println(criteria.getEncodedCriteria());
-		
-		documents = searcher.search();
-		count = 1;
-		for (Document document : documents) {
-			System.out.println(String.format("%s. %s", count++, document));
-		}
 		
 		ScoreAgent agent = new ScoreAgent();
 		
+		Collection<Document> documents = searcher.search();
 		documents = agent.execute(criteria.getCleanCriteria(), documents);
-		count = 1;
+		int count = 1;
 		for (Document document : documents) {
 			System.out.println(String.format("%s. %s", count++, document));
 		}
