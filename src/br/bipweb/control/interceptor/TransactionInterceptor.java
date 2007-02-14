@@ -1,6 +1,6 @@
 package br.bipweb.control.interceptor;
 
-import br.bipweb.hibernate.HibernateSessionFactory;
+import br.bipweb.util.HibernateSessionFactory;
 
 import com.opensymphony.xwork.ActionInvocation;
 import com.opensymphony.xwork.ActionSupport;

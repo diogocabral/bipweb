@@ -3,25 +3,25 @@
 	
 	<package name="category" extends="ROOT" namespace="/category">
 		
-		<action name="manage" class="br.bipweb.action.CategoryAction" method="doManage">
+		<action name="manage" class="br.bipweb.control.action.CategoryAction" method="doManage">
 			<result type="dispatcher" name="success">
 				<param name="location">edit.jsp</param>
 			</result>		
 		</action>
 		
-		<action name="new" class="br.bipweb.action.CategoryAction" method="doNew">
+		<action name="new" class="br.bipweb.control.action.CategoryAction" method="doNew">
 			<result type="dispatcher" name="success">
 				<param name="location">edit.jsp</param>
 			</result>
 		</action>
 		
-		<action name="edit" class="br.bipweb.action.CategoryAction" method="doEdit">
+		<action name="edit" class="br.bipweb.control.action.CategoryAction" method="doEdit">
 			<result type="dispatcher" name="success">
 				<param name="location">edit.jsp</param>
 			</result>
 		</action>
 		
-		<action name="save" class="br.bipweb.action.CategoryAction" method="doSave">
+		<action name="save" class="br.bipweb.control.action.CategoryAction" method="doSave">
 			<!-- Recarrega a árvore -->
 			<result type="redirect-action" name="success">
 				<param name="actionName">manage</param>

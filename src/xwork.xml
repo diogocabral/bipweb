@@ -7,9 +7,9 @@
 	
     	<interceptors>
     	
-    		<interceptor name="transaction" class="br.bipweb.interceptor.TransactionInterceptor"/>
+    		<interceptor name="transaction" class="br.bipweb.control.interceptor.TransactionInterceptor"/>
     		
-    		<interceptor name="permission" class="br.bipweb.interceptor.PermissionInterceptor"/>    		
+    		<interceptor name="permission" class="br.bipweb.control.interceptor.PermissionInterceptor"/>    		
     		
     		<interceptor-stack name="publicStack">
     			<interceptor-ref name="defaultStack" />
