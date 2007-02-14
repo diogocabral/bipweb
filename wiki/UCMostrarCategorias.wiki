@@ -1,0 +1,19 @@
+#summary Caso de Uso - Mostrar categorias
+
+== Pré-Condições ==
+
+  * Estar logado;
+  * Executar o caso de uso Gerenciar categorias.
+
+== Pós-Condições ==
+
+  * Não existem.
+
+== Atores ==
+ * Usuário Cadastrado.
+
+== Descrição ==
+
+=== Fluxo Principal ===
+
+  # Após executar o caso de uso Gerenciar categorias o sistema mostra as categorias do ator.  
