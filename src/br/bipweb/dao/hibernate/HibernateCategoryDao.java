@@ -36,4 +36,23 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 		
 	}
 	
+	public Collection<Category> listByNotUserAndName(User user, String name)
+			throws DaoException {
+		
+		String hql = String.format(
+				"select category " +
+				"from Category category " +
+				"where " +
+				"category.parent = null " +
+				"and category.owner.username != '%1$' " +
+				"and category.users.username != '%1$' " +
+				"and category.name LIKE '%2$%%'",
+				user.getUsername(), name);
+		
+		System.out.println(hql);
+		
+		return null;
+		
+	}
+	
 }

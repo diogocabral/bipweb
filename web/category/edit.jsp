@@ -16,7 +16,7 @@
 	</head>
 	<body>
 		
-		<h1>Cadastro de categorias</h1>
+		<h1>Minhas categorias</h1>
 		
 		<ww:if test="${step == 'new' || step == 'edit' }">
 			<div class="dtree" style="float: left; width: 200px;">

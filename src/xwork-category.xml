@@ -35,6 +35,38 @@
 			</result>
 		</action>
 		
+		<!-- Shared -->
+		
+		<action name="manageShared" class="br.bipweb.control.action.CategoryAction" method="doManageShared">
+			<result type="dispatcher" name="success">
+				<param name="location">editShared.jsp</param>
+			</result>		
+		</action>
+		
+		<action name="editShared" class="br.bipweb.control.action.CategoryAction" method="doEditShared">
+			<result type="dispatcher" name="success">
+				<param name="location">editShared.jsp</param>
+			</result>		
+		</action>
+		
+		<action name="searchShared" class="br.bipweb.control.action.CategoryAction" method="doSearchShared">
+			<result type="dispatcher" name="success">
+				<param name="location">searchShared.jsp</param>
+			</result>		
+		</action>
+		
+		<action name="join" class="br.bipweb.control.action.CategoryAction" method="doJoin">
+			<result type="dispatcher" name="success">
+				<param name="location">editShared.jsp</param>
+			</result>		
+		</action>
+		
+		<action name="unjoin" class="br.bipweb.control.action.CategoryAction" method="doUnjoin">
+			<result type="dispatcher" name="success">
+				<param name="location">editShared.jsp</param>
+			</result>		
+		</action>
+		
 	</package>
 	
 </xwork>

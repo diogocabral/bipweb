@@ -10,4 +10,7 @@ public interface CategoryDao extends GenericDao<Category, Long> {
 	Collection<Category> listByOwner(User owner)
 			throws DaoException;
 	
+	Collection<Category> listByNotUserAndName(User user, String name)
+			throws DaoException;
+	
 }
