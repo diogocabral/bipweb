@@ -18,5 +18,5 @@
 
 === Fluxo Principal ===
 
-
-=== Fluxos Segundários ===
+  # Ator entra na página de gerência de categorias através do link "Minhas categorias";
+  # O sistema executa o caso de uso Mostrar categorias.
