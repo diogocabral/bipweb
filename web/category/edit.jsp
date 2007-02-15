@@ -33,21 +33,21 @@
 			</ww:if>
 			<table class="wwFormTable">
 				<tr>
-					<td class="tdLabel"><label class="label">Nome<span class="required">*</span>:</label></td>
+					<td class="tdLabel" align="right"><label class="label">Nome<span class="required">*</span>:</label></td>
 					<td><input type="text" name="category.name" size="40" value="${category.name}" /></td>
 				</tr>
 				<tr>
-					<td class="tdLabel"><label class="label">Descrição:</label></td>
+					<td class="tdLabel" align="right"><label class="label">Descrição:</label></td>
 					<td><input type="text" name="category.description" size="40" value="${category.description}" /></td>
 				</tr>
 				<tr>
-					<td class="tdLabel"><label class="label">Critérios de busca<span class="required">*</span>:</label></td>
+					<td class="tdLabel" align="right"><label class="label">Critérios de busca<span class="required">*</span>:</label></td>
 					<td>
 						<textarea name="category.criteria" cols="40" rows="5">${category.criteria}</textarea>
 					</td>
 				</tr>
 				<tr>
-					<td>Compartilhar:</td>
+					<td align="right">Compartilhar:</td>
 					<ww:if test="category.shared == true">
 						<td><input checked="checked" type="checkbox" name="category.shared" value="true" /></td>
 					</ww:if>

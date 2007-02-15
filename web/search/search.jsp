@@ -41,16 +41,25 @@
 						</tr>					
 					</thead>
 					<tbody>
-					<ww:iterator value="documents">
-						<tr>
-							<td><ww:property value="score" /></td>
-							<td>
-								<a href="open.do?score=${score}&document.title=${title}&document.url=${url}&category.id=${category.id}">
-									<ww:property value="title" />
-								</a>
-							</td>
-						</tr>
-					</ww:iterator>
+						<ww:if test="documents != null">
+							<ww:if test="documents.size() > 0">
+								<ww:iterator value="documents">
+									<tr>
+										<td><ww:property value="score" /></td>
+										<td>
+											<a href="open.do?score=${score}&document.title=${title}&document.url=${url}&category.id=${category.id}">
+												<ww:property value="title" />
+											</a>
+										</td>
+									</tr>
+								</ww:iterator>
+							</ww:if>
+							<ww:else>
+								<tr>
+									<td colspan="2">Nenhum documento encontrado</td>
+								</tr>
+							</ww:else>
+						</ww:if>					
 					</tbody>
 				</table>
 				<b class="rbottom"><b class="r4"></b><b class="r3"></b><b class="r2"></b><b class="r1"></b></b>				

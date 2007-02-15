@@ -28,45 +28,52 @@
 				</tr>
 			</thead>
 			<tbody>
-				<ww:iterator value="histories">				
+				<ww:if test="histories.size() > 0">
+					<ww:iterator value="histories">				
+						<tr>
+							<td><a href="<ww:property value="url" />"><ww:property value="title" /></a></td>						
+							<td>
+								<ul class="star-rating">
+									<ww:if test="feedbackScore < 0.2">
+										<li><a href="qualify.do?history.id=${id}&feedbackScore=0.2" class="one-star">1</a></li>								
+									</ww:if>
+									<ww:else>
+										<li><a href="qualify.do?history.id=${id}&feedbackScore=0.2" class="one-star-rated">1</a></li>								
+									</ww:else>
+									<ww:if test="feedbackScore < 0.4">
+										<li><a href="qualify.do?history.id=${id}&feedbackScore=0.4" class="two-stars">2</a></li>								
+									</ww:if>
+									<ww:else>
+										<li><a href="qualify.do?history.id=${id}&feedbackScore=0.4" class="two-stars-rated">2</a></li>								
+									</ww:else>
+									<ww:if test="feedbackScore < 0.6">
+										<li><a href="qualify.do?history.id=${id}&feedbackScore=0.6" class="three-stars">3</a></li>								
+									</ww:if>
+									<ww:else>
+										<li><a href="qualify.do?history.id=${id}&feedbackScore=0.6" class="three-stars-rated">3</a></li>								
+									</ww:else>
+									<ww:if test="feedbackScore < 0.8">
+										<li><a href="qualify.do?history.id=${id}&feedbackScore=0.8" class="four-stars">4</a></li>								
+									</ww:if>
+									<ww:else>
+										<li><a href="qualify.do?history.id=${id}&feedbackScore=0.8" class="four-stars-rated">4</a></li>								
+									</ww:else>
+									<ww:if test="feedbackScore < 1.0">
+										<li><a href="qualify.do?history.id=${id}&feedbackScore=1.0" class="five-stars">5</a></li>								
+									</ww:if>
+									<ww:else>
+										<li><a href="qualify.do?history.id=${id}&feedbackScore=1.0" class="five-stars-rated">5</a></li>								
+									</ww:else>
+								</ul>								
+							</td>
+						</tr>
+					</ww:iterator>	
+				</ww:if>
+				<ww:else>
 					<tr>
-						<td><a href="<ww:property value="url" />"><ww:property value="title" /></a></td>						
-						<td>
-							<ul class="star-rating">
-								<ww:if test="feedbackScore < 0.2">
-									<li><a href="qualify.do?history.id=${id}&feedbackScore=0.2" class="one-star">1</a></li>								
-								</ww:if>
-								<ww:else>
-									<li><a href="qualify.do?history.id=${id}&feedbackScore=0.2" class="one-star-rated">1</a></li>								
-								</ww:else>
-								<ww:if test="feedbackScore < 0.4">
-									<li><a href="qualify.do?history.id=${id}&feedbackScore=0.4" class="two-stars">2</a></li>								
-								</ww:if>
-								<ww:else>
-									<li><a href="qualify.do?history.id=${id}&feedbackScore=0.4" class="two-stars-rated">2</a></li>								
-								</ww:else>
-								<ww:if test="feedbackScore < 0.6">
-									<li><a href="qualify.do?history.id=${id}&feedbackScore=0.6" class="three-stars">3</a></li>								
-								</ww:if>
-								<ww:else>
-									<li><a href="qualify.do?history.id=${id}&feedbackScore=0.6" class="three-stars-rated">3</a></li>								
-								</ww:else>
-								<ww:if test="feedbackScore < 0.8">
-									<li><a href="qualify.do?history.id=${id}&feedbackScore=0.8" class="four-stars">4</a></li>								
-								</ww:if>
-								<ww:else>
-									<li><a href="qualify.do?history.id=${id}&feedbackScore=0.8" class="four-stars-rated">4</a></li>								
-								</ww:else>
-								<ww:if test="feedbackScore < 1.0">
-									<li><a href="qualify.do?history.id=${id}&feedbackScore=1.0" class="five-stars">5</a></li>								
-								</ww:if>
-								<ww:else>
-									<li><a href="qualify.do?history.id=${id}&feedbackScore=1.0" class="five-stars-rated">5</a></li>								
-								</ww:else>
-							</ul>								
-						</td>
+						<td colspan="2">Nenhum documento</td>
 					</tr>
-				</ww:iterator>							
+				</ww:else>										
 			</tbody>	
 		</table>
 		<b class="rbottom"><b class="r4"></b><b class="r3"></b><b class="r2"></b><b class="r1"></b></b>

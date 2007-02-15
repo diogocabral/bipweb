@@ -20,5 +20,13 @@
     <bean id="userDao" class="br.bipweb.dao.hibernate.HibernateUserDao" singleton="false">
     	<constructor-arg ref="session" />
     </bean>                 
-        
+
+	<!-- Actions -->        
+	<bean id="categoryAction" class="br.bipweb.control.action.CategoryAction" singleton="false" />
+	
+	<bean id="historyAction" class="br.bipweb.control.action.HistoryAction" singleton="false" />
+	
+	<bean id="searchAction" class="br.bipweb.control.action.SearchAction" singleton="false" />
+	
+	<bean id="userAction" class="br.bipweb.control.action.UserAction" singleton="false" />			
 </beans>

@@ -49,7 +49,11 @@ public class SearchAction extends ActionSupport {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		
-		treeView = new TreeView(Type.SEARCH, categoryDao.listByOwner(user));
+		//TODO Colocar tudo no mesmo select
+		Collection<Category> categories = categoryDao.listByOwner(user);
+		categories.addAll(categoryDao.listJoined(user));
+		
+		treeView = new TreeView(Type.SEARCH, categories);
 		
 		return SUCCESS;
 	}
