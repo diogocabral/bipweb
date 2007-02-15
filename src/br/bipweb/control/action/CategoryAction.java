@@ -5,6 +5,7 @@ import java.util.Collection;
 import br.bipweb.dao.CategoryDao;
 import br.bipweb.dao.DaoException;
 import br.bipweb.dao.ObjectNotFoundException;
+import br.bipweb.dao.UserDao;
 import br.bipweb.model.Category;
 import br.bipweb.model.User;
 import br.bipweb.view.TreeView;
@@ -25,6 +26,7 @@ public class CategoryAction extends ActionSupport {
 	private String query;
 	
 	private CategoryDao categoryDao;
+	private UserDao userDao;
 	
 	public CategoryAction() {
 		super();
@@ -94,7 +96,7 @@ public class CategoryAction extends ActionSupport {
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		
-		treeView = new TreeView(Type.MANAGE_SHARED, categoryDao.listByOwner(user));
+		treeView = new TreeView(Type.MANAGE_SHARED, categoryDao.listJoined(user));
 		
 		return SUCCESS;
 	}
@@ -112,17 +114,32 @@ public class CategoryAction extends ActionSupport {
 	
 	public String doSearchShared()
 			throws DaoException {
+		if (query == null) {
+			return SUCCESS;
+		}
 		
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		
-		categories = categoryDao.listByNotUserAndName(user, query);
-		
+		categories = categoryDao.listNotJoinedByName(user, query);
+
 		return SUCCESS;
 		
 	}
 	
 	public String doJoin()
 			throws DaoException {
+		
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		
+		try {
+			user = userDao.get(user.getUsername());
+
+			user.addCategory(category);
+
+			userDao.update(user);
+		} catch (ObjectNotFoundException e) {
+			return ERROR;
+		}
 		
 		return doManageShared();
 		
@@ -131,6 +148,18 @@ public class CategoryAction extends ActionSupport {
 	public String doUnjoin()
 			throws DaoException {
 		
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		
+		try {
+			user = userDao.get(user.getUsername());
+			
+			user.removeCategory(category);
+	
+			userDao.update(user);
+		} catch (ObjectNotFoundException e) {
+			return ERROR;
+		}
+			
 		return doManageShared();
 		
 	}	
@@ -163,6 +192,10 @@ public class CategoryAction extends ActionSupport {
 	
 	public void setCategoryDao(CategoryDao categoryDao) {
 		this.categoryDao = categoryDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
 	}
 	
 }
