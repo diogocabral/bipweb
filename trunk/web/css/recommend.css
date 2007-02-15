@@ -1,0 +1,23 @@
+#recommend {
+	font-family: verdana;
+	background-color: #A2D1FF; /* mudem */
+	padding: 8px;
+	-moz-border-radius: 10px;
+	width: 400px;
+	position: absolute;
+	top: 60px;
+	left: 400px;
+	text-align: center;
+}
+
+#recommend h1 {
+	margin: 2px 0 2px 0;
+	font-size: 14pt;
+	text-align: left;
+}
+
+#recommend a {
+	font-size: 12pt;
+	text-decoration: none;
+	color: #FA8B30; /* mudem */
+}

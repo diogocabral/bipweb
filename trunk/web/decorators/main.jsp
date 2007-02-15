@@ -17,12 +17,6 @@
 		
 			<a href="${root}/"><img border="0" src="${root}/images/logo.jpg" alt="BIPWeb" /></a>
 			
-			<ww:if test="${recommendation != null}">
-			<div id="recommend">
-				${recomendation.url}
-			</div>
-			</ww:if>
-			
 			<b class="menurtop"><b class="menur1"></b><b class="menur2"></b><b class="menur3"></b><b class="menur4"></b></b>
 			<ul>
 			<ww:if test="#session.user != null">
@@ -43,6 +37,15 @@
 			</ul>
 			
 		</div>
+		
+		<ww:if test="#session.recommendation != null">
+		<div id="recommend">
+			<h1>Nós recomendamos</h1>
+			<a href="<ww:property value="#session.recommendation.url" />">
+				<ww:property value="#session.recommendation.title" />
+			</a>
+		</div>
+		</ww:if>
 		
 		<div id="corpo">
 			<decorator:body />

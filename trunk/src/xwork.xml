@@ -9,17 +9,18 @@
     	
     		<interceptor name="transaction" class="br.bipweb.control.interceptor.TransactionInterceptor" />
 			<interceptor name="permission" class="br.bipweb.control.interceptor.PermissionInterceptor" />
-			<interceptor name="permission" class="br.bipweb.control.interceptor.RecommendationInterceptor" />
+			<interceptor name="recommendation" class="br.bipweb.control.interceptor.RecommendationInterceptor" />
     		
     		<interceptor-stack name="publicStack">
     			<interceptor-ref name="defaultStack" />
-    			<interceptor-ref name="transaction" />    			
+    			<interceptor-ref name="transaction" />
     		</interceptor-stack>
     		
     		<interceptor-stack name="defaultStack">
     			<interceptor-ref name="defaultStack" />
-    			<interceptor-ref name="permission" />    			
-    			<interceptor-ref name="transaction" />   			
+    			<interceptor-ref name="recommendation" />
+    			<interceptor-ref name="permission" />			
+    			<interceptor-ref name="transaction" />
     		</interceptor-stack>
     	
 	   	</interceptors>	
