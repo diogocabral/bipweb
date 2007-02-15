@@ -1,6 +1,7 @@
 package br.bipweb.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -36,7 +37,7 @@ public class Category implements Serializable {
 	private Set<Category> children;
 	
 	@ManyToMany(mappedBy = "categories")
-	private Set<User> users;
+	private Set<User> users = new HashSet<User>();
 	
 	@OneToMany(mappedBy = "category")
 	private Set<History> histories;	
@@ -48,6 +49,14 @@ public class Category implements Serializable {
 	public Category(String name) {
 		super();
 		this.name = name;
+	}
+	
+	public void addUser(User user) {
+		users.add(user);
+	}
+	
+	public void removeUser(User user) {
+		users.remove(user);
 	}
 	
 	@Override
