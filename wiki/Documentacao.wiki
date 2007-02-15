@@ -2,9 +2,20 @@
 #labels Featured
 
 === Documentação ===
+
   * API javadoc _(em breve)_;
   * [VisoesDoProjeto Visões do projeto].
 
 === Outras informações ===
+
   * [UltimasModificacoes Notícias recentes sobre o projeto];
   * [ServidoresTeste Servidores onde os membros podem testar o BIPWeb].
+
+=== Links úteis ===
+
+  * [http://www.cs.utexas.edu/users/mooney/ir-course Information Retrieval and Web Search]
+  * [http://en.wikipedia.org/wiki/Information_retrieval Information Retrieval]
+  * [http://pt.wikipedia.org/wiki/Sistema_de_recomenda%C3%A7%C3%A3o Sistema de Recomendação]
+  * [http://atlas.ucpel.tche.br/~loh/recomend.htm Sistema de Recomendação]
+  * [http://movielens.umn.edu/login m o v i e l e n s]
+  * [http://en.wikipedia.org/wiki/Tf-idf TF-IDF]
