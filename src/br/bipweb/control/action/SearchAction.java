@@ -54,7 +54,7 @@ public class SearchAction extends ActionSupport {
 		categories.addAll(categoryDao.listJoined(user));
 		
 		treeView = new TreeView(Type.SEARCH, categories);
-		
+
 		return SUCCESS;
 	}
 	
@@ -85,7 +85,7 @@ public class SearchAction extends ActionSupport {
 			System.out.println(e.getMessage());
 			addActionError("Sistema indisponível!");
 		}
-		
+
 		return doLoad();
 	}
 	

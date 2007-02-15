@@ -47,7 +47,7 @@
 									<tr>
 										<td><ww:property value="score" /></td>
 										<td>
-											<a href="open.do?score=${score}&document.title=${title}&document.url=${url}&category.id=${category.id}">
+											<a target="_new" href="open.do?score=${score}&document.title=${title}&document.url=${url}&category.id=${category.id}">
 												<ww:property value="title" />
 											</a>
 										</td>

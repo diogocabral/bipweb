@@ -31,7 +31,7 @@
 				<ww:if test="histories.size() > 0">
 					<ww:iterator value="histories">				
 						<tr>
-							<td><a href="<ww:property value="url" />"><ww:property value="title" /></a></td>						
+							<td><a target="_new" href="<ww:property value="url" />"><ww:property value="title" /></a></td>						
 							<td>
 								<ul class="star-rating">
 									<ww:if test="feedbackScore < 0.2">
