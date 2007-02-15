@@ -42,6 +42,7 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 	
 	public Collection<Category> listNotJoinedByName(User user, String name)
 			throws DaoException {
+		
 		try {
 //			Criteria criteria = session.createCriteria(Category.class);
 //			
@@ -65,9 +66,11 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 			query.setEntity(2, user);
 			
 			return query.list();
+			
 		} catch (HibernateException e) {
 			throw new DaoException(e);
 		}
+		
 	}
 	
 	public Collection<Category> listNotJoined(User user) throws DaoException {

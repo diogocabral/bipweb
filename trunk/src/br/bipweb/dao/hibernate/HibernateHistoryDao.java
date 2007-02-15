@@ -24,14 +24,37 @@ public class HibernateHistoryDao extends HibernateGenericDao<History, Long> impl
 			throws DaoException {
 		
 		try {
+			
 			Criteria criteria = session.createCriteria(History.class);
 			
 			criteria.add(Restrictions.eq("user", user));
 			
 			return criteria.list();
+			
 		} catch (HibernateException e) {
 			throw new DaoException(e);
-		}		
+		}
+		
+	}
+	
+	public History recommend(User user)
+			throws DaoException {
+		
+		/*
+		 * Restrições da consulta:
+		 * - Não pode um History.url igual a History.url do usuário;
+		 * - O usuário tem que ter algum vínculo (dono ou associado) com a categoria da History;
+		 * - A History tem que ter um feedbackScore > 0.5;
+		 * - Obter o primeiro item da consulta.
+		 */
+		
+		// TODO Início lixo
+		History history = new History();
+		history.setUrl("http://teste.com.br");
+		// TODO Fim lixo
+		
+		return history;
+		
 	}
 	
 }

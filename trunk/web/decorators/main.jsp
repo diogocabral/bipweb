@@ -17,6 +17,12 @@
 		
 			<a href="${root}/"><img border="0" src="${root}/images/logo.jpg" alt="BIPWeb" /></a>
 			
+			<ww:if test="${recommendation != null}">
+			<div id="recommend">
+				${recomendation.url}
+			</div>
+			</ww:if>
+			
 			<b class="menurtop"><b class="menur1"></b><b class="menur2"></b><b class="menur3"></b><b class="menur4"></b></b>
 			<ul>
 			<ww:if test="#session.user != null">

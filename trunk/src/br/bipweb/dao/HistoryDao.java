@@ -7,6 +7,10 @@ import br.bipweb.model.User;
 
 public interface HistoryDao extends GenericDao<History, Long> {
 	
-	Collection<History> listByUser(User user) throws DaoException;
+	Collection<History> listByUser(User user)
+			throws DaoException;
+	
+	History recommend(User user)
+			throws DaoException;
 	
 }
