@@ -5,7 +5,7 @@
 		Uma ferramenta de busca de informações personalizadas na Web baseada no Fidus.
 	</description>
 	
-	<property name="version" value="0.0.1" />
+	<property name="version" value="1.0.0" />
 	<property name="jarname" value="${ant.project.name}-${version}.jar" />
 	<property name="warname" value="${ant.project.name}.war" />
 	
