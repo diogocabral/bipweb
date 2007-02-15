@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -47,6 +48,14 @@ public class HibernateHistoryDao extends HibernateGenericDao<History, Long> impl
 		 * - A History tem que ter um feedbackScore > 0.5;
 		 * - Obter o primeiro item da consulta.
 		 */
+		
+		Query query = session.createQuery("select history from History history where " +
+				"name user <> ? " +
+				"and feedbackScore > 0.5 " +
+				"and url not in (select elements(history).url from User user where user = ?)");
+		query.setMaxResults(1);
+		query.setEntity(1, user);
+		query.setEntity(2, user);
 		
 		// TODO Início lixo
 		History history = new History();
