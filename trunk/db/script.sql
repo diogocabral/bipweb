@@ -8,7 +8,7 @@ drop table if exists category
 drop table if exists history
 drop table if exists user
 drop table if exists user_category
-create table category (id bigint not null auto_increment, name varchar(255), description varchar(255), criteria varchar(255), owner_username varchar(255), parent_id bigint, primary key (id))
+create table category (id bigint not null auto_increment, name varchar(255), description varchar(255), criteria varchar(255), shared bit not null, owner_username varchar(255), parent_id bigint, primary key (id))
 create table history (id bigint not null auto_increment, title varchar(255), url varchar(255), score float, feedbackScore float, category_id bigint, user_username varchar(255), primary key (id))
 create table user (username varchar(255) not null, password varchar(255), primary key (username))
 create table user_category (users_username varchar(255) not null, categories_id bigint not null, primary key (users_username, categories_id))
