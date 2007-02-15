@@ -18,7 +18,7 @@
 		
 		<h1>Cadastro de categorias</h1>
 		
-		<ww:if test="${step == 'new' || step == 'edit' }">
+		<ww:if test="${step == 'new' || step == 'edit'}">
 			<div class="dtree" style="float: left; width: 200px;">
 				<script type="text/javascript">${treeView}</script>
 			</div>
@@ -46,15 +46,17 @@
 						<textarea name="category.criteria" cols="40" rows="5">${category.criteria}</textarea>
 					</td>
 				</tr>
-				<tr>
-					<td align="right">Compartilhar:</td>
-					<ww:if test="category.shared == true">
-						<td><input checked="checked" type="checkbox" name="category.shared" value="true" /></td>
-					</ww:if>
-					<ww:else>
-						<td><input type="checkbox" name="category.shared" value="true" /></td>					
-					</ww:else>
-				</tr>
+				<ww:if test="${category.parent.id == null}">
+					<tr>
+						<td align="right">Compartilhar:</td>
+						<ww:if test="${category.shared == true}">
+							<td><input checked="checked" type="checkbox" name="category.shared" value="true" /></td>
+						</ww:if>
+						<ww:else>
+							<td><input type="checkbox" name="category.shared" value="true" /></td>					
+						</ww:else>
+					</tr>
+				</ww:if>
 				<tr>
 					<td colspan="2">
 						<div align="right">
