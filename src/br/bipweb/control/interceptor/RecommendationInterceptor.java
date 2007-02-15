@@ -16,7 +16,6 @@ public class RecommendationInterceptor implements Interceptor {
 	private static final long serialVersionUID = -3744844853893003401L;
 	
 	private HistoryDao historyDao;
-	private History recommendation;
 	
 	public void init() {
 	}
@@ -27,8 +26,14 @@ public class RecommendationInterceptor implements Interceptor {
 	public String intercept(ActionInvocation invocation)
 			throws Exception {
 		
+		System.out.println("Olá mundo");
+		
 		User user = (User) ActionContext.getContext().getSession().get("user");
-		recommendation = historyDao.recommend(user);
+		History recommendation = historyDao.recommend(user);
+		
+		System.out.println(recommendation);
+		
+		ActionContext.getContext().getSession().put("recommendation", recommendation);
 		
 		return invocation.invoke();
 		
@@ -36,10 +41,6 @@ public class RecommendationInterceptor implements Interceptor {
 	
 	public void setHistoryDao(HistoryDao historyDao) {
 		this.historyDao = historyDao;
-	}
-	
-	public History getRecommendation() {
-		return recommendation;
 	}
 	
 }

@@ -50,6 +50,7 @@ public class HibernateHistoryDao extends HibernateGenericDao<History, Long> impl
 		
 		// TODO Início lixo
 		History history = new History();
+		history.setTitle("Isto é apenas um teste!");
 		history.setUrl("http://teste.com.br");
 		// TODO Fim lixo
 		
