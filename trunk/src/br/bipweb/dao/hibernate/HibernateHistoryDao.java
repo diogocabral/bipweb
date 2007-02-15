@@ -1,10 +1,10 @@
 package br.bipweb.dao.hibernate;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -38,8 +38,7 @@ public class HibernateHistoryDao extends HibernateGenericDao<History, Long> impl
 		
 	}
 	
-	public History recommend(User user)
-			throws DaoException {
+	public History recommend(User user) throws DaoException {
 		
 		/*
 		 * Restrições da consulta:
@@ -49,21 +48,21 @@ public class HibernateHistoryDao extends HibernateGenericDao<History, Long> impl
 		 * - Obter o primeiro item da consulta.
 		 */
 		
-		Query query = session.createQuery("select history from History history where " +
-				"name user <> ? " +
-				"and feedbackScore > 0.5 " +
-				"and url not in (select elements(history).url from User user where user = ?)");
-		query.setMaxResults(1);
-		query.setEntity(1, user);
-		query.setEntity(2, user);
+		Criteria criteria = session.createCriteria(History.class);
+		criteria.add(Restrictions.ne("user", user));
+		criteria.add(Restrictions.gt("feedbackScore", Float.valueOf("0.5")));
+		criteria.createCriteria("category")
+			//TODO resolver o disjunction
+//			.add(Restrictions.disjunction()
+//					.add(Restrictions.eq("owner", user))		
+			.createCriteria("users")
+				.add(Restrictions.eq("username", user.getUsername()));
 		
-		// TODO Início lixo
-		History history = new History();
-		history.setTitle("Isto é apenas um teste!");
-		history.setUrl("http://teste.com.br");
-		// TODO Fim lixo
+		criteria.setMaxResults(1);
 		
-		return history;
+		List<History> list = criteria.list();
+		
+		return (list.size() == 0 ? null : list.get(0));
 		
 	}
 	

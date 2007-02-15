@@ -26,12 +26,9 @@ public class RecommendationInterceptor implements Interceptor {
 	public String intercept(ActionInvocation invocation)
 			throws Exception {
 		
-		System.out.println("Olá mundo");
-		
 		User user = (User) ActionContext.getContext().getSession().get("user");
+
 		History recommendation = historyDao.recommend(user);
-		
-		System.out.println(recommendation);
 		
 		ActionContext.getContext().getSession().put("recommendation", recommendation);
 		

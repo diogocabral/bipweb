@@ -1,8 +1,12 @@
 package br.bipweb.control.action;
 
+import java.util.HashMap;
+
 import br.bipweb.dao.DaoException;
+import br.bipweb.dao.HistoryDao;
 import br.bipweb.dao.ObjectNotFoundException;
 import br.bipweb.dao.UserDao;
+import br.bipweb.model.History;
 import br.bipweb.model.User;
 import br.bipweb.util.Md5;
 
@@ -19,6 +23,8 @@ public class UserAction extends ActionSupport {
 	
 	private UserDao userDao;
 	
+	private HistoryDao historyDao;
+	
 	public UserAction() {
 		super();
 	}
@@ -33,6 +39,10 @@ public class UserAction extends ActionSupport {
 			}
 			
 			ActionContext.getContext().getSession().put("user", user);
+			
+			History recommendation = historyDao.recommend(user);
+			
+			ActionContext.getContext().getSession().put("recommendation", recommendation);
 			
 		} catch (ObjectNotFoundException e) {
 			addActionError("Login inválido");
@@ -82,7 +92,8 @@ public class UserAction extends ActionSupport {
 	}	
 	
 	public String doLogout() throws DaoException {
-		ActionContext.getContext().getSession().remove("user");		
+		ActionContext.getContext().getSession().remove("user");
+		ActionContext.getContext().getSession().remove("recommendation");
 		
 		return SUCCESS;
 	}	
@@ -101,6 +112,10 @@ public class UserAction extends ActionSupport {
 	
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
+	}
+
+	public void setHistoryDao(HistoryDao historyDao) {
+		this.historyDao = historyDao;
 	}
 	
 }

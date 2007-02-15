@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.br.BrazilianAnalyzer;
@@ -26,7 +27,7 @@ public class ScoreAgent {
 	public ScoreAgent() {
 		super();
 
-		this.dir = System.getProperty("java.io.tmpdir", "tmp") + System.getProperty("file.separator") + "index-1";
+		this.dir = System.getProperty("java.io.tmpdir", "tmp") + System.getProperty("file.separator") + "index-";
 
 	}
 
@@ -34,10 +35,12 @@ public class ScoreAgent {
 			throws IOException {
 
 		try {
+			
+			String dir = this.dir + new Date().getTime();
+			
+			this.index(documents, dir);
 
-			this.index(documents);
-
-			return this.search(criteria);
+			return this.search(criteria, dir);
 
 		} catch (ParseException e) {} // Faz nada
 
@@ -45,7 +48,7 @@ public class ScoreAgent {
 
 	}
 
-	private void index(Collection<Document> documents)
+	private void index(Collection<Document> documents, String dir)
 			throws IOException {
 
 		Analyzer analyzer = new BrazilianAnalyzer();
@@ -60,6 +63,8 @@ public class ScoreAgent {
 				URL url = new URL(document.getUrl());
 
 				org.apache.lucene.document.Document html = HTMLDocument.getDocument(url);
+				
+				//System.out.println(html); // TOD
 
 				writer.addDocument(html);
 
@@ -71,7 +76,7 @@ public class ScoreAgent {
 
 	}
 
-	private Collection<Document> search(String criteria)
+	private Collection<Document> search(String criteria, String dir)
 			throws IOException, ParseException {
 
 		Analyzer analyzer = new BrazilianAnalyzer();

@@ -41,7 +41,12 @@
 		<ww:if test="#session.recommendation != null">
 		<div id="recommend">
 			<h1>Nós recomendamos</h1>
-			<a href="<ww:property value="#session.recommendation.url" />">
+			<a target="_new" href="<ww:url action="open" namespace="/search" includeParams="none">
+						<ww:param name="score" value="#session.recommendation.score" />
+						<ww:param name="document.title" value="#session.recommendation.title" />
+						<ww:param name="document.url" value="#session.recommendation.url" />
+						<ww:param name="category.id" value="#session.recommendation.category.id" />						
+					</ww:url>">
 				<ww:property value="#session.recommendation.title" />
 			</a>
 		</div>
