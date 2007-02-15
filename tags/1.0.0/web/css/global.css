@@ -1,0 +1,19 @@
+body {
+	margin-right: 64px;
+	margin-left: 64px;
+	margin-top: 20px;	
+	margin-bottom: 20px;		
+	font-family: arial;
+	font-size: 8pt;
+	background-color: #FFFFFF;
+	color: #505050;
+}
+
+a {
+	color: #9999ff;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

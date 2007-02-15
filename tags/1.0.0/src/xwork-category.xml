@@ -1,0 +1,72 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	
+	<package name="category" extends="ROOT" namespace="/category">
+		
+		<action name="manage" class="categoryAction" method="doManage">
+			<result type="dispatcher" name="success">
+				<param name="location">edit.jsp</param>
+			</result>		
+		</action>
+		
+		<action name="new" class="categoryAction" method="doNew">
+			<result type="dispatcher" name="success">
+				<param name="location">edit.jsp</param>
+			</result>
+		</action>
+		
+		<action name="edit" class="categoryAction" method="doEdit">
+			<result type="dispatcher" name="success">
+				<param name="location">edit.jsp</param>
+			</result>
+		</action>
+		
+		<action name="delete" class="categoryAction" method="doDelete">
+			<!-- Recarrega a árvore -->
+			<result type="redirect-action" name="success">
+				<param name="actionName">manage</param>
+			</result>
+		</action>
+		
+		<action name="save" class="categoryAction" method="doSave">
+			<!-- Recarrega a árvore -->
+			<result type="redirect-action" name="success">
+				<param name="actionName">manage</param>
+			</result>
+		</action>
+		
+		<!-- Shared -->
+		
+		<action name="manageShared" class="categoryAction" method="doManageShared">
+			<result type="dispatcher" name="success">
+				<param name="location">editShared.jsp</param>
+			</result>		
+		</action>
+		
+		<action name="editShared" class="categoryAction" method="doEditShared">
+			<result type="dispatcher" name="success">
+				<param name="location">editShared.jsp</param>
+			</result>		
+		</action>
+		
+		<action name="searchShared" class="categoryAction" method="doSearchShared">
+			<result type="dispatcher" name="success">
+				<param name="location">searchShared.jsp</param>
+			</result>		
+		</action>
+		
+		<action name="join" class="categoryAction" method="doJoin">
+			<result type="dispatcher" name="success">
+				<param name="location">editShared.jsp</param>
+			</result>		
+		</action>
+		
+		<action name="unjoin" class="categoryAction" method="doUnjoin">
+			<result type="dispatcher" name="success">
+				<param name="location">editShared.jsp</param>
+			</result>		
+		</action>
+		
+	</package>
+	
+</xwork>

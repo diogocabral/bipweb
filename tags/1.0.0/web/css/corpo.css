@@ -1,0 +1,21 @@
+#corpo {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;	
+	text-align: left;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	background-color: #f7f7f8;
+}
+
+#corpo h1 {
+	margin-top: 0px;
+	padding-left: 5px;
+}
+
+#corpo h2 {
+	font-size: 12pt;
+	padding-left: 5px;
+	border-bottom: 1px solid #CCCCCC;
+}
