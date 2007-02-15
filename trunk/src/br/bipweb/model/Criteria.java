@@ -8,6 +8,7 @@ public class Criteria {
 	private String cleanCriteria;
 	
 	public Criteria() {
+		super();
 	}
 	
 	public Criteria(String cleanCriteria) {

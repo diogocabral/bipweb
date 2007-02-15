@@ -2,8 +2,10 @@ package br.bipweb.dao.hibernate;
 
 import java.util.Collection;
 
-import org.hibernate.Query;
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import br.bipweb.dao.DaoException;
 import br.bipweb.dao.HistoryDao;
@@ -21,13 +23,15 @@ public class HibernateHistoryDao extends HibernateGenericDao<History, Long> impl
 	public Collection<History> listByUser(User user)
 			throws DaoException {
 		
-		
-		String hql = String.format("select history from History history where history.user.username = '%s'", user.getUsername());
-		
-		Query query = session.createQuery(hql);
-
-		return query.list();
-		
+		try {
+			Criteria criteria = session.createCriteria(History.class);
+			
+			criteria.add(Restrictions.eq("user", user));
+			
+			return criteria.list();
+		} catch (HibernateException e) {
+			throw new DaoException(e);
+		}		
 	}
 	
 }

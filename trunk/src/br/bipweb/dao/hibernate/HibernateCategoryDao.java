@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
@@ -28,6 +29,7 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 			Criteria criteria = session.createCriteria(Category.class);
 			
 			criteria.add(Restrictions.isNull("parent"));
+			
 			criteria.add(Restrictions.eq("owner", owner));
 			
 			criteria.addOrder(Order.asc("name"));
@@ -41,17 +43,28 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 	public Collection<Category> listNotJoinedByName(User user, String name)
 			throws DaoException {
 		try {
-			Criteria criteria = session.createCriteria(Category.class);
+//			Criteria criteria = session.createCriteria(Category.class);
+//			
+//			criteria.add(Restrictions.ilike("name", name, MatchMode.ANYWHERE));
+//			criteria.add(Restrictions.isNull("parent"));
+//			criteria.add(Restrictions.ne("owner", user));
+//			criteria.add(Restrictions.eq("shared", true));
+//			criteria.createCriteria("users", "user").add(Restrictions.ne("username", user.getUsername()));
+//			
+//			criteria.addOrder(Order.asc("name"));
+//			
+//			return criteria.list();
+//			
+			Query query = session.createQuery("select category from Category category where " +
+					"name like ? " +
+					"and parent is null " +
+					"and owner <> ? and shared = true " +
+					"and category not in (select elements(categories) from User user where user = ?)");
+			query.setString(0, "%" + name + "%");
+			query.setEntity(1, user);
+			query.setEntity(2, user);
 			
-			criteria.add(Restrictions.ilike("name", name, MatchMode.ANYWHERE));
-			criteria.add(Restrictions.isNull("parent"));
-			criteria.add(Restrictions.not(Restrictions.eq("owner", user)));
-			criteria.add(Restrictions.eq("shared", true));
-			criteria.createCriteria("users").add(Restrictions.not(Restrictions.eq("username", user.getUsername())));
-			
-			criteria.addOrder(Order.asc("name"));
-			
-			return criteria.list();
+			return query.list();
 		} catch (HibernateException e) {
 			throw new DaoException(e);
 		}
@@ -60,7 +73,7 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 	public Collection<Category> listNotJoined(User user) throws DaoException {
 		try {
 			Criteria criteria = session.createCriteria(Category.class);
-			criteria.add(Restrictions.not(Restrictions.eq("owner", user)));
+			criteria.add(Restrictions.ne("owner", user));
 			criteria.createCriteria("users").add(Restrictions.not(Restrictions.eq("username", user.getUsername())));
 			
 			return criteria.list();
@@ -72,7 +85,7 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 	public Collection<Category> listJoined(User user) throws DaoException {
 		try {
 			Criteria criteria = session.createCriteria(Category.class);
-			criteria.add(Restrictions.not(Restrictions.eq("owner", user)));
+			criteria.add(Restrictions.ne("owner", user));
 			criteria.add(Restrictions.isNull("parent"));
 			criteria.createCriteria("users").add(Restrictions.eq("username", user.getUsername()));
 			
@@ -88,7 +101,7 @@ public class HibernateCategoryDao extends HibernateGenericDao<Category, Long> im
 			
 			criteria.add(Restrictions.ilike("name", name, MatchMode.ANYWHERE));
 			criteria.add(Restrictions.isNull("parent"));
-			criteria.add(Restrictions.not(Restrictions.eq("owner", user)));
+			criteria.add(Restrictions.ne("owner", user));
 			criteria.add(Restrictions.eq("shared", true));
 			criteria.createCriteria("users").add(Restrictions.eq("username", user.getUsername()));
 			

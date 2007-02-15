@@ -10,18 +10,18 @@
 		<form method="post" action="edit.do">
 			<table>
 				<tr>
-					<td>Senha :</td>
+					<td align="right">Senha :</td>
 					<td>
 						<input type="hidden" name="user.username" value="<ww:property value="user.username" />" />
 						<input type="password" name="user.password" />
 					</td>
 				</tr>
 				<tr>
-					<td>Confirmação :</td>
+					<td align="right">Confirmação :</td>
 					<td><input type="password" name="password" /></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Alterar" /></td>
+					<td colspan="2" align="right"><input type="submit" value="Alterar" /></td>
 				</tr>
 			</table>
 		</form>
