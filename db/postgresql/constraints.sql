@@ -1,2 +1,0 @@
-ALTER TABLE bipweb.user
-	ADD CONSTRAINT pk_user PRIMARY KEY (id);

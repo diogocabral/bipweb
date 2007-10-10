@@ -1,37 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-"-//Hibernate/Hibernate Configuration DTD//EN"
-"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+	
 <hibernate-configuration>
+
 	<session-factory>
-
+	
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/articles</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://dev4all.cjb.net:3306/bipweb</property>
-		<property name="hibernate.connection.username">bipweb</property>
-		<property name="hibernate.connection.password">bipweb123</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
 
-		<!-- Condiguração do c3p0 -->
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>
 
-		<property name="hibernate.c3p0.max_size">10</property>
-		<property name="hibernate.c3p0.min_size">3</property>
-		<property name="hibernate.c3p0.timeout">180</property>
-		<property name="hibernate.c3p0.max_statements">10</property>
-		<property name="hibernate.c3p0.idle_test_period">100</property>
-		<property name="hibernate.c3p0.acquire_increment">2</property>
-
-		<!-- Configurações de debug -->
-
-		<property name="show_sql">false</property>
-		<property name="use_outer_join">false</property>
-		<property name="hibernate.generate_statistics">true</property>
-		<property name="hibernate.use_sql_comments">false</property>
-
-		<!-- Mapeamentos -->
-
-		<mapping class="br.bipweb.model.User" />
-		<mapping class="br.bipweb.model.Category" />
-		<mapping class="br.bipweb.model.History" />
-
+	   <property name="hibernate.search.default.directory_provider">
+	       org.hibernate.search.store.FSDirectoryProvider
+	   </property>
+	   <property name="hibernate.search.default.indexBase">
+	       c:/index
+	   </property>
+ 		
+ 	   <mapping class="br.ufal.ic.articles.core.DublinCoreArticle" />
+ 	   
+        <event type="post-update">
+            <listener class="org.hibernate.search.event.FullTextIndexEventListener"/>
+        </event>
+        <event type="post-insert">
+            <listener class="org.hibernate.search.event.FullTextIndexEventListener"/>
+        </event>
+        <event type="post-delete">
+            <listener class="org.hibernate.search.event.FullTextIndexEventListener"/>
+        </event> 	   
+ 		
 	</session-factory>
+
 </hibernate-configuration>
+	
