@@ -1,3 +1,4 @@
+package br.ufal.ic.articles.util;
 import java.util.List;
 
 import org.hibernate.Session;
