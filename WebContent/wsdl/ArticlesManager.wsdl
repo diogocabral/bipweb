@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://core.articles.ic.ufal.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://core.articles.ic.ufal.br" xmlns:intf="http://core.articles.ic.ufal.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://core.articles.ic.ufal.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="get">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getResponse">
+    <complexType>
+     <sequence>
+      <element name="getReturn" type="impl:DublinCoreArticle"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="DublinCoreArticle">
+    <sequence>
+     <element name="dateStamp" nillable="true" type="xsd:dateTime"/>
+     <element name="dcContributor" nillable="true" type="xsd:string"/>
+     <element name="dcCoverage" nillable="true" type="xsd:string"/>
+     <element name="dcCreator" nillable="true" type="xsd:string"/>
+     <element name="dcDate" nillable="true" type="xsd:dateTime"/>
+     <element name="dcDescription" nillable="true" type="xsd:string"/>
+     <element name="dcFormat" nillable="true" type="xsd:string"/>
+     <element name="dcIdentifier" nillable="true" type="xsd:string"/>
+     <element name="dcLanguage" nillable="true" type="xsd:string"/>
+     <element name="dcPublisher" nillable="true" type="xsd:string"/>
+     <element name="dcRights" nillable="true" type="xsd:string"/>
+     <element name="dcSource" nillable="true" type="xsd:string"/>
+     <element name="dcSubject" nillable="true" type="xsd:string"/>
+     <element name="dcTitle" nillable="true" type="xsd:string"/>
+     <element name="dcType" nillable="true" type="xsd:string"/>
+     <element name="identifier" nillable="true" type="xsd:string"/>
+     <element name="setSpec" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="search">
+    <complexType>
+     <sequence>
+      <element name="term" type="xsd:string"/>
+      <element name="firstResult" type="xsd:int"/>
+      <element name="maxResults" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchReturn" type="impl:DublinCoreArticle"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchCount">
+    <complexType>
+     <sequence>
+      <element name="term" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchCountResponse">
+    <complexType>
+     <sequence>
+      <element name="searchCountReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="searchRequest">
+
+      <wsdl:part element="impl:search" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchCountRequest">
+
+      <wsdl:part element="impl:searchCount" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchResponse">
+
+      <wsdl:part element="impl:searchResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRequest">
+
+      <wsdl:part element="impl:get" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getResponse">
+
+      <wsdl:part element="impl:getResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchCountResponse">
+
+      <wsdl:part element="impl:searchCountResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ArticlesManager">
+
+      <wsdl:operation name="get">
+
+         <wsdl:input message="impl:getRequest" name="getRequest"/>
+
+         <wsdl:output message="impl:getResponse" name="getResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="search">
+
+         <wsdl:input message="impl:searchRequest" name="searchRequest"/>
+
+         <wsdl:output message="impl:searchResponse" name="searchResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchCount">
+
+         <wsdl:input message="impl:searchCountRequest" name="searchCountRequest"/>
+
+         <wsdl:output message="impl:searchCountResponse" name="searchCountResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ArticlesManagerSoapBinding" type="impl:ArticlesManager">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="get">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="search">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchCount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchCountRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchCountResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ArticlesManagerService">
+
+      <wsdl:port binding="impl:ArticlesManagerSoapBinding" name="ArticlesManager">
+
+         <wsdlsoap:address location="http://localhost:8080/articles/services/ArticlesManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

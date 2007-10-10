@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="disablePrettyXML" value="true"/>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="attachments.Directory" value="C:\Documents and Settings\Diogo\Meus documentos\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\articles\WEB-INF\attachments"/>
+  <parameter name="dotNetSoapEncFix" value="true"/>
+  <parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="false"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+ <service name="ArticlesManager" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="get" qname="ns1:get" returnQName="ns1:getReturn" returnType="ns1:DublinCoreArticle" soapAction="" xmlns:ns1="http://core.articles.ic.ufal.br">
+   <parameter qname="ns1:id" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="search" qname="ns2:search" returnQName="ns2:searchReturn" returnType="ns2:DublinCoreArticle" soapAction="" xmlns:ns2="http://core.articles.ic.ufal.br">
+   <parameter qname="ns2:term" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns2:firstResult" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns2:maxResults" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="searchCount" qname="ns3:searchCount" returnQName="ns3:searchCountReturn" returnType="xsd:int" soapAction="" xmlns:ns3="http://core.articles.ic.ufal.br" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter qname="ns3:term" type="xsd:string"/>
+  </operation>
+  <parameter name="allowedMethods" value="get search searchCount"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="ArticlesManager"/>
+  <parameter name="className" value="br.ufal.ic.articles.core.ArticlesManager"/>
+  <parameter name="wsdlServicePort" value="ArticlesManager"/>
+  <parameter name="schemaQualified" value="http://core.articles.ic.ufal.br"/>
+  <parameter name="wsdlTargetNamespace" value="http://core.articles.ic.ufal.br"/>
+  <parameter name="wsdlServiceElement" value="ArticlesManagerService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:DublinCoreArticle" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:br.ufal.ic.articles.core.DublinCoreArticle" xmlns:ns4="http://core.articles.ic.ufal.br"/>
+ </service>
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+  <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </transport>
+ <transport name="local">
+  <responseFlow>
+   <handler type="LocalResponder"/>
+  </responseFlow>
+ </transport>
+</deployment>
