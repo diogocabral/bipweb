@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="parser" basedir=".">
+
+	<description>parser</description>
+	
+	<property name="version" value="1.0.0" />
+
+	<property environment="env" />
+
+	<property name="src" value="${basedir}/src" />
+	<property name="lib" value="${basedir}/lib" />
+	<property name="dist" value="${basedir}/dist" />
+	<property name="build" value="${basedir}/build" />
+
+	<path id="lib.classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<property name="jarname"
+		value="${ant.project.name}-${version}.jar" />
+
+	<target name="init">
+		<echo>Criando diretório \build</echo>
+		<mkdir dir="${build}" />
+		<echo>Criando diretório \dist</echo>
+		<mkdir dir="${dist}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<echo>Compilando o código fonte</echo>
+		<javac srcdir="${src}" destdir="${build}"
+			classpathref="lib.classpath" />
+	</target>
+
+	<target name="dist" depends="compile">
+		<echo>Gerando ${jarname}</echo>
+		<jar jarfile="${dist}/${jarname}" basedir="${build}" />
+	</target>
+
+	<target name="undist">
+		<echo>Excluindo o diretório \build</echo>
+		<delete dir="\${build}" />
+		<echo>Excluindo o diretório \dist</echo>
+		<delete dir="\${dist}" />
+	</target>
+
+</project>
+
