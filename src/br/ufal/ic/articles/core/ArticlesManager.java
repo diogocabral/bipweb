@@ -12,9 +12,10 @@ public class ArticlesManager implements Serializable {
 		return (DublinCoreArticle) HibernateUtil.getSession().get(DublinCoreArticle.class, id);
 	}
 	
-	public DublinCoreArticle[] search(String term, int firstResult, int maxResults) {
-		return (DublinCoreArticle[]) new DublinCoreLuceneSearch()
-			.findByExample(term, firstResult, maxResults).toArray();
+	public DublinCoreArticle[] search(String term, int firstResult, int maxResults) {		
+		DublinCoreArticle[] dublinCoreArticles = new DublinCoreArticle[maxResults]; 
+		return new DublinCoreLuceneSearch().findByExample(term, firstResult, maxResults)
+			.toArray(dublinCoreArticles); 
 	}
 	
 	public Integer searchCount(String term) {
