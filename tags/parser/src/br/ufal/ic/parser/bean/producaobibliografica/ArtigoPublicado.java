@@ -8,9 +8,11 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import br.ufal.ic.parser.bean.CurriculoVitae;
 import br.ufal.ic.parser.bean.dadosgerais.PalavrasChave;
 import br.ufal.ic.parser.bean.dadosgerais.formacaoacademica.AreaConhecimento;
 import br.ufal.ic.parser.bean.dadosgerais.formacaoacademica.SetoresAtividade;
@@ -52,6 +54,9 @@ public class ArtigoPublicado implements Serializable {
 	@Transient
 	private InformacoesAdicionais informacoesAdicionais;
 	
+	@ManyToOne
+	private CurriculoVitae curriculoVitae;
+	
 	@Override
 	public String toString() {
 		return String.format("{ArtigoPublicado sequenciaProducao=[%s] dadosBasicoArtigo=[%s] detalhamentoArtigo=[%s] autores=[%s] palavrasChave=[%s]" +
@@ -89,6 +94,20 @@ public class ArtigoPublicado implements Serializable {
 	
 	public void addAreaConhecimento(AreaConhecimento area) {
 		this.areasConhecimento.add(area);
+	}
+
+	/**
+	 * @return the curriculoVitae
+	 */
+	public CurriculoVitae getCurriculoVitae() {
+		return curriculoVitae;
+	}
+
+	/**
+	 * @param curriculoVitae the curriculoVitae to set
+	 */
+	public void setCurriculoVitae(CurriculoVitae curriculoVitae) {
+		this.curriculoVitae = curriculoVitae;
 	}
 
 }

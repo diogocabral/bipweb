@@ -56,10 +56,6 @@ public class CurriculoVitae implements Serializable {
 	@Transient
 	private DadosComplementares dadosComplementares;
 
-	public void setSistemaOrigemXml(String sistemaOrigemXml) {
-		this.sistemaOrigemXml = sistemaOrigemXml;
-	}
-
 	@Override
 	public String toString() {
 		return String.format("{CurriculoVitae sistemaOrigemXml=[%s] numeroIdentificador=[%s] formatoDataAtualizacao=[%s] dataAtualizacao=[%s] " +
@@ -68,6 +64,10 @@ public class CurriculoVitae implements Serializable {
 				formatoDataAtualizacao, dataAtualizacao, formatoHoraAtualizacao, horaAtualizacao, xmlnsLattes, dadosGerais, 
 				producaoBibliografica, producaoTecnica, outraProducao, dadosComplementares);
 	}
+	
+	public void setSistemaOrigemXml(String sistemaOrigemXml) {
+		this.sistemaOrigemXml = sistemaOrigemXml;
+	}	
 	
 	public void setDataAtualizacao(String dataAtualizacao) {
 		try {
@@ -209,6 +209,20 @@ public class CurriculoVitae implements Serializable {
 	 */
 	public DadosComplementares getDadosComplementares() {
 		return dadosComplementares;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }
