@@ -22,7 +22,7 @@ public class ProducaoBibliografica implements Serializable {
 	@Transient
 	private List<TrabalhoEmEventos> trabalhosEmEventos = new ArrayList<TrabalhoEmEventos>();
 	
-	@OneToMany
+	@OneToMany(mappedBy = "curriculoVitae")
 	private List<ArtigoPublicado> artigosPublicados = new ArrayList<ArtigoPublicado>();
 	
 	@Transient
