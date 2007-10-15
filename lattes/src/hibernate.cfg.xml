@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+	
+<hibernate-configuration>
+
+	<session-factory>
+	
+	   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+	   <property name="hibernate.connection.url">jdbc:mysql://localhost/curriculos</property>
+	   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+	   <property name="hibernate.connection.username">root</property>
+	   <property name="hibernate.connection.password">root</property>
+
+	   <property name="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property> 	   
+
+	   <property name="hibernate.search.default.directory_provider">
+	       org.hibernate.search.store.FSDirectoryProvider
+	   </property>
+	   <property name="hibernate.search.default.indexBase">
+	       c:/index
+	   </property>
+ 		
+ 	   <mapping class="br.ufal.ic.parser.bean.CurriculoVitae" />
+ 	   <mapping class="br.ufal.ic.parser.bean.DadosGerais" />
+ 	   <mapping class="br.ufal.ic.parser.bean.ProducaoBibliografica" />
+	   <mapping class="br.ufal.ic.parser.bean.ArtigoPublicado" /> 	   
+ 	   
+        <event type="post-update">
+            <listener class="org.hibernate.search.event.FullTextIndexEventListener"/>
+        </event>
+        <event type="post-insert">
+            <listener class="org.hibernate.search.event.FullTextIndexEventListener"/>
+        </event>
+        <event type="post-delete">
+            <listener class="org.hibernate.search.event.FullTextIndexEventListener"/>
+        </event> 	 	   
+ 		
+	</session-factory>
+
+</hibernate-configuration>
+	
